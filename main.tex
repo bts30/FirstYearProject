@@ -24,8 +24,6 @@
 \usepackage{tocloft}
 \usepackage{subfig}
 \usepackage{fancyhdr}
-\let\[\equation
-\let\]\endequation
 %Muliggør 'flere figurer i én' Eksempel på anvendelse (indenfor figure-environment):
 % \subfloat[undercaption 1]{\label{label 1}\includegraphics[bredde 1]{billede 1}}
 % \subfloat[undercaption 2]{\label{label 2}\includegraphics[bredde 2]{billede 2}}
@@ -95,13 +93,19 @@ Kort resumé, gerne på både dansk og engelsk.
 \section{The experiment}
 
 \section{Model of the system}
-The system essentially is just a body in free fall, and since the steel sphere is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y(t)$ is simply 
-\[
-	y(t)	
-\]
-
-
-
+To describe the system we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
+\begin{equation}
+	y_p(t)= A \sin(2\pi f t+ \phi)
+	\label{platey}
+\end{equation}
+In air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for a specific initial condition $v_i$, $y_i$ at time $t_i$ is simply 
+\begin{equation}
+	y_b(t) = -\frac{g}{2}(t-t_i)^2+v_i(t-t_i)+y_i
+\end{equation}
+To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_f=C_rv_i$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. Deriving equation (\ref{platey}) with respect to $t$ yields the velocity of the plate, which gives the following relationship between $v_{in}$ and $v_{out}$
+\begin{equation}
+	v_{out} = C_r()
+\end{equation}
 
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage
