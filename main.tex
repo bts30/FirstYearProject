@@ -89,11 +89,21 @@ Kort resumé, gerne på både dansk og engelsk.
 \pagenumbering{arabic}
 \section{Introduction to chaos}
 
+asdfagaffhåijpsfgh
 
 \section{The experiment}
 
 \section{Model of the system}
-To describe the system we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
+We will model our experiment as a 1-dimensional system that is we will not account for sideways movements. On figure \ref{bounces} two consecutive bounces can be seen where the later is bigger due to the plate is moving upwards at the time of impact.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{Figures/bounceplot.eps}
+	\caption{Plot of two bounces on the vibrating plate}
+	\label{bounces}
+\end{figure}
+The $k$th bounce can be completely described by the time $t_k$ it left the plate and the velocity $v_k$ at that instance. Time and phases $\phi_k$ can be used interchangeably through the relation ship $\phi=2\pi f t$.
+
+To describe the system during a specific bounce we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
 \begin{equation}
 	y_p(t)= A \sin(2\pi f t+ \phi)
 	\label{platey}
@@ -104,7 +114,7 @@ In air the ball is essentially a body in free fall, and since it is quite small 
 \end{equation}
 To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_f=C_rv_i$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. Deriving equation (\ref{platey}) with respect to $t$ yields the velocity of the plate, which gives the following relationship between $v_{in}$ and $v_{out}$
 \begin{equation}
-	v_{out} = C_r()
+	v_{out} = C_r(v_{in}-v_b)+v_b= 
 \end{equation}
 
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %

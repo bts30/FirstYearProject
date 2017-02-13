@@ -7,3 +7,5 @@ main.pdf
 *.gz
 
 *.toc
+
+*converted-to.pdf
