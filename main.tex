@@ -1,0 +1,103 @@
+% % % % % % % % % % % % % % % % % Preamble for notes % % % % % % % % % % % % % % % % % % % % % % % %
+\documentclass[12pt,oneside,a4paper]{article}
+
+
+% % % % % Sprogpakker og Layout % % % % % % % % %
+\usepackage[left=2.5cm,top=2.0cm,bottom=1.5cm, right=3.0cm]{geometry}
+\usepackage{ulem}
+\usepackage[danish,english]{babel}
+\usepackage[utf8]{inputenc}
+\linespread{1.3}       % simulerer Word 1.5 line spacing
+
+% % % % % % % % % % Øvrige vigtige pakker % % % % %
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{cancel}
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{mathpazo}
+\usepackage[section]{placeins}
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{tocloft}
+\usepackage{subfig}
+\usepackage{fancyhdr}
+%Muliggør 'flere figurer i én' Eksempel på anvendelse (indenfor figure-environment):
+% \subfloat[undercaption 1]{\label{label 1}\includegraphics[bredde 1]{billede 1}}
+% \subfloat[undercaption 2]{\label{label 2}\includegraphics[bredde 2]{billede 2}}
+% \caption{overordnetcaption}
+% \label{overordnet label}
+\usepackage{lscape}
+%Omdanner en del af dokumentet til landscape. Angives med \begin{landscape}
+\usepackage{framed}
+%Sætter en ramme om et område begrænset af \begin{framed} og \end{framed}.
+%Allows footnotes
+\usepackage{footnote}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.3cm}
+% % % % % % COMMANDS % % % % % % % %
+
+\begin{document}
+
+\selectlanguage{english}
+% % % % % % % % % % % % % % % % % % % % % % Forside % % % % % % % % % % % % % % % % % % % % % % % % %
+\pagenumbering{roman}
+
+\begin{center}
+{\textsc {\LARGE \bf{Københavns Universitet \\[0.3cm]  Bachelorstudiet i fysik}}}\\[1.5cm]
+{\textsc {\Large \bf Førsteårsprojekt 2017}}\\[0.8cm]
+{\Large Projekt nummer: 2017-06}\\[1cm]
+
+\rule{15cm}{0.01cm}\\[1cm]
+{\LARGE\bf  Bouncing ball}\\ [0.5cm]
+\rule{15cm}{0.01cm}\\[1cm]
+\end{center}
+
+\vfill
+{\large Forfattere:}\\
+{\large \hspace*{1cm} \makebox[6cm][l]{Andreas M. Faber}  \hspace{1cm} KU- ID: \makebox[2cm][l]{QZJ517} \\
+{\large \hspace*{1cm} \makebox[6cm][l]{Benjamin T. Søgaard}   \hspace{1cm} KU- ID: \makebox[2cm][l]{MGX877} \\
+{\large \hspace*{1cm} \makebox[6cm][l]{Joachim J. Kønigslieb}   \hspace{1cm} KU- ID: \makebox[2cm][l]{GWC666} \\
+
+{\large Vejledere:}\\
+{\large \hspace*{1cm} \makebox[6cm][l]{Jörg Helge Müller}  \hspace{1cm} Email: \makebox[2cm][l]{mp@nbi.dk} \\
+
+\vfill
+
+{\large Rapporten omfatter {\bf 1} siders hovedtekst og {\bf 1} siders appendix.}
+
+{\large Rapporten er indsendt som en pdf-fil den 17 marts 2017. }
+
+\normalsize
+
+
+% % % % % % % % % % % % % % % % % % % % % % Abstract  og Indholdsfortegnelse % % % % % % % % % % % % % % % % 
+\newpage
+\begin{abstract}
+Kort resumé, gerne på både dansk og engelsk.
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+
+% % % % % % % % % % % % % % % % % % % % % % Indhold % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+\pagenumbering{arabic}
+\section{Model of the system}
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+\appendix
+\section{Appendix}
+Her er appendix. Husk at appendix ikke indgår i bedømmelsen af rapporten. Det kan bruges til supplerende udregninger, figurer eller programkode, som ikke er nødvendig for forståelsen af rapportens indhold.
+
+
+
+\end{document}
