@@ -122,7 +122,65 @@ To model the impact between the ball and the plate we use a constant coefficient
 \appendix
 \section{Appendix}
 Her er appendix. Husk at appendix ikke indgår i bedømmelsen af rapporten. Det kan bruges til supplerende udregninger, figurer eller programkode, som ikke er nødvendig for forståelsen af rapportens indhold.
-
-
-
+\subsection{Udledning af faseforskydningen for en dæmpet, dræven simpel harmonisk oscilator.}
+The equation of motion for a driven simple harmonic oscilator will be of the form:
+\begin{align*}
+my'' + by' + ky = F\sin(\omega t)\\
+y'' + \frac{b}{m}y' + \frac{k}{m} y = F \sin(\omega t)
+\end{align*}
+We will then write the generel solution as a sum of the particular and the homogenues solutions:
+\begin{align*}
+y_g = y_{h} + y_p
+\end{align*}
+The homogenues solution for the damped harmonic oscilater will go to zero with time. We claim it is only the particular solution that matters. To solve this, we will guess the solution to be of the form:
+\begin{align*}
+y_p = A \sin (\omega t) + B \cos(\omega t)
+\end{align*}
+We will perform the differetiations and plug into the equation to get:
+\begin{align*}
+&m\left(-A\omega^2\sin(\omega t) - B\omega^2\cos(\omega t)\right) + b\left(A\omega\cos(\omega t) - B\omega\sin(\omega t)\right) + k\left( A\sin(\omega t) + B\cos(\omega t) \right)\\
+&=\sin(\omega t) \left( -mA\omega^2 -bB\omega + kA \right) + \cos(\omega t)\left(-mB\omega^2 + bA\omega + Bk\right)
+\end{align*}
+After collecting the coefficents, we can match the left side, with the right side:
+\begin{align}
+F &= -mA\omega^2 -bB\omega + Ak \\ \label{lignA}
+0 &= -mB\omega^2 + bA\omega + Bk \label{lignB}
+\end{align}
+We isolate an expression for $B$ in (\ref{lignB})
+\begin{align*}
+B &= \frac{-bA\omega}{-m\omega^2+k}
+\end{align*}
+Which we will proceed to plug into (\ref{lignA}), to obtain an expression for $A$:
+\begin{align*}
+A = \frac{F}{-m\omega^2+k+\frac{b^2\omega^2}{-m\omega^2+k}} = \frac{F\left(k-m\omega^2\right)}{\left(k-m\omega^2\right)^2+b^2\omega^2}
+\end{align*} 
+We can write $A$ and $B$ independetly of eachother:
+\begin{align*}
+B &= \frac{-bF\omega}{\left(k-m\omega^2\right)^2+b^2\omega^2}\\
+A &=  \frac{F\left(k-m\omega^2\right)}{\left(k-m\omega^2\right)^2+b^2\omega^2}
+\end{align*}
+We would now like to express $y_p$ in the shape:
+\begin{align*}
+y_p = L \sin(\omega t + \phi)
+\end{align*}
+If we write the sine addition identity,
+\begin{align*}
+L sin(\omega t + \phi) = L\cos(\phi)\sin(\omega t) + L\sin(\phi)\cos(\omega t)
+\end{align*}
+We see, that our amplitude must obey,
+\begin{align*}
+A = L\cos(\phi)\\
+B = L\sin(\phi)
+\end{align*}
+if we are to get our initial guess of
+\begin{align*}
+y_p = A \sin (\omega t) + B \cos(\omega t)
+\end{align*}
+The phaseshift will then be:
+\begin{align*}
+\frac{B}{A} &= \frac{L\sin(\phi)}{L\cos(\phi)} = \tan(\phi)\\
+\phi &= \arctan\left(\frac{B}{A}\right)\\
+\phi &= \arctan\left( \frac{-bF\omega}{\left(k-m\omega^2\right)^2+b^2\omega^2} \cdot \frac{\left(k-m\omega^2\right)^2+b^2\omega^2}{F\left(k-m\omega^2\right)} \right)\\
+\phi &= \arctan\left( \frac{b\omega}{m\omega^2-k} \right)
+\end{align*}
 \end{document}
