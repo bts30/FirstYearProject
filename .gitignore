@@ -9,3 +9,5 @@ main.pdf
 *.toc
 
 *converted-to.pdf
+
+build/
