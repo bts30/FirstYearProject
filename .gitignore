@@ -11,3 +11,5 @@ main.pdf
 *converted-to.pdf
 
 build/
+
+.DS_Store
