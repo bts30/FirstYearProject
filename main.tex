@@ -39,6 +39,7 @@
 \setlength{\parskip}{0.3cm}
 % % % % % % COMMANDS % % % % % % % %
 
+\numberwithin{equation}{section}
 \begin{document}
 
 \selectlanguage{english}
@@ -94,56 +95,73 @@ asdfagaffhåijpsfgh
 \section{The experiment}
 
 \section{Model of the system}
-We will model our experiment as a 1-dimensional system that is we will not account for sideways movements. On figure \ref{bounces} two consecutive bounces can be seen where the later is bigger due to the plate is moving upwards at the time of impact.
+\subsection{General model}
+We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is bigger due to the plate  moving upwards at the time of impact.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figures/bounceplot.eps}
 	\caption{Plot of two bounces on the vibrating plate}
 	\label{bounces}
 \end{figure}
-The $k$th bounce can be completely described by the time $t_k$ it left the plate and the velocity $v_k$ at that instance. Time and phases $\phi_k$ can be used interchangeably through the relation ship $\phi=2\pi f t$.
+The $k^{\text{th}}$ bounce can be completely described by the time $t_k$ it left the plate and the velocity $v_k$ at that instance. Time and phases $\phi_k$ can be used interchangeably through the relationship $\phi=2\pi f t$.
 
 To describe the system during a specific bounce we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
 \begin{equation}
 	y_p(t)= A \sin(2\pi f t+ \phi)
 	\label{platey}
 \end{equation}
-In air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for a specific initial condition $v_i$, $y_i$ at time $t_i$ is simply 
+In air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for the $k^\text{th}$ jump has the initial conditions $v_k$, $y_p(t_k)$ at time $t_k$, simply is
 \begin{equation}
-	y_b(t) = -\frac{g}{2}(t-t_i)^2+v_i(t-t_i)+y_i
+	y_{b,k}(t) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
+	\label{ybeq}
 \end{equation}
-To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_f=C_rv_i$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. Deriving equation (\ref{platey}) with respect to $t$ yields the velocity of the plate, which gives the following relationship between $v_{in}$ and $v_{out}$
+For each jump we will denote the change of in initial $y$-coordinate\footnote{In general it is not possible to find $\Delta y_k$ analytically as it would require one to find the intersection between the graph of a parabola and a sine wave.} as $\Delta y_{k}=y_p(t_{k+1})-y_p(t_{k})$. Plugging that into (\ref{ybeq}) and solving for $t$ determines the fly time of each jump.
 \begin{equation}
-	v_{out} = C_r(v_{in}-v_b)+v_b= 
+	\Delta t_{k} = t_{k+1}-t_{k} = \frac{v_{k}+\sqrt{v_k^2-2g\Delta y_k}}{g}
 \end{equation}
+Futher we can derive equation (\ref{ybeq}) finding the velocity of the ball thereby finding the final velocity for each jump $v_{k,f}$.
+\begin{equation}
+	v_{b,k}(t) = -g(t-t_k)+v_k \Rightarrow v_{k,f} = v_{b,k}(t_k+\Delta t_K) = -\sqrt{v_k^2-2g\Delta y_k}
+\end{equation}
+To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The veolicty of the plate is easily obtain by deriving (\ref{platey}).
+\begin{equation}
+	v_p(t) = -2\pi f A \cos(2\pi f t+ \phi)
+\end{equation}
+Putting the two together yields the following relationship between the final velocity of the $k^{th}$ jump $v_{k,f}$ and the initial velocity of the next $v_{k+1}$.
+\begin{align}
+	v_{k+1} &= -C_r(v_{k,f}-v_p(t_k+\Delta t_k))+v_p(t_k+\Delta t_k) \nonumber \\
+	&= C_r \sqrt{v_k^2-2g\Delta y_k}-2(C_r+1)\pi f A \cos(2\pi f (t_k+\Delta t_k)+ \phi) \label{impactv}
+\end{align}
+Equation (\ref{impactv}) looks quite complicated as it is for the most general case, but as we shall see in the next section it can be used together with a number of assumptions.
+
+\subsection{1-Period stable}
+If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating it is that $\Delta t_k$ should be constant. This  
 
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage
 \appendix
-\section{Appendix}
-Her er appendix. Husk at appendix ikke indgår i bedømmelsen af rapporten. Det kan bruges til supplerende udregninger, figurer eller programkode, som ikke er nødvendig for forståelsen af rapportens indhold.
-\subsection{Udledning af faseforskydningen for en dæmpet, dræven simpel harmonisk oscilator.}
+\section{Derivation of the equations of motion for a driven harmonic oscillator}
 The equation of motion for a driven simple harmonic oscilator will be of the form:
 \begin{align*}
 my'' + by' + ky = F\sin(\omega t)\\
 y'' + \frac{b}{m}y' + \frac{k}{m} y = F \sin(\omega t)
 \end{align*}
-We will then write the generel solution as a sum of the particular and the homogenues solutions:
+We will then write the general solution as a sum of the particular and the homogenues solutions:
 \begin{align*}
 y_g = y_{h} + y_p
 \end{align*}
-The homogenues solution for the damped harmonic oscilater will go to zero with time. We claim it is only the particular solution that matters. To solve this, we will guess the solution to be of the form:
+The homogeneous solution for the damped harmonic oscillator will go to zero with time. We claim it is only the particular solution that matters. To solve this, we will guess the solution to be of the form:
 \begin{align*}
 y_p = A \sin (\omega t) + B \cos(\omega t)
 \end{align*}
-We will perform the differetiations and plug into the equation to get:
+We will perform the differentiation and plug into the equation to get:
 \begin{align*}
 &m\left(-A\omega^2\sin(\omega t) - B\omega^2\cos(\omega t)\right) + b\left(A\omega\cos(\omega t) - B\omega\sin(\omega t)\right) + k\left( A\sin(\omega t) + B\cos(\omega t) \right)\\
 &=\sin(\omega t) \left( -mA\omega^2 -bB\omega + kA \right) + \cos(\omega t)\left(-mB\omega^2 + bA\omega + Bk\right)
 \end{align*}
-After collecting the coefficents, we can match the left side, with the right side:
+After collecting the coefficients, we can match the left side, with the right side:
 \begin{align}
-F &= -mA\omega^2 -bB\omega + Ak \\ \label{lignA}
+F &= -mA\omega^2 -bB\omega + Ak \label{lignA} \\ 
 0 &= -mB\omega^2 + bA\omega + Bk \label{lignB}
 \end{align}
 We isolate an expression for $B$ in (\ref{lignB})
