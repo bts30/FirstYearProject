@@ -93,6 +93,7 @@ Kort resumé, gerne på både dansk og engelsk.
 asdfagaffhåijpsfgh
 
 \section{The experiment}
+\subsection{Characterization of the setup}
 
 \section{Model of the system}
 \subsection{General model}
@@ -107,7 +108,7 @@ The $k^{\text{th}}$ bounce can be completely described by the time $t_k$ it left
 
 To describe the system during a specific bounce we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
 \begin{equation}
-	y_p(t)= A \sin(2\pi f t+ \phi)
+	y_p(t)= A \cos(2\pi f t+ \phi)
 	\label{platey}
 \end{equation}
 In air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for the $k^\text{th}$ jump has the initial conditions $v_k$, $y_p(t_k)$ at time $t_k$, simply is
@@ -118,6 +119,7 @@ In air the ball is essentially a body in free fall, and since it is quite small 
 For each jump we will denote the change of in initial $y$-coordinate\footnote{In general it is not possible to find $\Delta y_k$ analytically as it would require one to find the intersection between the graph of a parabola and a sine wave.} as $\Delta y_{k}=y_p(t_{k+1})-y_p(t_{k})$. Plugging that into (\ref{ybeq}) and solving for $t$ determines the fly time of each jump.
 \begin{equation}
 	\Delta t_{k} = t_{k+1}-t_{k} = \frac{v_{k}+\sqrt{v_k^2-2g\Delta y_k}}{g}
+	\label{flytime}
 \end{equation}
 Futher we can derive equation (\ref{ybeq}) finding the velocity of the ball thereby finding the final velocity for each jump $v_{k,f}$.
 \begin{equation}
@@ -125,23 +127,45 @@ Futher we can derive equation (\ref{ybeq}) finding the velocity of the ball ther
 \end{equation}
 To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The veolicty of the plate is easily obtain by deriving (\ref{platey}).
 \begin{equation}
-	v_p(t) = -2\pi f A \cos(2\pi f t+ \phi)
+	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
 \end{equation}
 Putting the two together yields the following relationship between the final velocity of the $k^{th}$ jump $v_{k,f}$ and the initial velocity of the next $v_{k+1}$.
 \begin{align}
 	v_{k+1} &= -C_r(v_{k,f}-v_p(t_k+\Delta t_k))+v_p(t_k+\Delta t_k) \nonumber \\
-	&= C_r \sqrt{v_k^2-2g\Delta y_k}-2(C_r+1)\pi f A \cos(2\pi f (t_k+\Delta t_k)+ \phi) \label{impactv}
+	&= C_r \sqrt{v_k^2-2g\Delta y_k}+2(C_r+1)\pi f A \sin(2\pi f (t_k+\Delta t_k)+ \phi) \label{impactv}
 \end{align}
 Equation (\ref{impactv}) looks quite complicated as it is for the most general case, but as we shall see in the next section it can be used together with a number of assumptions.
 
 \subsection{1-Period stable}
-If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating it is that $\Delta t_k$ should be constant. This  
+If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating it is that $\Delta t_k$ should be constant. By  (\ref{flytime}) this would further imply that the initial velocity $v_k$ is the same for every. For this to be true we must assume the phase at the impact also remain constant e.g. $\Delta y_k=0$. Which leads to the conclusion that the fly time must equal a full period $\Delta t_k = \frac{1}{f}$. Taking advantage of this fact together with (\ref{flytime}) yields the initial velocity for each jump
+\begin{equation}
+	\Delta t_k = \frac{1}{f} = \frac{2v_k}{g} \Rightarrow v_k = \frac{g}{2f}
+	\label{1perv}
+\end{equation}
+Denoting the phase of impact by $\theta$ we can simplify (\ref{impactv}).
+\begin{equation}
+	v_{k+1} = C_rv_k+2(C_r+1)\pi fA \sin(\theta)
+\end{equation}
+Substituting (\ref{1perv}) into the expression and solving for $\theta$ gives
+\begin{align}
+	\frac{g}{2f} = C_r\frac{g}{2f}+2(C_r+1)\pi fA \sin(\theta) \Rightarrow \sin(\theta) = \frac{g}{4\pi Af^2 }\frac{C_r-1}{C_r+1}
+	\label{1perstable}
+\end{align}
+The first thing to notice about (\ref{1perstable}) is that it does not have a solution for all parameter sets. That is not all settings can sustain a bouncing motion as they do not provide a sufficient amount of energy to balance the lose due to the impact. Since $\sin: \mathbb{R} \rightarrow [-1,1]$ we can determine when (\ref{1perstable}) has a solution, the upper bound is ignored since the right hand side is clearly always negative.
+\begin{align}
+	-1 \le \frac{g}{4\pi Af^2 }\frac{C_r-1}{C_r+1} \Rightarrow \sqrt{\frac{g}{4\pi A}\frac{1-C_r}{C_r+1}} \le f
+\end{align}
+The above result is interesting in the sense that it is the lower frequency limit for a sustained bouncing motion. The minimum frequency for the ball to experience momentarily weightlessness is $f\ge\sqrt{\frac{g}{4\pi^2A}}$, the ratio between the two is
+\begin{equation}
+	r_f=\frac{\sqrt{\frac{g}{4\pi A}\frac{1-C_r}{C_r+1}}}{\sqrt{\frac{g}{4\pi^2A}}} = \sqrt{\pi \frac{1-C_r}{C_r+1}}
+\end{equation}
+We use a setup with $C_r\approx 0.7$ which gives $r_f\approx$
 
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage
 \appendix
 \section{Derivation of the equations of motion for a driven harmonic oscillator}
-The equation of motion for a driven simple harmonic oscilator will be of the form:
+The equation of motion for a driven simple harmonic oscillator will be of the form:
 \begin{align*}
 my'' + by' + ky = F\sin(\omega t)\\
 y'' + \frac{b}{m}y' + \frac{k}{m} y = F \sin(\omega t)
@@ -172,7 +196,7 @@ Which we will proceed to plug into (\ref{lignA}), to obtain an expression for $A
 \begin{align*}
 A = \frac{F}{-m\omega^2+k+\frac{b^2\omega^2}{-m\omega^2+k}} = \frac{F\left(k-m\omega^2\right)}{\left(k-m\omega^2\right)^2+b^2\omega^2}
 \end{align*} 
-We can write $A$ and $B$ independetly of eachother:
+We can write $A$ and $B$ independently of each other:
 \begin{align*}
 B &= \frac{-bF\omega}{\left(k-m\omega^2\right)^2+b^2\omega^2}\\
 A &=  \frac{F\left(k-m\omega^2\right)}{\left(k-m\omega^2\right)^2+b^2\omega^2}
@@ -194,7 +218,7 @@ if we are to get our initial guess of
 \begin{align*}
 y_p = A \sin (\omega t) + B \cos(\omega t)
 \end{align*}
-The phaseshift will then be:
+The phase shift will then be:
 \begin{align*}
 \frac{B}{A} &= \frac{L\sin(\phi)}{L\cos(\phi)} = \tan(\phi)\\
 \phi &= \arctan\left(\frac{B}{A}\right)\\
