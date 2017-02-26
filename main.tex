@@ -10,7 +10,8 @@
 \linespread{1.3}       % simulerer Word 1.5 line spacing
 
 % % % % % % % % % % Øvrige vigtige pakker % % % % %
-\usepackage{graphics}
+\usepackage{graphicx}
+\graphicspath{{./Figures/}}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{url}
@@ -94,11 +95,37 @@ asdfagaffhåijpsfgh
 
 \section{The experiment}
 \subsection{Characterization of the setup}
+To perform the experiment we wish the parameters of the speaker membrane to independent of eachother. That is, amplitude should not depend of frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not allways the case. As the speaker is essentially a forced damped oscilator we observe some resonance behaviour, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain coinceded with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
 
+Using an accelerometer taped to the side of the glass bowl, we have measured the real amplitude of the system, once to obtain data for our correction-model, and once after to test the effects of the corrections. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{dummy.png} \label{frq_vs_ampl_plot}
+\caption{Frequency vs. amplitude, before and after corrections. We see a clear relationship between the parameters.}
+\end{figure}
+The model for correcting the amplitude assumes that real amplitude is linear with apparent amplitude and goes to zero when we set the amplitude like so in software. This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions of the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from arbitrary units of acceleration into SI units. 
+
+To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard derivative will give us a measurement of the typical error. 
+
+Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First, we hit the speaker sharply and measured the acceleration: 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{dummy.png} \label{nat_freq}
+\caption{Ring-out of the speaker membrane after a sharp collision.}
+\end{figure}
+Assuming this a linearly damped system, we can measure the natural frequency with strong agreement to the earlier shown plot. 
+
+We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phaseshift vs frequency looks like:
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{dummy.png} \label{phaseshift_plot}
+\caption{Phaseshift between the driven frequency and the real frequency.}
+\end{figure}
+A derivation of the phaseshifts depedency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centered in the frequency domain of interest, suggesting the need for a correction model. 
 \section{Model of the system}
 \subsection{General model}
 We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is bigger due to the plate  moving upwards at the time of impact.
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figures/bounceplot.eps}
 	\caption{Plot of two bounces on the vibrating plate}
