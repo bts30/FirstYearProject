@@ -91,7 +91,13 @@ Kort resumé, gerne på både dansk og engelsk.
 \pagenumbering{arabic}
 \section{Introduction to chaos}
 
-asdfagaffhåijpsfgh
+As we will soon see, this experiment exhibits chaotic behavior for certain sets of parameters. Therefor it can be useful to take a moment to examine a simpler chaotic system that has many of the same qualities our experiment has. To this end, consider the simple nonlinear recurrence relation
+
+\begin{equation}
+x_{n+1}=\lambda x_n (1-x_n)
+\end{equation}
+
+This is called the logistic map, and it has some interesting attributes. If we choose $x_0$ to be between 0 and 1, and lambda to be between 0 and 3, no matter where on the interval $x_0$ starts, it seems to gravitate towards some value (dictated by $\lambda$) for increasing n. This can be visualized with a graphical procedure with which the logistic map can be easily iterated without use of a computer or calculator. First, plot the functions $f(x)=\lambda x (1-x)$ and $g(x)=x$ in the same window. Next, choose your $x_0$. Now draw a vertical line until it intercepts $f(x)$. On the y-axis, this is of course the value of $x_1$ since we took our $x_0$ and plugged it into the equation $\lambda x (1-x)$. To get $x_2$, we must now do the same we just did with $x_0$ for $x_1$. To this end we need to convert our value for $x_1$ that we have found on the y-axis to a value on the x-axis. Therefor, go to horizontally to the graph for $g(x)$. The x-coordinate of the point marks our value $x_1$, and we can now vertically return to our graph of $f(x)$ to obtain $x_2$ on the y-axis, which we convert to the x-axis by again going to $g(x)$, and so on. Through many iterations and if sweeping for $0<x_0<1$ and $0<\lambda<3$, we see that for $n\rightarrow \infty$, $x_n$ tends towards certain values, which are determined by $\lambda$, and that if $0<\lambda<1$, this value is 0. This is of course what's known as a convergent, and not not necessarily all that interesting. However, something remarkable happens if we permit lambda to be greater than 3.
 
 
 \section{Model of the system}
