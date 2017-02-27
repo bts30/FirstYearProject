@@ -93,35 +93,7 @@ Kort resumé, gerne på både dansk og engelsk.
 
 asdfagaffhåijpsfgh
 
-\section{The experiment}
-\subsection{Characterization of the setup}
-To perform the experiment we wish the parameters of the speaker membrane to independent of eachother. That is, amplitude should not depend of frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not allways the case. As the speaker is essentially a forced damped oscilator we observe some resonance behaviour, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain coinceded with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
 
-Using an accelerometer taped to the side of the glass bowl, we have measured the real amplitude of the system, once to obtain data for our correction-model, and once after to test the effects of the corrections. 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.85\textwidth]{dummy.png} \label{frq_vs_ampl_plot}
-\caption{Frequency vs. amplitude, before and after corrections. We see a clear relationship between the parameters.}
-\end{figure}
-The model for correcting the amplitude assumes that real amplitude is linear with apparent amplitude and goes to zero when we set the amplitude like so in software. This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions of the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from arbitrary units of acceleration into SI units. 
-
-To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard derivative will give us a measurement of the typical error. 
-
-Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First, we hit the speaker sharply and measured the acceleration: 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.85\textwidth]{dummy.png} \label{nat_freq}
-\caption{Ring-out of the speaker membrane after a sharp collision.}
-\end{figure}
-Assuming this a linearly damped system, we can measure the natural frequency with strong agreement to the earlier shown plot. 
-
-We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phaseshift vs frequency looks like:
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.85\textwidth]{dummy.png} \label{phaseshift_plot}
-\caption{Phaseshift between the driven frequency and the real frequency.}
-\end{figure}
-A derivation of the phaseshifts depedency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centered in the frequency domain of interest, suggesting the need for a correction model. 
 \section{Model of the system}
 \subsection{General model}
 We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is bigger due to the plate  moving upwards at the time of impact.
@@ -188,6 +160,42 @@ The above result is interesting in the sense that it is the lower frequency limi
 	r_f=\frac{\sqrt{\frac{g}{4\pi^2A}}}{\sqrt{\frac{g}{4\pi A}\frac{1-C_r}{C_r+1}}} = \sqrt{\frac{1}{\pi} \frac{1+C_r}{1-C_1}}
 \end{equation}
 We use a setup with $C_r\approx 0.7$ which gives $r_f\approx1.3$, that is the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reached a stable period at that low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. 
+
+\section{The experiment}
+\subsection{Characterization of the setup}
+To perform the experiment we wish the parameters of the speaker membrane to independent of each other That is, amplitude should not depend of frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not always the case. As the speaker is essentially a forced damped oscillator we observe some resonance behavior, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain conceded with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
+
+Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system, once to obtain data for our correction-model, and once after to test the effects of the corrections. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\textwidth]{dummy.png} \label{frq_vs_ampl_plot}
+	\caption{Frequency vs. amplitude, before and after corrections. We see a clear relationship between the parameters.}
+\end{figure}
+The model for correcting the amplitude assumes that real amplitude is linear with apparent amplitude and goes to zero when we set the amplitude like so in software. This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from arbitrary units of acceleration into SI units. 
+
+To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard derivative will give us a measurement of the typical error. 
+
+Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First, we hit the speaker sharply and measured the acceleration: 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\textwidth]{dummy.png} \label{nat_freq}
+	\caption{Ring-out of the speaker membrane after a sharp collision.}
+\end{figure}
+Assuming this a linearly damped system, we can measure the natural frequency with strong agreement to the earlier shown plot. 
+
+We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phaseshift vs frequency looks like:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.85\textwidth]{dummy.png} \label{phaseshift_plot}
+	\caption{Phaseshift between the driven frequency and the real frequency.}
+\end{figure}
+A derivation of the phaseshifts depedency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centered in the frequency domain of interest, suggesting the need for a correction model. 
+
+\subsubsection{The coefficient of restitution}
+On very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the length of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
+\begin{equation}
+	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
+\end{equation}
 
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage
