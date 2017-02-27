@@ -155,6 +155,7 @@ Futher we can derive equation (\ref{ybeq}) finding the velocity of the ball ther
 To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The veolicty of the plate is easily obtain by deriving (\ref{platey}).
 \begin{equation}
 	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
+	\label{platev}
 \end{equation}
 Putting the two together yields the following relationship between the final velocity of the $k^{th}$ jump $v_{k,f}$ and the initial velocity of the next $v_{k+1}$.
 \begin{align}
@@ -182,11 +183,11 @@ The first thing to notice about (\ref{1perstable}) is that it does not have a so
 \begin{align}
 	-1 \le \frac{g}{4\pi Af^2 }\frac{C_r-1}{C_r+1} \Rightarrow \sqrt{\frac{g}{4\pi A}\frac{1-C_r}{C_r+1}} \le f
 \end{align}
-The above result is interesting in the sense that it is the lower frequency limit for a sustained bouncing motion. The minimum frequency for the ball to experience momentarily weightlessness is $f\ge\sqrt{\frac{g}{4\pi^2A}}$, the ratio between the two is
+The above result is interesting in the sense that it is the lower frequency limit for a sustained bouncing motion. By deriving (\ref{platev}) again we can determine the minimum frequency for the ball to experience momentarily weightlessness is $f\ge\sqrt{\frac{g}{4\pi^2A}}$, the ratio between the two is
 \begin{equation}
-	r_f=\frac{\sqrt{\frac{g}{4\pi A}\frac{1-C_r}{C_r+1}}}{\sqrt{\frac{g}{4\pi^2A}}} = \sqrt{\pi \frac{1-C_r}{C_r+1}}
+	r_f=\frac{\sqrt{\frac{g}{4\pi^2A}}}{\sqrt{\frac{g}{4\pi A}\frac{1-C_r}{C_r+1}}} = \sqrt{\frac{1}{\pi} \frac{1+C_r}{1-C_1}}
 \end{equation}
-We use a setup with $C_r\approx 0.7$ which gives $r_f\approx$
+We use a setup with $C_r\approx 0.7$ which gives $r_f\approx1.3$, that is the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reached a stable period at that low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. 
 
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage
