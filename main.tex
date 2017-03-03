@@ -90,7 +90,7 @@ Kort resumé, gerne på både dansk og engelsk.
 \newpage
 \pagenumbering{arabic}
 \section{Introduction to chaos}
-
+\label{chaos}
 As we will soon see, this experiment exhibits chaotic behavior for certain sets of parameters. Therefor it can be useful to take a moment to examine a simpler chaotic system that has many of the same qualities our experiment has. To this end, consider the simple nonlinear recurrence relation
 
 \begin{equation}
@@ -101,6 +101,7 @@ This is called the logistic map, and it has some interesting attributes. If we c
 
 
 \section{Model of the system}
+\label{modelling}
 \subsection{General model}
 We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is bigger due to the plate  moving upwards at the time of impact.
 \begin{figure}[h]
@@ -157,7 +158,7 @@ Substituting (\ref{1perv}) into the expression and solving for $\theta$ gives
 	\frac{ng}{2f} = C_r\frac{ng}{2f}+2(C_r+1)\pi fA \sin(\theta) \Rightarrow \sin(\theta) = \frac{ng}{4\pi Af^2 }\frac{C_r-1}{C_r+1}
 	\label{1perstable}
 \end{align}
-The first thing to notice about (\ref{1perstable}) is that it does not have a solution for all parameter sets. That is not all settings can sustain a bouncing motion as they do not provide a sufficient amount of energy to balance the lose due to the impact. Since $\sin: \mathbb{R} \rightarrow [-1,1]$ we can determine when (\ref{1perstable}) has a solution, the upper bound is ignored since the right hand side is clearly always negative.
+The first thing to notice about (\ref{1perstable}) is that it does not have a solution for all parameter sets. That is not all settings can sustain a bouncing motion as they do not provide a sufficient amount of energy to balance the lose due to the impact. Since $\sin: \mathbb{R} \rightarrow [-1,1]$ we can determine when \eqref{1perstable} has a solution, the upper bound is ignored since the right hand side is clearly always negative.
 \begin{align}
 	-1 \le \frac{ng}{4\pi Af^2 }\frac{C_r-1}{C_r+1} \Rightarrow \sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}} \le f
 \end{align}
@@ -203,6 +204,19 @@ On very important parameter in the setup is the coefficient of restitution $C_r$
 	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
 \end{equation}
 
+\section{Numerical simulation}
+As described in section \ref{modelling} it is not possible to solve the the systems equations of motion analytically in the general case as it require one to find the intersection between a parabola and a sine wave. In the numerical realm it is however possible to find a such intersection. The actual problem is to find where \eqref{platey} and \eqref{ybeq} are equal that is solving the following
+\begin{equation}
+	A \cos(2\pi f t+ \phi) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
+\end{equation}
+As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. 
+
+\subsection{Chaotic behavior in the theoretical model}
+The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. We however discovered a wide range of chaotic behavior even with a non-chaotic parameter set...
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{ref}
 
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage

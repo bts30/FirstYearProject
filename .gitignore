@@ -13,3 +13,7 @@ main.pdf
 build/
 
 .DS_Store
+
+*.bbl
+
+*.blg
