@@ -23,7 +23,8 @@
 \usepackage{caption}
 \usepackage{wrapfig}
 \usepackage{tocloft}
-\usepackage{subfig}
+\usepackage{subcaption}
+\usepackage[separate-uncertainty = true]{siunitx}
 \usepackage{fancyhdr}
 %Muliggør 'flere figurer i én' Eksempel på anvendelse (indenfor figure-environment):
 % \subfloat[undercaption 1]{\label{label 1}\includegraphics[bredde 1]{billede 1}}
@@ -175,7 +176,7 @@ To perform the experiment we wish the parameters of the speaker membrane to inde
 Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system, once to obtain data for our correction-model, and once after to test the effects of the corrections. 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.85\textwidth]{dummy.png} \label{frq_vs_ampl_plot}
+	\includegraphics[width=0.75\textwidth]{dummy.png} \label{frq_vs_ampl_plot}
 	\caption{Frequency vs. amplitude, before and after corrections. We see a clear relationship between the parameters.}
 \end{figure}
 The model for correcting the amplitude assumes that real amplitude is linear with apparent amplitude and goes to zero when we set the amplitude like so in software. This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from arbitrary units of acceleration into SI units. 
@@ -185,7 +186,7 @@ To get an idea of our baseline noise in measurements, we have collected a datase
 Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First, we hit the speaker sharply and measured the acceleration: 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.85\textwidth]{dummy.png} \label{nat_freq}
+	\includegraphics[width=0.75\textwidth]{dummy.png} \label{nat_freq}
 	\caption{Ring-out of the speaker membrane after a sharp collision.}
 \end{figure}
 Assuming this a linearly damped system, we can measure the natural frequency with strong agreement to the earlier shown plot. 
@@ -193,8 +194,17 @@ Assuming this a linearly damped system, we can measure the natural frequency wit
 We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phaseshift vs frequency looks like:
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.85\textwidth]{dummy.png} \label{phaseshift_plot}
-	\caption{Phaseshift between the driven frequency and the real frequency.}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{dummy.png} \label{phaseshift_plot}
+		\caption{Phaseshift between the driven frequency and the real frequency.}
+	\end{subfigure}%
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{dummy.png} \label{nat_freq}
+		\caption{Ring-out of the speaker membrane after a sharp collision.}
+	\end{subfigure}
+	\caption{Plots of various characteristics of the speaker}
 \end{figure}
 A derivation of the phaseshifts depedency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centered in the frequency domain of interest, suggesting the need for a correction model. 
 
@@ -203,6 +213,7 @@ On very important parameter in the setup is the coefficient of restitution $C_r$
 \begin{equation}
 	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
 \end{equation}
+As mentioned in section \ref{modelling} the coefficient of restitution is in fact not a constant as we assume but as function of impact velocity. Our measurement of the $C_r$ was therefore performed in by dropping the ball a few centimeters of the plate, which was at rest. This was done to emulate the conditions of the actual experiment while giving the ball enough energy to jump a few times. On average it bounced three times before coming to a rest. Through this small experiment we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive drops. 
 
 \section{Numerical simulation}
 As described in section \ref{modelling} it is not possible to solve the the systems equations of motion analytically in the general case as it require one to find the intersection between a parabola and a sine wave. In the numerical realm it is however possible to find a such intersection. The actual problem is to find where \eqref{platey} and \eqref{ybeq} are equal that is solving the following
