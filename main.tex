@@ -193,8 +193,8 @@ As shown above we can use our model to predict the digital amplitude needed to m
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{dummy.png} 
-		\caption{Frequency vs. amplitude, before and after corrections. We see a clear relationship between the parameters.}
+		\includegraphics[width=\textwidth]{amplcorr.eps} 
+		\caption{Frequency vs. amplitude, before and after corrections.}
 		\label{frq_vs_ampl_plot}
 	\end{subfigure}\hfill
 	\begin{subfigure}[t]{0.49\textwidth}
@@ -209,25 +209,18 @@ As shown above we can use our model to predict the digital amplitude needed to m
 
 To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard derivative will give us a measurement of the typical error. 
 
-Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First, we hit the speaker sharply and measured the acceleration: 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\textwidth]{dummy.png} \label{nat_freq}
-	\caption{Ring-out of the speaker membrane after a sharp collision.}
-\end{figure}
-Assuming this a linearly damped system, we can measure the natural frequency with strong agreement to the earlier shown plot. 
-
-We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phaseshift vs frequency looks like:
+Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phaseshift vs frequency looks like:
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}{0.5\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{dummy.png} \label{phaseshift_plot}
+		\includegraphics[width=\textwidth]{pshiftplot.eps} 
 		\caption{Phaseshift between the driven frequency and the real frequency.}
-	\end{subfigure}%
-	\begin{subfigure}{0.5\textwidth}
+		\label{phaseshift_plot}
+	\end{subfigure} \hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{dummy.png}
+		\includegraphics[width=\textwidth]{ringout.eps}
 		\caption{Ring-out of the speaker membrane after a sharp collision.}
 	\end{subfigure}
 	\caption{Plots of various characteristics of the speaker}
