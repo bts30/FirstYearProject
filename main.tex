@@ -15,16 +15,17 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{url}
+\usepackage{psfrag}
 \usepackage{cancel}
 \usepackage{booktabs}
 \usepackage{pdfpages}
 \usepackage{mathpazo}
-\usepackage{siunitx}
 \usepackage[section]{placeins}
 \usepackage{caption}
 \usepackage{wrapfig}
 \usepackage{tocloft}
 \usepackage{subcaption}
+\usepackage{epstopdf}
 \usepackage[separate-uncertainty = true]{siunitx}
 \usepackage{fancyhdr}
 %Muliggør 'flere figurer i én' Eksempel på anvendelse (indenfor figure-environment):
@@ -93,15 +94,20 @@ Kort resumé, gerne på både dansk og engelsk.
 \pagenumbering{arabic}
 \section{Introduction to chaos}
 \label{chaos}
+<<<<<<< HEAD
 \subsection{The Logistic Map}
 We will soon see that our experiment exhibits chaotic behavior. In physics, chaos is often described as a great dependance on initial conditions, meaning that two arbitrarily close initial conditions can make the system evolve into two states arbitrarily far apart (within some bounds). This is of course a rather loose definition, and it can therefor be useful to take a moment to examine a simpler chaotic system which has many of the same qualities our experiment has.
 \\
 To this end, consider the simple nonlinear recurrence relation
+=======
+We will soon see that our experiment exhibits chaotic behaviour for certain sets of parameters. Therefore it can be useful to take a moment to examine a simpler chaotic system which has many of the same qualities our experiment has. To this end, consider the simple non-linear recurrence relation
+>>>>>>> origin/master
 
 \begin{equation}
 x_{n+1}=\lambda x_n (1-x_n)
 \end{equation}
 
+<<<<<<< HEAD
 This is called the logistic map, and it has some interesting attributes. First of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, since outside these restrictions the series quickly diverges to $-\infty$. Within these restrictions, and if we at first limit ourselves to $\lambda<3$, no matter where on the interval $x_0$ starts, it seems to gravitate towards some value, dictated by $\lambda$, for increasing n. This value is called an attractor, and it is a common behaviour in nonlinear dynamical systems for there to be some point or region that attracts regions of initial conditions to it with increasing time or iterations.
 
 \subsection{Cobweb diagrams}
@@ -129,11 +135,16 @@ The attractor can be visualized with a graphical algorithm with which the logist
 
 
 Examples of the first 50 or so iterations of this cobweb diagram can be seen for different $x_0$ and $\lambda$ in appendix A, where it is clear that the attractor seems independant of the initial condition $x_0$, but dependant on $\lambda$ which are determined by $\lambda$, and that if $0<\lambda<1$, this value is 0. This is of course what's known as a convergent series, and not necessarily all that interesting. However, something remarkable happens if we permit $\lambda$ to be greater than 3. For $\lambda$ slightly greater than 3, $x_n$ starts bouncing between two distinct values when $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ bounces between 4 values, then 8 and so on. These values are still solely dependant on our choice of $\lambda$, not $x_0$. These points are called attractors, since they are independent of our initial conditions and seem to attract all $x_n$, no matter our choice of $x_0$. When the attractors which $x_n$ converge towards split like this, we call it a bifurcation, and it happens infinitely many times as we $\lambda$ sweep from 3 to 4 (beyond $\lambda=4$, $x_n$ rapidly diverges to $-\infty$). To try to get a better overview of this behavior, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2<\lambda<4$ can be seen on figure 1. On the $x$-axis we have our different values of $\lambda$, and on the $y$-axis we plot the last 200 values of $x_n$ after 2000 iterations. The key to understanding the bifurcation map when you first meet it is that we have the last 200 values of $x_n$ for each $\lambda$, which is of course what allows us to see the bifurcations. When we have a diagram like this, we can very clearly see the first couple of bifurcations, but at some point it seems like the plot just degenerates into chaos. The reason for this, is that the distance between each bifurcation decreases exponentially, so it very quickly becomes difficult to distinguish between 128 different values of $x_n$ that it cycles through, or pure chaos. However, as we continue to increase $\lambda$, we see islands where order reemerges from the chaos, and there briefly exists 3 attractors which then split to 6 and so on. It actually turns out that for any given number, there exists a region with that number of attractors somewhere in the diagram. It also turns out something called Feigenbaums delta can be approximated through this diagram. Feigenbaums delta is a constant that is the ratio between the distance between two consectutive bifurcations, taken in the limit that the number of bifurcations goes to infinity.
+=======
+This is called the logistic map, and it has some interesting attributes. First of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, since outside these restrictions the series quickly diverges to $-\infty$. Within these restriction, and if we at first limit ourselves to $\lambda<3$, no matter where on the interval $x_0$ starts, it seems to gravitate towards some value ,dictated by $\lambda$, for increasing n. This value is called an attractor, and it is a common behaviour in non-linear dynamical systems for there to be some point or region that attracts regions of initial conditions to it with increasing time or iterations. The attractor can be visualized with a graphical algorithm with which the logistic map can also be easily iterated without use of a computer or calculator. First, plot the functions $f(x)=\lambda x (1-x)$ and $g(x)=x$. Next, choose your $x_0$. Now draw a vertical line until it intersects $f(x)$. At the intersection we find the value of $x_1$ on the y-axis, since all we did was take our $x_0$ and plug it into the function $f(x)=\lambda x (1-x)$. To get $x_2$, we must now do the same we just did with $x_0$, only for $x_1$. To this end we need to find $x_1$ on the x-axis instead of the y-axis. Therefore, we go horizontally to the graph for $g(x)=x$. The x- and y-coordinates of the intersection now both mark our value $x_1$, and we can vertically return to our graph of $f(x)$ to obtain $x_2$ on the y-axis, which we again convert to the x-axis by going to $g(x)$, and so on. Through many iterations and if sweeping for $0<x_0<1$ and $0<\lambda<3$, we see that for $n\to \infty$, $x_n$ tends towards these attractors. Examples of the first 100 iterations of this cobweb diagram can be seen for different $x_0$ and $\lambda$ in appendix A, where it is clear that the attractor seems independent of the initial condition $x_0$, but dependant on $\lambda$.
+
+which are determined by $\lambda$, and that if $0<\lambda<1$, this value is 0. This is of course what's known as a convergent series, and not necessarily all that interesting. However, something remarkable happens if we permit $\lambda$ to be greater than 3. For $\lambda$ slightly greater than 3, $x_n$ starts bouncing between two distinct values when $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ bounces between 4 values, then 8 and so on. These values are still solely dependant on our choice of $\lambda$, not $x_0$. These points are called attractors, since they are independent of our initial conditions and seem to attract all $x_n$, no matter our choice of $x_0$. When the attractors which $x_n$ converge towards split like this, we call it a bifurcation, and it happens infinitely many times as we $\lambda$ sweep from 3 to 4 (beyond $\lambda=4$, $x_n$ rapidly diverges to $-\infty$). To try to get a better overview of this behaviour, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2<\lambda<4$ can be seen on figure 1. On the x-axis we have our different values of $\lambda$, and on the y-axis we plot the last 200 values of $x_n$ after 2000 iterations. The key to understanding the bifurcation map when you first meet it is that we have the last 200 values of $x_n$ for each $\lambda$, which is of course what allows us to see the bifurcations. When we have a diagram like this, we can very clearly see the first couple of bifurcations, but at some point it seems like the plot just degenerates into chaos. The reason for this, is that the distance between each bifurcation decreases exponentially, so it very quickly becomes difficult to distinguish between 128 different values of $x_n$ that it cycles through, or pure chaos. However, as we continue to increase $\lambda$, we see islands where order re-emerges from the chaos, and there briefly exists 3 attractors which then split to 6 and so on. It actually turns out that for any given number, there exists a region with that number of attractors somewhere in the diagram. It also turns out something called Feigenbaums delta can be approximated through this diagram. Feigenbaums delta is a constant that is the ratio between the distance between two consecutive bifurcations, taken in the limit that the number of bifurcations goes to infinity.
+>>>>>>> origin/master
 \begin{equation}
 \delta=\lim_{n \to \infty} \frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n} \approx 4.67
 \end{equation}
 
-Feigenbaum proved that this value converges to approximately 4.67, and that it does so rather quickly, which is important, because it means that it can be approximated rather reasonably with just the first 3 bifurcations. It also turns out that this constant holds (approximately) true for many other chaotic dynamical systems that display bifurcating nature, one of these systems being our bouncing ball. This is why we will give our estimate of feigenbaums delta later, through both our simulation and experimental data.
+Feigenbaum proved that this value converges to approximately 4.67, and that it does so rather quickly, which is important, because it means that it can be approximated rather reasonably with just the first 3 bifurcations. It also turns out that this constant holds (approximately) true for many other chaotic dynamical systems that display bifurcating nature, one of these systems being our bouncing ball. This is why we will give our estimate of Feigenbaums delta later, through both our simulation and experimental data.
 
 
 
@@ -165,11 +176,11 @@ For each jump we will denote the change of in initial $y$-coordinate\footnote{In
 	\Delta t_{k} = t_{k+1}-t_{k} = \frac{v_{k}+\sqrt{v_k^2-2g\Delta y_k}}{g}
 	\label{flytime}
 \end{equation}
-Futher we can derive equation (\ref{ybeq}) finding the velocity of the ball thereby finding the final velocity for each jump $v_{k,f}$.
+Further we can derive equation (\ref{ybeq}) finding the velocity of the ball thereby finding the final velocity for each jump $v_{k,f}$.
 \begin{equation}
 	v_{b,k}(t) = -g(t-t_k)+v_k \Rightarrow v_{k,f} = v_{b,k}(t_k+\Delta t_K) = -\sqrt{v_k^2-2g\Delta y_k}
 \end{equation}
-To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The veolicty of the plate is easily obtain by deriving (\ref{platey}).
+To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The velocity of the plate is easily obtain by deriving (\ref{platey}).
 \begin{equation}
 	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
 	\label{platev}
@@ -204,54 +215,74 @@ The above result is interesting in the sense that it is the lower frequency limi
 \begin{equation}
 	r_f=\frac{\sqrt{\frac{g}{4\pi^2A}}}{\sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}}} = \sqrt{\frac{1}{n\pi} \frac{1+C_r}{1-C_1}}
 \end{equation}
-We use a setup with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$, that is the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reached a stable period at that low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. Also the this piece of theory suggest that a stable 1-period exists for all parameter sets high enough. In practice that is not true since the ball is much more likely to slip into a higher period at higher frequency. 
+We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$, that is the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reached a stable period at that low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. Also the this piece of theory suggest that a stable 1-period exists for all parameter sets high enough. In practice that is not true since the ball is much more likely to slip into a higher period at higher frequency. 
 
 \section{The experiment}
-\subsection{Characterization of the setup}
-To perform the experiment we wish the parameters of the speaker membrane to independent of each other That is, amplitude should not depend of frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not always the case. As the speaker is essentially a forced damped oscillator we observe some resonance behavior, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain conceded with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
+\subsection{Schematic of the experimental setup}
 
-Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system, once to obtain data for our correction-model, and once after to test the effects of the corrections. 
-\begin{figure}[h!]
+\subsection{Characterization of the setup}
+To perform the experiment we wish the parameters of the speaker membrane to independent of each other That is, amplitude should not depend of frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not always the case. As the speaker is essentially a forced damped oscillator we observe some resonance behaviour, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain conceded with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
+
+Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system. We normalized the digital amplitude to range from 0 to 1, and measured the actual amplitude in the range \SI{14}{Hz} to \SI{30}{Hz} at digital 0.7. Then we used a cubic spline to interpolate the full range. Under the assumption that the actual amplitude is proportional to the digital amplitude. We created the following model of the amplitude as a function of frequency and digital amplitude, where $A_{0.7}(f)$ is the measured amplitudes.
+\begin{equation}
+	A(f,A_{d}) = A_{0.7}(f)\frac{A_{d}}{0.7} \Rightarrow A_d(f,A) = 0.7\frac{A}{A_{0.7}(f)}
+	\label{ampl_model}
+\end{equation}
+As shown above we can use our model to predict the digital amplitude needed to match a required actual amplitude. A comparison of the uncorrected and corrected amplitude is show on figure \ref{frq_vs_ampl_plot}.
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{dummy.png} \label{frq_vs_ampl_plot}
-	\caption{Frequency vs. amplitude, before and after corrections. We see a clear relationship between the parameters.}
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{amplcorr.eps} 
+		\caption{Frequency vs. amplitude, before and after corrections.}
+		\label{frq_vs_ampl_plot}
+	\end{subfigure}\hfill
+	\begin{subfigure}[t]{0.49\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{surfplot}
+		\caption{Surface plot of the amplitude model $A(f,A_{d})$ from \eqref{ampl_model}}
+	\end{subfigure}
+	\caption{Actual amplitude varies with the frequency for fixed digital frequency}
 \end{figure}
-The model for correcting the amplitude assumes that real amplitude is linear with apparent amplitude and goes to zero when we set the amplitude like so in software. This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from arbitrary units of acceleration into SI units. 
+
+ This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from acceleration to amplitude.
 
 To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard derivative will give us a measurement of the typical error. 
 
-Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First, we hit the speaker sharply and measured the acceleration: 
-\begin{figure}[h!]
+Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phase shift vs frequency looks like:
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{dummy.png} \label{nat_freq}
-	\caption{Ring-out of the speaker membrane after a sharp collision.}
-\end{figure}
-Assuming this a linearly damped system, we can measure the natural frequency with strong agreement to the earlier shown plot. 
-
-We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phaseshift vs frequency looks like:
-\begin{figure}[h!]
-	\centering
-	\begin{subfigure}{0.5\textwidth}
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{dummy.png} \label{phaseshift_plot}
+		\includegraphics[width=\textwidth]{pshiftplot.eps} 
 		\caption{Phaseshift between the driven frequency and the real frequency.}
-	\end{subfigure}%
-	\begin{subfigure}{0.5\textwidth}
+		\label{phaseshift_plot}
+	\end{subfigure} \hfill 
+	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{dummy.png} \label{nat_freq}
-		\caption{Ring-out of the speaker membrane after a sharp collision.}
+		\includegraphics[width=\textwidth]{ringout.eps}
+		\caption{Ring-out of the speaker membrane after a sharp collision with fit $-2.13e^{-9.74t}\sin(127,6t+1.09)+2.96$}
+		\label{ringout}
 	\end{subfigure}
 	\caption{Plots of various characteristics of the speaker}
 \end{figure}
-A derivation of the phaseshifts depedency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centered in the frequency domain of interest, suggesting the need for a correction model. 
+A derivation of the phase shifts dependency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centred in the frequency domain of interest, suggesting the need for a correction model. 
 
 \subsubsection{The coefficient of restitution}
 On very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the length of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
 \begin{equation}
 	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
 \end{equation}
-As mentioned in section \ref{modelling} the coefficient of restitution is in fact not a constant as we assume but as function of impact velocity. Our measurement of the $C_r$ was therefore performed in by dropping the ball a few centimeters of the plate, which was at rest. This was done to emulate the conditions of the actual experiment while giving the ball enough energy to jump a few times. On average it bounced three times before coming to a rest. Through this small experiment we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive drops. 
+As mentioned in section \ref{modelling} the coefficient of restitution is in fact not a constant as we assume but as function of impact velocity. Our measurement of the $C_r$ was therefore performed in by dropping the ball a few centimetres of the plate, which was at rest. This was done to emulate the conditions of the actual experiment while giving the ball enough energy to jump a few times. On average it bounced three times before coming to a rest. Through this small experiment we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive drops. 
 
+\subsection{Collision between the ball and the plate}
+It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being effected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces. 
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figure}
+\caption{The waveform with and without the bouncing ball.}
+\end{figure}
+It seems that there is an effect, but that the acceleration of the speaker has returned to a normal sine waveform when the impacts occur. As the acceleration has taken a hit, we suggest that the velocity of the speaker will be lower than modelled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity out of the collision. 
 \section{Numerical simulation}
 As described in section \ref{modelling} it is not possible to solve the the systems equations of motion analytically in the general case as it require one to find the intersection between a parabola and a sine wave. In the numerical realm it is however possible to find a such intersection. The actual problem is to find where \eqref{platey} and \eqref{ybeq} are equal that is solving the following
 \begin{equation}
@@ -259,16 +290,20 @@ As described in section \ref{modelling} it is not possible to solve the the syst
 \end{equation}
 As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. 
 
-\subsection{Chaotic behavior in the theoretical model}
-The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. We however discovered a wide range of chaotic behavior even with a non-chaotic parameter set...
-\subsection{Depedence on initial conditions}
-We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was very repeatedly demonstrated in the lab also. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period-3 motion as opposed to $2^n$-period motion. We have, for a fixed parameter set, plottet the difference between the times of the last jumps out of 1000 jumps, for varying values of initial velocity. 
+\subsection{Chaotic behaviour in the theoretical model}
+The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. We however discovered a wide range of chaotic behaviour even with a non-chaotic parameter set...
+\subsection{Dependence on initial conditions}
+We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was very repeatedly demonstrated in the lab also. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period-3 motion as opposed to $2^n$-period motion. We have, for a fixed parameter set, plotted the difference between the times of the last jumps out of 1000 jumps, for varying values of initial velocity. 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.95\texwidth]{vsweep.eps}
-\caption{Stable solution depends strongly on inital velocity. The system plottet here is simulated with $C_r=0.66$, $f=\SI{16}{\hz}$, $A=\SI{1.1}{\mili\meter}$.}
+\includegraphics[width=0.95\textwidth]{vsweep.eps}
+\caption{Stable solution depends strongly on initial velocity. The system plotted here is simulated with $C_r=0.66$, $f=\SI{16}{Hz}$, $A=\SI{1.1}{mm}$.}
 \end{figure}
-We cannot claim to identify any patterns in this, but we have found, that if we limit the inital velocity so that the ball won't skip a period, the simulations appear to be more stable. As mentioned this effect was also very prevalent in our experiemental setup. Here we found that increasing the amplitude seemed to freeze out the 3-periode mode, but for some initial conditions we could still arrive in the 3-period attractor. It should also be stressed that this period configuration was \emph{very} stable. 
+We cannot claim to identify any patterns in this, but we have found, that if we limit the initial velocity so that the ball won't skip a period, the simulations appear to be more stable. As mentioned this effect was also very prevalent in our experimental setup. Here we found that increasing the amplitude seemed to freeze out the 3-period mode, but for some initial conditions we could still arrive in the 3-period attractor. It should also be stressed that this period configuration was \emph{very} stable. 
+\section{Data analysis}
+\subsection{Comparison to simulated data}
+\subsection{Feigenbaums $\delta$}
+\section{Discussion and conclusions}
 \newpage
 \bibliographystyle{plain}
 \bibliography{ref}
@@ -282,7 +317,7 @@ The equation of motion for a driven simple harmonic oscillator will be of the fo
 my'' + by' + ky = F\sin(\omega t)\\
 y'' + \frac{b}{m}y' + \frac{k}{m} y = F \sin(\omega t)
 \end{align*}
-We will then write the general solution as a sum of the particular and the homogenues solutions:
+We will then write the general solution as a sum of the particular and the homogeneous solutions:
 \begin{align*}
 y_g = y_{h} + y_p
 \end{align*}
