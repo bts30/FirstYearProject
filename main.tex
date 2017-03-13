@@ -3,7 +3,7 @@
 
 
 % % % % % Sprogpakker og Layout % % % % % % % % %
-\usepackage[left=2.5cm,top=2.0cm,bottom=1.5cm, right=2.5cm]{geometry}
+\usepackage[left=2.5cm,top=2.0cm,bottom=2cm, right=2.5cm]{geometry}
 %\usepackage{ulem}
 \usepackage[danish,english]{babel}
 \usepackage[utf8]{inputenc}
@@ -180,7 +180,7 @@ attractors.
 
 
 Examples of the first 50 or so iterations of this cobweb diagram can be seen for different $x_0$ and $\lambda$ on figure \ref{cobweb}, where it is clear that the attractor seems independant of the initial condition $x_0$, but dependant on $\lambda$. This dependence on $\lambda$ is very much worth investigating, since something remarkable happens if we permit $\lambda$ to be greater than 3.
-\subsection{Bifurcation Diagrams \& Feigenbaums Delta}
+\subsection{Bifurcation Diagrams \& Feigenbaums $\delta$}
 For $\lambda$ slightly greater than 3, $x_n$ is not attracted to a single value, but rather starts bouncing between two distinct values as $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 and so on \footnote{cobweb diagrams of this behavior can be found in the appendix}. These sets of points are called an attractor. When the attractor splits and doubles the amount of points that attracts $x_n$, we call it a bifurcation, and it happens infinitely many times as we let $\lambda$ increase from 3 to 4. To try to get a better overview of this behavior, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2<\lambda<4$ can be seen on figure \ref{bifurcation}.
 
 \begin{figure}
@@ -191,13 +191,13 @@ For $\lambda$ slightly greater than 3, $x_n$ is not attracted to a single value,
 \end{figure}
 
 
-On the $x$-axis we have our different values of $\lambda$, and on the $y$-axis we plot the last 200 values of $x_n$ after 700 iterations. The key to understanding the bifurcation map is that we have 200 values of $x_n$ for each $\lambda$, which is of course what allows us to see the bifurcations. When we have a diagram like this, we can very clearly see the first couple of bifurcations, but at some point it seems like the plot just degenerates into chaos. The reason for this, is that the distance between each bifurcation decreases exponentially, so it very quickly becomes difficult to distinguish between 128 different values of $x_n$ that it cycles through, or pure chaos. However, as we continue to increase $\lambda$, we see islands where order reemerges from the chaos, and there briefly exists 3 attractors which then split to 6 and so on. It actually turns out that for any given number, there exists a region with that number somewhere in the diagram. How quickly after one another these bifurcations come can be approximated with something called Feigenbaums delta. Mitchell Feigenbaum found out that as the number of bifurcations increase, the ratio between the distance between two consecutive bifurcations converges to a constant given by
+On the $x$-axis we have our different values of $\lambda$, and on the $y$-axis we plot the last 200 values of $x_n$ after 700 iterations. The key to understanding the bifurcation map is that we have 200 values of $x_n$ for each $\lambda$, which is of course what allows us to see the bifurcations. When we have a diagram like this, we can very clearly see the first couple of bifurcations, but at some point it seems like the plot just degenerates into chaos. The reason for this, is that the distance between each bifurcation decreases exponentially, so it very quickly becomes difficult to distinguish between 128 different values of $x_n$ that it cycles through, or pure chaos. However, as we continue to increase $\lambda$, we see islands where order reemerges from the chaos, and there briefly exists 3 attractors which then split to 6 and so on. It actually turns out that for any given number, there exists a region with that number somewhere in the diagram. How quickly after one another these bifurcations come can be approximated with something called Feigenbaums $\delta$. Mitchell Feigenbaum found out that as the number of bifurcations increase, the ratio between the distance between two consecutive bifurcations converges to a constant given by
 
 \begin{equation}
 \delta=\lim_{n \to \infty} \frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n} \approx 4.67 \label{Feigenbaumsdelta}
 \end{equation}
 
-Feigenbaum proved that this value converges to approximately 4.67, and that it does so rather quickly, which is important, because it means that it can be approximated rather reasonably with just the first 3 bifurcations. It also turns out that this constant holds (approximately) true for many other chaotic dynamical systems that display bifurcating nature, one of these systems being our bouncing ball. This is why we will give our estimate of Feigenbaums delta later, through both our simulation and experimental data.
+Feigenbaum proved that this value converges to approximately 4.67, and that it does so rather quickly, which is important, because it means that it can be approximated rather reasonably with just the first 3 bifurcations. It also turns out that this constant holds (approximately) true for many other chaotic dynamical systems that display bifurcating nature, one of these systems being our bouncing ball. This is why we will give our estimate of Feigenbaums $\delta$ later, through both our simulation and experimental data.
 
 
 
@@ -297,12 +297,13 @@ In the following section \ref{Characterization} we will how well the setup can d
 \label{Characterization}
 To perform the experiment we wish the parameters of the speaker membrane to be independent of each other. That is, amplitude should not depend on frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not always the case. As the speaker is essentially a forced damped oscillator we observe some resonance behaviour, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain coincided with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
 
-Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system. We normalized the digital amplitude to range from 0 to 1, and measured the actual amplitude in the range \SI{14}{Hz} to \SI{30}{Hz} at digital 0.7. Then we used a cubic spline to interpolate the full range. Under the assumption that the actual amplitude is proportional to the digital amplitude, we created the following model of the amplitude as a function of frequency and digital amplitude, where $A_{0.7}(f)$ is the measured amplitudes.
+Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system. To get an estimate of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard deviation will give us a measurement of the typical error. We normalized the digital amplitude to range from 0 to 1, and measured the actual amplitude in the range \SI{14}{Hz} to \SI{30}{Hz} at digital 0.7. Then we used a cubic spline to interpolate the full range. Under the assumption that the actual amplitude is proportional to the digital amplitude, we created the following model of the amplitude as a function of frequency and digital amplitude, where $A_{0.7}(f)$ is the measured amplitudes.
 \begin{equation}
 	A(f,A_{d}) = A_{0.7}(f)\frac{A_{d}}{0.7} \Rightarrow A_d(f,A) = 0.7\frac{A}{A_{0.7}(f)}
 	\label{ampl_model}
 \end{equation}
 As shown above we can use our model to predict the digital amplitude needed to match a required actual amplitude. A comparison of the uncorrected and corrected amplitude is show on figure \ref{frq_vs_ampl_plot}.
+
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
@@ -316,19 +317,17 @@ As shown above we can use our model to predict the digital amplitude needed to m
 		\includegraphics[width=\textwidth]{surfplot}
 		\caption{Surface plot of the amplitude model $A(f,A_{d})$ from \eqref{ampl_model}}
 	\end{subfigure}
-	\caption{Actual amplitude varies with the frequency for fixed digital frequency}
 \end{figure}
 This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values, especially in the frequency range used for our experiments (Around $\SI{17}{\hertz}$ to $\SI{20}{\hertz}$). The corrected amplitudes closely resemble the uncorrected at the upper tail of the plot, this is caused by the correction giving us values larger than 1, and the digital amplitude in turn maxing out. We have also plotted the expected amplitude of $\SI{1.1}{\mm}$, and the spline used for correcting. The large error bars primarily comes from the conversion from acceleration to amplitude.
 
-To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard deviation will give us a measurement of the typical error. 
-
-Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First we  measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker would give us a reference phase, which we have compared to the measured phase from accelerometer data. A plot of phase shift vs frequency can be seen on figure \ref{phaseshift_plot}.
+We also calculated the phase shift between the driven force e.g. the micro controller and the loud speaker, see figure \ref{phaseshift_plot}. The data has the distinct sigmoid shape as a driven damped harmonic oscillator. Fitting the theoretical phase shift for a harmonic oscillator as derived in appendix \ref{driven}, results in the curve on figure \ref{phaseshift_plot}.
+ 
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
 		
 		\includegraphics[width=\textwidth]{pshiftplot.eps} 
-		\caption{Phaseshift between the driven frequency and the real frequency.}
+		\caption{Phase shift between the loudspeaker and the micro controller driving it as function of frequency}
 		\label{phaseshift_plot}
 	\end{subfigure} \hfill 
 	\begin{subfigure}[t]{0.49\textwidth}
@@ -337,11 +336,9 @@ Seeing the plots of frequency vs amplitude, one might suspect the natural freque
 		\caption{Ring-out of the speaker membrane after a sharp collision with fit $a\exp(-bt)\sin(\omega t + \phi)+c$, with $a=\SI{-2.13}{V}$, $b=\SI{9.72}{s^{-1}}$, $\omega=\SI{127.6}{rad/s}$, $\phi=\SI{1.09}{rad}$ and $c=\SI{2.96}{V}$}
 		\label{ringout}
 	\end{subfigure}
-	\caption{Plots of various characteristics of the speaker}
 \end{figure}
-Since the loudspeaker can be model as a damped oscillator, we observed the the sigmoid shape of the phase shift resembles the graph. This measurements corroborates our earlier suggestion of the natural frequency being in the middle of the phase shift range suggesting the need for a correction model.
 
-The other experiment conducted was measurement of the acceleration after a sharp collision as seen on figure \ref{ringout}. We then fitted a exponentially deceasing sine function, as that is the acceleration anticipated from a damped oscillator. Also note the frequency $\omega$ found on the plot, which is $\omega = \SI{127.6}{rad/s} = \SI{20.3}{Hz}$. exactly what we expected. This quite firmly proves that loudspeaker indeed can be model as a damped oscillator.
+Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted another experiments. was measurement of the acceleration after a sharp collision as seen on figure \ref{ringout}. We then fitted a exponentially deceasing sine function, as that is the acceleration anticipated from a damped oscillator. Also note the frequency $\omega$ found on the plot, which is $\omega = \SI{127.6}{rad/s} = \SI{20.3}{Hz}$ which exactly what we expected. This quite firmly proves that loudspeaker indeed can be model as a damped oscillator.
 
 \subsubsection{The coefficient of restitution}
 On very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the duration of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
@@ -407,6 +404,7 @@ The frequency resolution used here is $\SI{0.0064}{\hertz}$.
 \newpage
 \appendix
 \section{Derivation of the equations of motion for a driven harmonic oscillator}
+\label{driven}
 The equation of motion for a driven simple harmonic oscillator will be of the form:
 \begin{align*}
 my'' + by' + ky = F\sin(\omega t)\\
