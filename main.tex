@@ -158,6 +158,8 @@ Feigenbaum proved that this value converges to approximately 4.67, and that it d
 
 \section{Model of the system}
 \label{modelling}
+\subsection{Experimental setup}
+We have placed a small steel ball on a concave lens on a vibrating speaker membrane. This set-up traps the ball in an up-and-down motion governed by the parameters of the loudspeaker vibration. Placing the system on a hard stone floor, we try to eliminate any resonance effects between the system and the outside world. By placing 4 layers of clear scotch tape on the lens we reduce to coefficient of restitution. This reduces the chances of the ball jumping out of the lens. 
 \subsection{General model}
 We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is higher due to the plate  moving upwards at the time of impact.
 \begin{figure}[h]
@@ -226,6 +228,7 @@ We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$, tha
 
 \section{The experiment}
 \subsection{Schematic of the experimental setup}
+<<<<<<< HEAD
 The setup used for the experiment can be seen on figure \ref{setupdia}. In essence the setup allows use to control a function generator through a PC as well as collect data about the impact. The operation is as follows: We set a desired frequency and amplitude on the PC (6), which communicates this information to the micro controller (5) through serial. The micro controller outputs a digital sine wave from a table to a DAC at constant amplitude. A separate DAC is the used to amplify the signal form the first DAC. This is done to prevent loss of resolution low amplitudes. The analog signal is then routed on to the amplifier (7), which can output a signal ranging from \SI{+15}{V} to \SI{-15}{V} as provided by the power supply (8). The amplifier is then connected to the actual loudspeaker (2), which then vibrates at the desire parameter set.
 \begin{figure}[h]
 	\centering
@@ -237,6 +240,8 @@ As the ball (1) starts to bounce on the concave lens, which was chosen to minimi
 
 In the following section \ref{Characterization} we will how well the setup can deliver the desired parameter set. To do this be attached a accelerometer (3) to the loud speaker giving us vital data about the waveform such as frequency, amplitude and phase shift 
 
+=======
+>>>>>>> origin/master
 \subsection{Characterization of the setup}
 \label{Characterization}
 To perform the experiment we wish the parameters of the speaker membrane to be independent of each other. That is, amplitude should not depend on frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not always the case. As the speaker is essentially a forced damped oscillator we observe some resonance behaviour, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain coincided with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
@@ -297,7 +302,11 @@ As mentioned in section \ref{modelling} the coefficient of restitution is in fac
 It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being affected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces. 
 \begin{figure}[h]
 \centering
+<<<<<<< HEAD
 %\includegraphics[width=\textwidth]{figure}
+=======
+\includegraphics[width=\textwidth]{ballanal.eps}
+>>>>>>> origin/master
 \caption{The waveform with and without the bouncing ball.}
 \end{figure}
 It seems that there is an effect, but that the acceleration of the speaker has returned to a normal sine waveform when the impacts occur. As the acceleration has taken a hit, we suggest that the velocity of the speaker will be lower than modelled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity out of the collision. 
