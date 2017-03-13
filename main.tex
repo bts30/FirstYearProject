@@ -94,7 +94,7 @@ Kort resumé, gerne på både dansk og engelsk.
 \pagenumbering{arabic}
 \section{Introduction to chaos}
 \label{chaos}
-We will soon see that our experiment exhibits chaotic behavior. In physics, chaos is often described as a great dependance on initial conditions, meaning that two arbitrarily close initial conditions can make the system evolve into two states arbitrarily far apart (within some bounds). This is of course a rather loose definition, and it can therefor be useful to take a moment to examine a simpler chaotic system which has many of the same qualities our experiment has.
+We will soon see that our experiment exhibits chaotic behavior. In physics, chaos is often described as a great dependence on initial conditions, meaning that two arbitrarily close initial conditions can make the system evolve into two states arbitrarily far apart (within some bounds). This is of course a rather loose definition, and it can therefor be useful to take a moment to examine a simpler chaotic system which has many of the same qualities our experiment has.
 
 \subsection{The Logistic Map}
 
@@ -115,7 +115,7 @@ The attractor can be visualized with a graphical algorithm with which the logist
 
 \begin{figure}[h]
 	\centering
-	\caption{Independance of initial conditions in the cobweb diagram - $x_0$ has no effect on the value $x_n$ converges to}
+	\caption{Independence of initial conditions in the cobweb diagram - $x_0$ has no effect on the value $x_n$ converges to}
 	\label{cobweb}
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{Figures/cobweb_x6_l29_iter50}
@@ -133,7 +133,7 @@ The attractor can be visualized with a graphical algorithm with which the logist
 
 
 
-Examples of the first 50 or so iterations of this cobweb diagram can be seen for different $x_0$ and $\lambda$ on figure \ref{cobweb}, where it is clear that the attractor seems independant of the initial condition $x_0$, but dependant on $\lambda$. This dependance on $\lambda$ is very much worth investigating, since something remarkable happens if we permit $\lambda$ to be greater than 3.
+Examples of the first 50 or so iterations of this cobweb diagram can be seen for different $x_0$ and $\lambda$ on figure \ref{cobweb}, where it is clear that the attractor seems independant of the initial condition $x_0$, but dependant on $\lambda$. This dependence on $\lambda$ is very much worth investigating, since something remarkable happens if we permit $\lambda$ to be greater than 3.
 \subsection{Bifurcation Diagrams \& Feigenbaums Delta}
 For $\lambda$ slightly greater than 3, $x_n$ is not attracted to a single value, but rather starts bouncing between two distinct values as $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 and so on \footnote{cobweb diagrams of this behavior can be found in the appendix}. These sets of points are called an attractor. When the attractor splits and doubles the amount of points that attracts $x_n$, we call it a bifurcation, and it happens infinitely many times as we let $\lambda$ increase from 3 to 4. To try to get a better overview of this behavior, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2<\lambda<4$ can be seen on figure \ref{bifurcation}.
 
@@ -159,7 +159,7 @@ Feigenbaum proved that this value converges to approximately 4.67, and that it d
 \section{Model of the system}
 \label{modelling}
 \subsection{General model}
-We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is bigger due to the plate  moving upwards at the time of impact.
+We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is higher due to the plate  moving upwards at the time of impact.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figures/bounceplot.eps}
@@ -168,7 +168,7 @@ We will model our experiment as a 1-dimensional system that is we will not accou
 \end{figure}
 The $k^{\text{th}}$ bounce can be completely described by the time $t_k$ it left the plate and the velocity $v_k$ at that instance. Time and phases $\phi_k$ can be used interchangeably through the relationship $\phi=2\pi f t$.
 
-To describe the system during a specific bounce we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
+To describe the system during a specific bounce we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium height. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
 \begin{equation}
 	y_p(t)= A \cos(2\pi f t+ \phi)
 	\label{platey}
@@ -178,16 +178,16 @@ In air the ball is essentially a body in free fall, and since it is quite small 
 	y_{b,k}(t) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
 	\label{ybeq}
 \end{equation}
-For each jump we will denote the change of in initial $y$-coordinate\footnote{In general it is not possible to find $\Delta y_k$ analytically as it would require one to find the intersection between the graph of a parabola and a sine wave.} as $\Delta y_{k}=y_p(t_{k+1})-y_p(t_{k})$. Plugging that into (\ref{ybeq}) and solving for $t$ determines the fly time of each jump.
+For each jump we will denote the change of the impact $y$-coordinate\footnote{In general it is not possible to find $\Delta y_k$ analytically as it would require one to find the intersection between the graph of a parabola and a sine wave.} as $\Delta y_{k}=y_p(t_{k+1})-y_p(t_{k})$. Plugging that into (\ref{ybeq}) and solving for $t$ determines the flight time of each jump.
 \begin{equation}
 	\Delta t_{k} = t_{k+1}-t_{k} = \frac{v_{k}+\sqrt{v_k^2-2g\Delta y_k}}{g}
 	\label{flytime}
 \end{equation}
-Further we can derive equation (\ref{ybeq}) finding the velocity of the ball thereby finding the final velocity for each jump $v_{k,f}$.
+Further we can differentiate equation (\ref{ybeq}) finding the velocity of the ball thereby finding the final velocity for each jump $v_{k,f}$.
 \begin{equation}
 	v_{b,k}(t) = -g(t-t_k)+v_k \Rightarrow v_{k,f} = v_{b,k}(t_k+\Delta t_K) = -\sqrt{v_k^2-2g\Delta y_k}
 \end{equation}
-To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The velocity of the plate is easily obtain by deriving (\ref{platey}).
+To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The velocity of the plate is easily obtain by differentiating (\ref{platey}).
 \begin{equation}
 	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
 	\label{platev}
@@ -199,8 +199,8 @@ Putting the two together yields the following relationship between the final vel
 \end{align}
 Equation (\ref{impactv}) looks quite complicated as it is for the most general case, but as we shall see in the next section it can be used together with a number of assumptions.
 
-\subsection{1-Period stable}
-If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating it is that $\Delta t_k$ should be constant. By  (\ref{flytime}) this would further imply that the initial velocity $v_k$ is the same for every. For this to be true we must assume the phase at the impact also remain constant e.g. $\Delta y_k=0$. Which leads to the conclusion that the fly time must equal a whole number full period $\Delta t_k = \frac{n}{f}$ with $N\in \mathbb{N}$. Taking advantage of this fact together with (\ref{flytime}) yields the initial velocity for each jump
+\subsection{1-Period stable orbit}
+If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating it is that $\Delta t_k$ should be constant. By  (\ref{flytime}) this would further imply that the initial velocity $v_k$ is the same for every bounce. For this to be true we must assume the phase at the impact also remain constant e.g. $\Delta y_k=0$. Which leads to the conclusion that the flight time must equal a whole number full period $\Delta t_k = \frac{n}{f}$ with $N\in \mathbb{N}$. Taking advantage of this fact together with (\ref{flytime}) yields the initial velocity for each jump
 \begin{equation}
 	\Delta t_k = \frac{n}{f} = \frac{2v_k}{g} \Rightarrow v_k = \frac{ng}{2f}
 	\label{1perv}
@@ -214,23 +214,23 @@ Substituting (\ref{1perv}) into the expression and solving for $\theta$ gives
 	\frac{ng}{2f} = C_r\frac{ng}{2f}+2(C_r+1)\pi fA \sin(\theta) \Rightarrow \sin(\theta) = \frac{ng}{4\pi Af^2 }\frac{C_r-1}{C_r+1}
 	\label{1perstable}
 \end{align}
-The first thing to notice about (\ref{1perstable}) is that it does not have a solution for all parameter sets. That is not all settings can sustain a bouncing motion as they do not provide a sufficient amount of energy to balance the lose due to the impact. Since $\sin: \mathbb{R} \rightarrow [-1,1]$ we can determine when \eqref{1perstable} has a solution, the upper bound is ignored since the right hand side is clearly always negative.
+The first thing to notice about (\ref{1perstable}) is that it does not have a solution for all parameter sets. That is not all settings can sustain a bouncing motion as they do not provide a sufficient amount of energy to balance the loss due to the impact. Since $\sin: \mathbb{R} \rightarrow [-1,1]$ we can determine when \eqref{1perstable} has a solution, the upper bound is ignored since the right hand side is clearly always negative.
 \begin{align}
 	-1 \le \frac{ng}{4\pi Af^2 }\frac{C_r-1}{C_r+1} \Rightarrow \sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}} \le f
 \end{align}
-The above result is interesting in the sense that it is the lower frequency limit for a sustained bouncing motion. By deriving (\ref{platev}) again we can determine the minimum frequency for the ball to experience momentarily weightlessness is $f\ge\sqrt{\frac{g}{4\pi^2A}}$, the ratio between the two is
+The above result is interesting in the sense that it is the lower frequency limit for a sustained bouncing motion. By differentiating (\ref{platev}) again we can determine the minimum frequency for the ball to experience momentarily weightlessness is $f\ge\sqrt{\frac{g}{4\pi^2A}}$, the ratio between the two is
 \begin{equation}
 	r_f=\frac{\sqrt{\frac{g}{4\pi^2A}}}{\sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}}} = \sqrt{\frac{1}{n\pi} \frac{1+C_r}{1-C_1}}
 \end{equation}
-We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$, that is the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reached a stable period at that low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. Also the this piece of theory suggest that a stable 1-period exists for all parameter sets high enough. In practice that is not true since the ball is much more likely to slip into a higher period at higher frequency. 
+We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$, that is the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reached a stable period at that low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. Also this theoretical analysis suggest that a stable 1-period exists for all parameter sets high enough. In practice that is not true since the ball is much more likely to slip into a higher period at higher frequency. 
 
 \section{The experiment}
 \subsection{Schematic of the experimental setup}
 
 \subsection{Characterization of the setup}
-To perform the experiment we wish the parameters of the speaker membrane to independent of each other That is, amplitude should not depend of frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not always the case. As the speaker is essentially a forced damped oscillator we observe some resonance behaviour, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain conceded with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
+To perform the experiment we wish the parameters of the speaker membrane to be independent of each other. That is, amplitude should not depend on frequency, the 'sine-lyness' of the produced waveform should not depend of amplitude etc. This turned out to be not always the case. As the speaker is essentially a forced damped oscillator we observe some resonance behaviour, and our amplitude, in turn, was somewhat dependent on our frequency choice. For our chosen ball, the interesting frequency domain coincided with the natural frequency of the speaker. To mitigate this effect, we have measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
 
-Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system. We normalized the digital amplitude to range from 0 to 1, and measured the actual amplitude in the range \SI{14}{Hz} to \SI{30}{Hz} at digital 0.7. Then we used a cubic spline to interpolate the full range. Under the assumption that the actual amplitude is proportional to the digital amplitude. We created the following model of the amplitude as a function of frequency and digital amplitude, where $A_{0.7}(f)$ is the measured amplitudes.
+Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system. We normalized the digital amplitude to range from 0 to 1, and measured the actual amplitude in the range \SI{14}{Hz} to \SI{30}{Hz} at digital 0.7. Then we used a cubic spline to interpolate the full range. Under the assumption that the actual amplitude is proportional to the digital amplitude, we created the following model of the amplitude as a function of frequency and digital amplitude, where $A_{0.7}(f)$ is the measured amplitudes.
 \begin{equation}
 	A(f,A_{d}) = A_{0.7}(f)\frac{A_{d}}{0.7} \Rightarrow A_d(f,A) = 0.7\frac{A}{A_{0.7}(f)}
 	\label{ampl_model}
@@ -254,7 +254,7 @@ As shown above we can use our model to predict the digital amplitude needed to m
 
  This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from acceleration to amplitude.
 
-To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard derivative will give us a measurement of the typical error. 
+To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard deviation will give us a measurement of the typical error. 
 
 Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phase shift vs frequency looks like:
 \begin{figure}[h]
@@ -276,14 +276,14 @@ Seeing the plots of frequency vs amplitude, one might suspect the natural freque
 A derivation of the phase shifts dependency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centred in the frequency domain of interest, suggesting the need for a correction model. 
 
 \subsubsection{The coefficient of restitution}
-On very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the length of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
+On very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the duration of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
 \begin{equation}
 	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
 \end{equation}
-As mentioned in section \ref{modelling} the coefficient of restitution is in fact not a constant as we assume but as function of impact velocity. Our measurement of the $C_r$ was therefore performed in by dropping the ball a few centimetres of the plate, which was at rest. This was done to emulate the conditions of the actual experiment while giving the ball enough energy to jump a few times. On average it bounced three times before coming to a rest. Through this small experiment we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive drops. 
+As mentioned in section \ref{modelling} the coefficient of restitution is in fact not a constant as we assume but as a function of impact velocity. Our measurement of the $C_r$ was therefore performed in by dropping the ball a few centimetres of the plate, which was at rest. This was done to emulate the conditions of the actual experiment while giving the ball enough energy to jump a few times. On average it bounced three times before coming to a rest. Through this small experiment we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive drops. 
 
 \subsection{Collision between the ball and the plate}
-It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being effected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces. 
+It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being affected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces. 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{figure}
@@ -384,7 +384,7 @@ The phase shift will then be:
 
 \begin{figure}[h]
 	\centering
-	\caption{The attractors dependance on $\lambda$}
+	\caption{The attractors dependence on $\lambda$}
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\caption{A stable 2-period}
