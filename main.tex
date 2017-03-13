@@ -46,6 +46,7 @@
 % % % % % % COMMANDS % % % % % % % %
 
 \numberwithin{equation}{section}
+
 \begin{document}
 
 \selectlanguage{english}
@@ -120,7 +121,7 @@ x_{n+1}=\lambda x_n (1-x_n)
 This is called the logistic map, and it has some interesting attributes. First 
 of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, 
 since outside these restrictions the series quickly diverges to $-\infty$. 
-Within these restrictions, we can grahpically iterate \label{logmap} by 
+Within these restrictions, we can grahpically iterate \eqref{logmap} by 
 plotting the functions $f(x)=\lambda x_n (1-x_n)$ and $g(x)=x$. First, we start 
 off with an $x_0$ and draw a vertical line until we intersect $f(x)$. The 
 coordinates of this point are now $(x_0,x_1)$. To find $x_2$, we want first 
@@ -128,8 +129,18 @@ find $x_1$ on the $x$-axis, such that we can return to $f(x)$ to obtain $x_2$.
 Therefor, we go horizontally to $g(x)$ to obtain the coordinates $(x_1,x_1)$. 
 We can now return to $f(x)$ vertically to find $(x_1,x_2)$, and so on. An 
 example of the first 50 iterations of $x_0=0.1$ and $\lambda=2$ can be seen on 
-figure \ref{} If we play around with different values for $\lambda$ and $x_0$, 
-we quickly see that while !!UNFINISHED!!
+figure \ref{}.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.65\linewidth]{../../../Dropbox/Uni/FirstYearProject/Figures/cobweb_x1_l20_iter50}
+	\caption{Sample text sample text sample text}
+	\label{fig:cobwebx1l20iter50}
+\end{figure}
+
+If we play around with different values for $\lambda$ and 
+$x_0$, we quickly see that while $\lambda<3$, the series converges to the 
+intersection between $f(x)$ and $g(x)$.
 
 
 REVISE The attractor can be visualized with a graphical algorithm with which 
@@ -155,12 +166,12 @@ attractors.
 	\caption{Independence of initial conditions in the cobweb diagram - $x_0$ has no effect on the value $x_n$ converges to}
 	\label{cobweb}
 	\begin{subfigure}{0.45\textwidth}
-		\includegraphics[width=\linewidth]{Figures/cobweb_x6_l29_iter50}
+		\includegraphics[width=\linewidth]{cobweb_x1_l29_iter50}
 		\caption{Cobweb diagram with $x_0=0.6$ and $\lambda=2.9$}
 	\end{subfigure}\hfill
 	\begin{subfigure}{.45\textwidth}
 		\centering
-		\includegraphics[width=\linewidth]{Figures/cobweb_x1_l29_iter50}
+		\includegraphics[width=\linewidth]{cobweb_x6_l29_iter50}
 		\caption{Cobweb diagram with $x_0=0.1$ and $\lambda=2.9$}
 	\end{subfigure}
 \end{figure}
