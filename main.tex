@@ -11,6 +11,8 @@
 
 % % % % % % % % % % Øvrige vigtige pakker % % % % %
 \usepackage[font=small,labelfont=bf]{caption}
+\DeclareCaptionLabelFormat{subfig}{\figurename #1~\arabic{figure}\alph{subfigure}:}
+\captionsetup[subfigure]{labelformat=subfig}
 \usepackage{graphicx}
 \graphicspath{{./Figures/}}
 \usepackage{amsmath}
@@ -155,13 +157,11 @@ attractors.
 	\begin{subfigure}{0.45\textwidth}
 		\includegraphics[width=\linewidth]{Figures/cobweb_x6_l29_iter50}
 		\caption{Cobweb diagram with $x_0=0.6$ and $\lambda=2.9$}
-		\label{}
 	\end{subfigure}\hfill
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[width=\linewidth]{Figures/cobweb_x1_l29_iter50}
 		\caption{Cobweb diagram with $x_0=0.1$ and $\lambda=2.9$}
-		\label{}
 	\end{subfigure}
 \end{figure}
 
@@ -307,12 +307,11 @@ As shown above we can use our model to predict the digital amplitude needed to m
 	\end{subfigure}
 	\caption{Actual amplitude varies with the frequency for fixed digital frequency}
 \end{figure}
-
- This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from acceleration to amplitude.
+This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from acceleration to amplitude.
 
 To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard deviation will give us a measurement of the typical error. 
 
-Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. We also measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker will give us a reference $\pi\cdot N$ phase, which we have compared to the measured phase from accelerometer data. A plot of phase shift vs frequency looks like:
+Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted two experiments. First we  measured to real phase of the system and compared it to the apparent phase. The signal used to control the speaker would give us a reference phase, which we have compared to the measured phase from accelerometer data. A plot of phase shift vs frequency can be seen on figure \ref{phaseshift_plot}.
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
@@ -324,12 +323,14 @@ Seeing the plots of frequency vs amplitude, one might suspect the natural freque
 	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{ringout.eps}
-		\caption{Ring-out of the speaker membrane after a sharp collision with fit $a\exp(-bt)\sin(\omega t + \phi)+c$, with $a=\SI{-2.13}{V}$, $b=\SI{9.72}{s^-1}$, $\omega=\SI{127.6}{rad/s}$, $\phi=\SI{1.09}{rad}$ and $c=\SI{2.96}{V}$}
+		\caption{Ring-out of the speaker membrane after a sharp collision with fit $a\exp(-bt)\sin(\omega t + \phi)+c$, with $a=\SI{-2.13}{V}$, $b=\SI{9.72}{s^{-1}}$, $\omega=\SI{127.6}{rad/s}$, $\phi=\SI{1.09}{rad}$ and $c=\SI{2.96}{V}$}
 		\label{ringout}
 	\end{subfigure}
 	\caption{Plots of various characteristics of the speaker}
 \end{figure}
-A derivation of the phase shifts dependency to driven frequency will be given in the appendix. This measurements corroborates our earlier suggestion of the natural frequency being right centred in the frequency domain of interest, suggesting the need for a correction model. 
+Since the loudspeaker can be model as a damped oscillator, we observed the the sigmoid shape of the phase shift resembles the graph !!!!!!!!!!!!!!!. This measurements corroborates our earlier suggestion of the natural frequency being in the middle of the phase shift range suggesting the need for a correction model.
+
+The other experiment conducted was measurement of the acceleration after a sharp collision as seen on figure \ref{ringout}. We then fitted a exponentially deceasing sine function, as that is the acceleration anticipated from a damped oscillator. Also note the frequency $\omega$ found on the plot, which is $\omega = \SI{127.6}{rad/s} = \SI{20.3}{Hz}$. exactly what we expected. This quite firmly proves that loudspeaker indeed can be model as a damped oscillator.
 
 \subsubsection{The coefficient of restitution}
 On very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the duration of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
@@ -342,7 +343,7 @@ As mentioned in section \ref{modelling} the coefficient of restitution is in fac
 It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being affected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=\textwidth]{ballanal.eps}
+\includegraphics[width=0.7\textwidth]{ballanal.eps}
 \caption{The waveform with and without the bouncing ball.}
 \end{figure}
 It seems that there is an effect, but that the acceleration of the speaker has returned to a normal sine waveform when the impacts occur. As the acceleration has taken a hit, we suggest that the velocity of the speaker will be lower than modelled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity out of the collision. 
