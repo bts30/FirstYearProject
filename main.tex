@@ -94,22 +94,57 @@ Kort resumé, gerne på både dansk og engelsk.
 \pagenumbering{arabic}
 \section{Introduction to chaos}
 \label{chaos}
-We will soon see that our experiment exhibits chaotic behavior. In physics, chaos is often described as a great dependence on initial conditions, meaning that two arbitrarily close initial conditions can make the system evolve into two states arbitrarily far apart (within some bounds). This is of course a rather loose definition, and it can therefor be useful to take a moment to examine a simpler chaotic system which has many of the same qualities our experiment has.
+We will soon see that our experiment exhibits chaotic behavior. In physics, 
+chaotic behavior is often described when a dynamical system is so sensitive to 
+initial conditions that its behavior becomes impossible to predict after a 
+certain amount of time, since unmeasurable differences in initial conditions 
+lead to drastically different outcomes. In other words, two arbitrarily close 
+initial conditions can make the system evolve into two states arbitrarily far 
+apart. This is of course a rather loose definition, and it can therefor be 
+useful to take a moment to examine a simpler chaotic system which has many of 
+the same qualities our experiment has.
 
-\subsection{The Logistic Map}
+\subsection{The Logistic Map and Cobweb Diagrams}
 
 Consider the simple nonlinear recurrence relation
 
 
 \begin{equation}
 x_{n+1}=\lambda x_n (1-x_n)
+\label{logmap}
 \end{equation}
 
 
-This is called the logistic map, and it has some interesting attributes. First of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, since outside these restrictions the series quickly diverges to $-\infty$. Within these restrictions, and if we at first limit ourselves to $\lambda<3$, no matter where on the interval $x_0$ starts, it seems to gravitate towards some value, dictated by $\lambda$, for increasing n. This value is called an attractor, and it is a common behaviour in nonlinear dynamical systems for there to be some point or region that attracts regions of initial conditions to it with increasing time or iterations.
+This is called the logistic map, and it has some interesting attributes. First 
+of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, 
+since outside these restrictions the series quickly diverges to $-\infty$. 
+Within these restrictions, we can grahpically iterate \label{logmap} by 
+plotting the functions $f(x)=\lambda x_n (1-x_n)$ and $g(x)=x$. First, we start 
+off with an $x_0$ and draw a vertical line until we intersect $f(x)$. The 
+coordinates of this point are now $(x_0,x_1)$. To find $x_2$, we want first 
+find $x_1$ on the $x$-axis, such that we can return to $f(x)$ to obtain $x_2$. 
+Therefor, we go horizontally to $g(x)$ to obtain the coordinates $(x_1,x_1)$. 
+We can now return to $f(x)$ vertically to find $(x_1,x_2)$, and so on. An 
+example of the first 50 iterations of $x_0=0.1$ and $\lambda=2$ can be seen on 
+figure \ref{} If we play around with different values for $\lambda$ and $x_0$, 
+we quickly see that while !!UNFINISHED!!
 
-\subsection{Cobweb diagrams}
-The attractor can be visualized with a graphical algorithm with which the logistic map can also be easily iterated without use of a computer or calculator. First, we plot the functions $f(x)=\lambda x (1-x)$ and $g(x)=x$. Next, we choose an $x_0$. Now, we draw a vertical line from $x_0$ until it intersects $f(x)$. At the intersection we find the value of $x_1$ on the $y$-axis, since all we did was take our $x_0$ and plug it into the function $f(x)=\lambda x (1-x)$. To get $x_2$, we must now do what we just did with $x_0$, only for $x_1$. To this end we need to find $x_1$ on the $x$-axis instead of the $y$-axis. Therefor, we go horizontally to the graph for $g(x)=x$. The $x$- and $y$-coordinates of the intersection now both mark our value $x_1$, and we can vertically return to our graph of $f(x)$ to obtain $x_2$ on the $y$-axis, which we again convert to the $x$-axis by going to $g(x)$, and so on. Through many iterations and if sweeping for $0<x_0<1$ and $0<\lambda<3$, we see that for $n\to \infty$, $x_n$ tends towards these attractors. 
+
+REVISE The attractor can be visualized with a graphical algorithm with which 
+the logistic map can also be easily iterated without use of a computer or 
+calculator. First, we plot the functions $f(x)=\lambda x (1-x)$ and $g(x)=x$. 
+Next, we choose an $x_0$. Now, we draw a vertical line from $x_0$ until it 
+intersects $f(x)$. At the intersection we find the value of $x_1$ on the 
+$y$-axis, since all we did was take our $x_0$ and plug it into the function 
+$f(x)=\lambda x (1-x)$. To get $x_2$, we must now do what we just did with 
+$x_0$, only for $x_1$. To this end we need to find $x_1$ on the $x$-axis 
+instead of the $y$-axis. Therefor, we go horizontally to the graph for 
+$g(x)=x$. The $x$- and $y$-coordinates of the intersection now both mark our 
+value $x_1$, and we can vertically return to our graph of $f(x)$ to obtain 
+$x_2$ on the $y$-axis, which we again convert to the $x$-axis by going to 
+$g(x)$, and so on. Through many iterations and if sweeping for $0<x_0<1$ and 
+$0<\lambda<3$, we see that for $n\to \infty$, $x_n$ tends towards these 
+attractors. 
 
 
 
@@ -155,13 +190,21 @@ Feigenbaum proved that this value converges to approximately 4.67, and that it d
 
 
 
-
 \section{Model of the system}
 \label{modelling}
 \subsection{Experimental setup}
-We have placed a small steel ball on a concave lens on a vibrating speaker membrane. This set-up traps the ball in an up-and-down motion governed by the parameters of the loudspeaker vibration. Placing the system on a hard stone floor, we try to eliminate any resonance effects between the system and the outside world. By placing 4 layers of clear scotch tape on the lens we reduce to coefficient of restitution. This reduces the chances of the ball jumping out of the lens. 
+We have placed a small steel ball on a concave glass lens on a vibrating 
+speaker membrane. This set-up traps the ball in an up-and-down motion governed 
+by the parameters of the loudspeaker vibration. Placing the system on a hard 
+stone floor, we try to eliminate any resonance effects between the system and 
+the outside world. By placing 4 layers of clear scotch tape on the lens we 
+reduce to coefficient of restitution. This reduces the chances of the ball 
+jumping out of the lens. 
 \subsection{General model}
-We will model our experiment as a 1-dimensional system that is we will not account for sideways motion. On figure \ref{bounces} two consecutive bounces can be seen where the later is higher due to the plate  moving upwards at the time of impact.
+We will model our experiment as a 1-dimensional system, that is we will not 
+account for sideways motion. On figure \ref{bounces} two consecutive bounces 
+can be seen where the later is higher due to the plate  moving upwards at the 
+time of impact.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{Figures/bounceplot.eps}
@@ -201,7 +244,7 @@ Putting the two together yields the following relationship between the final vel
 \end{align}
 Equation (\ref{impactv}) looks quite complicated as it is for the most general case, but as we shall see in the next section it can be used together with a number of assumptions.
 
-\subsection{1-Period stable orbit}
+\subsection{Period-1 stable orbit}
 If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating it is that $\Delta t_k$ should be constant. By  (\ref{flytime}) this would further imply that the initial velocity $v_k$ is the same for every bounce. For this to be true we must assume the phase at the impact also remain constant e.g. $\Delta y_k=0$. Which leads to the conclusion that the flight time must equal a whole number full period $\Delta t_k = \frac{n}{f}$ with $N\in \mathbb{N}$. Taking advantage of this fact together with (\ref{flytime}) yields the initial velocity for each jump
 \begin{equation}
 	\Delta t_k = \frac{n}{f} = \frac{2v_k}{g} \Rightarrow v_k = \frac{ng}{2f}
