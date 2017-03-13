@@ -297,17 +297,20 @@ As described in section \ref{modelling} it is not possible to solve the the syst
 	A \cos(2\pi f t+ \phi) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
 \end{equation}
 As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. 
-
 \subsection{Chaotic behaviour in the theoretical model}
-The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. We however discovered a wide range of chaotic behaviour even with a non-chaotic parameter set...
+The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside 'islands' of stability in the chaotic region. The logistic map is a convenient model to introducing chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing odd period orbits.  
 \subsection{Dependence on initial conditions}
-We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was very repeatedly demonstrated in the lab also. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period-3 motion as opposed to $2^n$-period motion. We have, for a fixed parameter set, plotted the difference between the times of the last jumps out of 1000 jumps, for varying values of initial velocity. 
+We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was also repeatedly demonstrated in the lab. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period 3 orbits as opposed to $2^n$-period motion. We have plotted the differences in the time series of the last 50 jumps out of 1000 jumps total, so as to allow the system to become stable, for varying values of initial velocity. 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.95\textwidth]{vsweep.eps}
 \caption{Stable solution depends strongly on initial velocity. The system plotted here is simulated with $C_r=0.66$, $f=\SI{16}{Hz}$, $A=\SI{1.1}{mm}$.}
 \end{figure}
-We cannot claim to identify any patterns in this, but we have found, that if we limit the initial velocity so that the ball won't skip a period, the simulations appear to be more stable. As mentioned this effect was also very prevalent in our experimental setup. Here we found that increasing the amplitude seemed to freeze out the 3-period mode, but for some initial conditions we could still arrive in the 3-period attractor. It should also be stressed that this period configuration was \emph{very} stable. 
+We cannot claim to identify any strong patterns in this, but we have found, that if we limit the initial velocity so that the ball will not skip a period, the simulations appear to be more stable. When simulating our experiment we sweep a range of frequencies, and for each frequency value we start the ball at the top of the waveform with some initial velocity given by:
+\begin{align*}
+v_0(f) &= \frac{g f}{2} \cdot 0.7 
+\end{align*}
+This corresponds to 70\% of the speed required to skip the first period, which seems to land the system in the period-doubling domain. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
 \section{Data analysis}
 \subsection{Comparison to simulated data}
 \subsection{Feigenbaums $\delta$}
@@ -404,6 +407,12 @@ The phase shift will then be:
 	\caption{Cobweb diagram with $\lambda$ corresponding to a 3-period. The initial condition is chosen to be very close to a value contained in the attractor, since not doing this will create a lot of noise as $x_n$ finds the stable 3-period, which makes it hard to distinguish this diagram from one in the chaotic regime.}
 	\label{fig:cobwebx10l38iter100}
 \end{figure}
-
+\section{Odd-numbered orbits}
+We saw odd numbered orbits in the experimental set-up:
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{period3.eps}
+	\caption{Period 3 orbit}
+\end{figure}
 
 \end{document}
