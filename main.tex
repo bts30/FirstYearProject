@@ -296,7 +296,7 @@ As shown above we can use our model to predict the digital amplitude needed to m
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
-		\includegraphics[width=\textwidth]{amplcorr.eps} 
+		\includegraphics[width=\textwidth]{amplcorr2.eps} 
 		\caption{Frequency vs. amplitude, before and after corrections.}
 		\label{frq_vs_ampl_plot}
 	\end{subfigure}\hfill
@@ -308,7 +308,7 @@ As shown above we can use our model to predict the digital amplitude needed to m
 	\caption{Actual amplitude varies with the frequency for fixed digital frequency}
 \end{figure}
 
- This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values. The large error bars primarily comes from the conversion from acceleration to amplitude.
+ This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values, especially in the frequency range used for our experiments (Around $\SI{17}{\hertz}$ to $\SI{20}{\hertz}$). The corrected amplitudes closely resemble the uncorrected at the upper tail of the plot, this is caused by the correction giving us values larger than 1, and the digital amplitude in turn maxing out. We have also plotted the expected amplitude of $\SI{1.1}{\mm}$, and the spline used for correcting. The large error bars primarily comes from the conversion from acceleration to amplitude.
 
 To get an idea of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard deviation will give us a measurement of the typical error. 
 
