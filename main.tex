@@ -194,7 +194,7 @@ For $\lambda$ slightly greater than 3, $x_n$ is not attracted to a single value,
 On the $x$-axis we have our different values of $\lambda$, and on the $y$-axis we plot the last 200 values of $x_n$ after 700 iterations. The key to understanding the bifurcation map is that we have 200 values of $x_n$ for each $\lambda$, which is of course what allows us to see the bifurcations. When we have a diagram like this, we can very clearly see the first couple of bifurcations, but at some point it seems like the plot just degenerates into chaos. The reason for this, is that the distance between each bifurcation decreases exponentially, so it very quickly becomes difficult to distinguish between 128 different values of $x_n$ that it cycles through, or pure chaos. However, as we continue to increase $\lambda$, we see islands where order reemerges from the chaos, and there briefly exists 3 attractors which then split to 6 and so on. It actually turns out that for any given number, there exists a region with that number somewhere in the diagram. How quickly after one another these bifurcations come can be approximated with something called Feigenbaums delta. Mitchell Feigenbaum found out that as the number of bifurcations increase, the ratio between the distance between two consecutive bifurcations converges to a constant given by
 
 \begin{equation}
-\delta=\lim_{n \to \infty} \frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n} \approx 4.67
+\delta=\lim_{n \to \infty} \frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n} \approx 4.67 \label{Feigenbaumsdelta}
 \end{equation}
 
 Feigenbaum proved that this value converges to approximately 4.67, and that it does so rather quickly, which is important, because it means that it can be approximated rather reasonably with just the first 3 bifurcations. It also turns out that this constant holds (approximately) true for many other chaotic dynamical systems that display bifurcating nature, one of these systems being our bouncing ball. This is why we will give our estimate of Feigenbaums delta later, through both our simulation and experimental data.
@@ -359,25 +359,42 @@ It is obvious that the collision between the ball and the speaker will affect th
 \end{figure}
 It seems that there is an effect, but that the acceleration of the speaker has returned to a normal sine waveform when the impacts occur. As the acceleration has taken a hit, we suggest that the velocity of the speaker will be lower than modelled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity out of the collision. 
 \section{Numerical simulation}
+\subsection{Numerical simulation scheme}
 As described in section \ref{modelling} it is not possible to solve the the systems equations of motion analytically in the general case as it require one to find the intersection between a parabola and a sine wave. In the numerical realm it is however possible to find a such intersection. The actual problem is to find where \eqref{platey} and \eqref{ybeq} are equal that is solving the following
 \begin{equation}
 	A \cos(2\pi f t+ \phi) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
 \end{equation}
-As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. 
+As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. In practice, this is done using the fzero method in Matlab, which is essentially using a bisection method for root finding, with the default tolerance, etc. settings.
+\subsection{Sticky solutions}
+For some parameters the trajectory of the ball will end in it sticking to the plate, not jumping. In our simulation this will be represented as a series of zeroes, which can be thought of as the ball bouncing infinitely fast. In practice, we have defined a tolerance for our numerical calculations, defined as $\SI{1e-5}{\second}$. We will assign a sticky solution to any parameter set for which the time between two following jumps is less than this tolerance. 
 \subsection{Chaotic behaviour in the theoretical model}
 The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside 'islands' of stability in the chaotic region. The logistic map is a convenient model to introducing chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing odd period orbits.  
 \subsection{Dependence on initial conditions}
 We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was also repeatedly demonstrated in the lab. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period 3 orbits as opposed to $2^n$-period motion. We have plotted the differences in the time series of the last 50 jumps out of 200 jumps total, so as to allow the system to become stable, for varying values of initial velocity. 
-\begin{figure}[h!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.65\textwidth]{vsweep.eps}
 \caption{Stable solution depends strongly on initial velocity. The system plotted here is simulated with $C_r=0.66$, $f=\SI{16}{Hz}$, $A=\SI{1.1}{mm}$.}
 \end{figure}
 We cannot claim to identify any strong patterns in this, but we have found, that if we limit the initial velocity so that the ball will not skip a period, the simulations appear to be more stable. When simulating our experiment we sweep a range of frequencies, and for each frequency value we start the ball at the top of the waveform with some initial velocity given by:
 \begin{align*}
-v_0(f) &= \frac{g f}{2} \cdot 0.7 
+v_0(f) &= \frac{g}{2f} \cdot c
 \end{align*}
-This corresponds to 70\% of the speed required to skip the first period, which seems to land the system in the period-doubling domain. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
+This corresponds to some fraction $c$ of the speed required to skip the first period, which for $0.6<c<0.8$ seems to land the system in the period-doubling domain. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
+\subsection{Measuring Feigenbaums-$\delta$}
+Using \eqref{Feigenbaumsdelta} we can calculate Feigenbaums constant using the dynamics of our system. Marking the times of the bifurcations in figure  \ref{feigsim}, we can calculate the $\delta$.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\linewidth]{feigplot} 
+\caption{Simulated data: $A=\SI{1}{\mm}$ and $C_r=\si{0.6}$ for 500 consecutive jumps, with the last 150 plotted for each frequency. The blue lines matching bifurcations correspond to the time series $t=\{\SI{18.1028}{\hertz},\SI{19.0153}{\hertz},\SI{19.1952}{\hertz},\SI{19.2337}{\hertz} \}$.}\label{feigsim}
+\end{figure}
+The two first values in the series for Feigenbaums delta for our simulation is:
+\begin{align*}
+\delta&=\frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n}\\
+\delta_1&=\frac{\SI{18.1028}{\hertz}-\SI{19.0153}{\hertz}}{\SI{19.0153}{\hertz}-\SI{19.1952}{\hertz}} = 5.0714\\
+\delta_2&=\frac{\SI{19.0153}{\hertz}-\SI{19.1952}{\hertz}}{\SI{19.1952}{\hertz}-\SI{19.2337}{\hertz}} = 4.6667
+\end{align*}
+The frequency resolution used here is $\SI{0.0064}{\hertz}$.
 \section{Data analysis}
 \subsection{Comparison to simulated data}
 \subsection{Feigenbaums $\delta$}
@@ -479,7 +496,14 @@ We saw odd numbered orbits in the experimental set-up:
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\linewidth]{period3.eps}
-	\caption{Period 3 and period 5 orbits.}
+	\caption{Odd numbered orbits.}
 \end{figure}
+And in simulations.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{3psim.eps}
+	\caption{Odd numbered orbits.}
+\end{figure}
+
 
 \end{document}
