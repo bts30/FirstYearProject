@@ -134,7 +134,7 @@ figure \ref{}.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.65\linewidth]{cobweb_x1_l20_iter50}
-	\caption{Sample text sample text sample text}
+	\caption{Sample text sample text}
 	\label{fig:cobwebx1l20iter50}
 \end{figure}
 
@@ -218,7 +218,7 @@ can be seen where the later is higher due to the plate  moving upwards at the
 time of impact.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{Figures/bounceplot.eps}
+	\includegraphics[width=0.65\textwidth]{Figures/bounceplot.eps}
 	\caption{Plot of two bounces on the vibrating plate}
 	\label{bounces}
 \end{figure}
@@ -367,10 +367,10 @@ As described this can easily be done numerically, and the initial velocity for t
 \subsection{Chaotic behaviour in the theoretical model}
 The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside 'islands' of stability in the chaotic region. The logistic map is a convenient model to introducing chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing odd period orbits.  
 \subsection{Dependence on initial conditions}
-We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was also repeatedly demonstrated in the lab. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period 3 orbits as opposed to $2^n$-period motion. We have plotted the differences in the time series of the last 50 jumps out of 1000 jumps total, so as to allow the system to become stable, for varying values of initial velocity. 
+We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was also repeatedly demonstrated in the lab. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period 3 orbits as opposed to $2^n$-period motion. We have plotted the differences in the time series of the last 50 jumps out of 200 jumps total, so as to allow the system to become stable, for varying values of initial velocity. 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.95\textwidth]{vsweep.eps}
+\includegraphics[width=0.65\textwidth]{vsweep.eps}
 \caption{Stable solution depends strongly on initial velocity. The system plotted here is simulated with $C_r=0.66$, $f=\SI{16}{Hz}$, $A=\SI{1.1}{mm}$.}
 \end{figure}
 We cannot claim to identify any strong patterns in this, but we have found, that if we limit the initial velocity so that the ball will not skip a period, the simulations appear to be more stable. When simulating our experiment we sweep a range of frequencies, and for each frequency value we start the ball at the top of the waveform with some initial velocity given by:
