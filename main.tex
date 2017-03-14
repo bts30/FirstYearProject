@@ -136,7 +136,7 @@ figure \ref{fig:cobwebx1l20iter50}.
 If we play around with different values for $\lambda$ and 
 $x_0$, we quickly see that while $\lambda<3$, the series converges to the 
 intersection between $f(x)$ and $g(x)$.
-%REVISE The attractor can be visualized with a graphical algorithm with which the logistic map can also be easily iterated without use of a computer or calculator. First, we plot the functions $f(x)=\lambda x (1-x)$ and $g(x)=x$. Next, we choose an $x_0$. Now, we draw a vertical line from $x_0$ until it intersects $f(x)$. At the intersection we find the value of $x_1$ on the $y$-axis, since all we did was take our $x_0$ and plug it into the function $f(x)=\lambda x (1-x)$. To get $x_2$, we must now do what we just did with $x_0$, only for $x_1$. To this end we need to find $x_1$ on the $x$-axis instead of the $y$-axis. Therefor, we go horizontally to the graph for $g(x)=x$. The $x$- and $y$-coordinates of the intersection now both mark our value $x_1$, and we can vertically return to our graph of $f(x)$ to obtain $x_2$ on the $y$-axis, which we again convert to the $x$-axis by going to $g(x)$, and so on. Through many iterations and if sweeping for $0<x_0<1$ and $0<\lambda<3$, we see that for $n\to \infty$, $x_n$ tends towards these attractors. 
+
 \begin{figure}[h]
 	\centering
 	\caption{Independence of initial conditions in the cobweb diagram --- $x_0$ has no effect on the value $x_n$ converges to}
@@ -153,23 +153,23 @@ intersection between $f(x)$ and $g(x)$.
 \end{figure}
 Examples of the first 50 or so iterations of this cobweb diagram can be seen for different $x_0$ and $\lambda$ on figure \ref{cobweb}, where it is clear that the attractor seems independant of the initial condition $x_0$, but dependant on $\lambda$. This dependence on $\lambda$ is very much worth investigating, since something remarkable happens if we permit $\lambda$ to be greater than 3.
 \subsection{Bifurcation Diagrams \& Feigenbaums $\delta$}
-For $\lambda$ slightly greater than 3, $x_n$ is not attracted to a single value, but rather starts bouncing between two distinct values as $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 and so on \footnote{cobweb diagrams of this behavior can be found in the appendix}. These sets of points are called an attractor. The points at which the attractor splits and doubles is called a bifurcation, and it happens infinitely many times as we let $\lambda$ increase from 3 to 4. To try and get a better overview of these bifurcations, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2<\lambda<4$ can be seen on figure \ref{bifurcation}.
+For $\lambda$ slightly greater than 3, $x_n$ is not attracted to a single value, but rather starts bouncing between two distinct values as $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 and so on \footnote{cobweb diagrams of this behavior can be found in the appendix}. These sets of points are called an attractor. The points at which the attractor splits and doubles is called a bifurcation, and it happens infinitely many times as we let $\lambda$ increase from 3 to 4. To try and get a better overview of these bifurcations, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2.75<\lambda<4$ can be seen on figure \ref{bifurcation}.
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{Figures/Bifurcation}
+	\includegraphics[width=0.65\linewidth]{Figures/Bifurcation}
 	\caption{}
 	\label{bifurcation}
 \end{figure}
-On the $x$-axis we have our different values of $\lambda$, and on the $y$-axis we plot the last 200 values of $x_n$ after 700 iterations. The key to understanding the bifurcation diagram is that we have 200 values of $x_n$ for each $\lambda$, which is of course what allows us to see the bifurcations. When we have a diagram like this, we can very clearly see the first couple of bifurcations, but at some point it seems like the plot just degenerates into chaos. The reason for this, is that the distance between each bifurcation decreases exponentially \cite{strogatz}, so it very quickly becomes difficult to distinguish between 128 different values of $x_n$ that it cycles through, or pure chaos. However, as we continue to increase $\lambda$, we see islands where order reemerges from the chaos, and there briefly exists 3 attractors which then split to 6 and so on. It actually turns out that for any given number, there exists a region with that number somewhere in the diagram. How quickly after one another these bifurcations come can be approximated with something called Feigenbaums $\delta$. Mitchell Feigenbaum found out that as the number of bifurcations increase, the ratio between the distance between two consecutive bifurcations converges to a constant given by
+On the $x$-axis we have different values of $\lambda$, and on the $y$-axis we plot the last 200 values of $x_n$ after 700 iterations. The key to understanding the bifurcation diagram is that we have 200 values of $x_n$ for each $\lambda$, which is of course what allows us to see the bifurcations. When we have a diagram like this, we can very clearly see the first couple of bifurcations, but at some point it seems like the plot just degenerates into chaos. The reason for this, is that the distance between each bifurcation decreases exponentially \cite{strogatz}, so it very quickly becomes difficult to distinguish between 128 distinct values of $x_n$, or pure chaos. However, as we continue to increase $\lambda$, we see islands where order reemerges from the chaos, and there briefly exists attractors consisting of 3 points, which then split to 6 and so on. It actually turns out that for any given positive integer, there exists a region where the attractor consists of that many points somewhere in the diagram. How quickly after one another these bifurcations occur can be approximated with something called Feigenbaums $\delta$. Mitchell Feigenbaum found out that as the number of bifurcations increases, the ratio of the distance between two consecutive bifurcations converges to a constant given by
 \begin{equation}
 \delta=\lim_{n \to \infty} \frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n} \approx 4.67 \label{Feigenbaumsdelta}
 \end{equation}
-Feigenbaum proved that this value converges to approximately 4.67, and that it does so rather quickly, which is important, because it means that it can be approximated rather reasonably with just the first 3 bifurcations. It also turns out that this constant holds (approximately) true for many other chaotic dynamical systems that display bifurcating nature, one of these systems being our bouncing ball. This is why we will give our estimate of Feigenbaums $\delta$ later, through both our simulation and experimental data.
+Feigenbaum proved that this limit converges, and that it does so rather quickly. This is important, because it means that it can be approximated rather reasonably with just the first 3 bifurcations. It also turns out that this constant holds (approximately) true for many other chaotic dynamical systems that display period doubling cascades, one of these systems being our bouncing ball. This is why we will give our estimate of Feigenbaums $\delta$ later, through both our simulation and experimental data.
 \section{Model of the system}
 \label{modelling}
 \subsection{Experimental setup}
-We have placed a small steel ball on a concave glass lens on a vibrating speaker membrane as seen on figure \ref{sketch}. This set-up traps the ball in an up-and-down motion governed by the parameters of the loudspeaker vibration. Placing the system on a hard stone floor, we try to eliminate any resonance effects between the system and the outside world. By placing 4 layers of clear scotch tape on the lens we 
-reduce to coefficient of restitution. This reduces the chances of the ball jumping out of the lens. 
+We have placed a small steel ball on a concave glass lens on a vibrating speaker membrane as seen on figure \ref{sketch}. This set-up traps the ball in an up-and-down motion governed by the parameters of the loudspeaker vibration. Placing the system on a hard stone floor, we try to eliminate any resonance effects between the system and the outside world. By placing 4 layers of translucent scotch tape on the lens we 
+reduce to coefficient of restitution. This also reduces the chances of the ball doing any horizontal movement in the pit of the lens, or jumping out of the lens altogether. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.55\textwidth]{speaker}
@@ -177,7 +177,7 @@ reduce to coefficient of restitution. This reduces the chances of the ball jumpi
 	\label{sketch}
 \end{figure}
 \subsection{General model}
-We will model our experiment as a 1-dimensional system, that is we will not 
+We will model our experiment as a 1-dimensional system, which is to say we will not 
 account for sideways motion. On figure \ref{bounces} two consecutive bounces 
 can be seen where the later is higher due to the plate  moving upwards at the 
 time of impact.
@@ -189,12 +189,12 @@ time of impact.
 \end{figure}
 The $k^{\text{th}}$ bounce can be completely described by the time $t_k$ it left the plate and the velocity $v_k$ at that instance. Time and phases $\phi_k$ can be used interchangeably through the relationship $\phi=2\pi f t$.
 
-To describe the system during a specific bounce we denote the distance of the ball above the plates rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from it equilibrium height. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
+To describe the system during a specific bounce we denote the distance of the ball above the plate's rest position $y_b(t)$. Similarly we define $y_p(t)$ as the displacement of the vibrating  plate from equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
 \begin{equation}
 	y_p(t)= A \cos(2\pi f t+ \phi)
 	\label{platey}
 \end{equation}
-In air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for the $k^\text{th}$ jump has the initial conditions $v_k$, $y_p(t_k)$ at time $t_k$, simply is
+In air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for the $k^\text{th}$ jump, with the initial conditions $v_k$, $y_p(t_k)$ at time $t_k$, is simply given by
 \begin{equation}
 	y_{b,k}(t) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
 	\label{ybeq}
@@ -204,11 +204,11 @@ For each jump we will denote the change of the impact $y$-coordinate\footnote{In
 	\Delta t_{k} = t_{k+1}-t_{k} = \frac{v_{k}+\sqrt{v_k^2-2g\Delta y_k}}{g}
 	\label{flytime}
 \end{equation}
-Further we can differentiate equation (\ref{ybeq}) finding the velocity of the ball thereby finding the final velocity for each jump $v_{k,f}$.
+Furthermore we can differentiate equation (\ref{ybeq}) to find the velocity of the ball, thereby finding the final velocity for each jump $v_{k,f}$.
 \begin{equation}
 	v_{b,k}(t) = -g(t-t_k)+v_k \Rightarrow v_{k,f} = v_{b,k}(t_k+\Delta t_K) = -\sqrt{v_k^2-2g\Delta y_k}
 \end{equation}
-To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested\cite{muller}. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The velocity of the plate is easily obtain by differentiating (\ref{platey}).
+To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested\cite{muller}. For a plate at rest, the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The velocity of the plate is easily obtained by differentiating (\ref{platey}).
 \begin{equation}
 	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
 	\label{platev}
@@ -218,10 +218,10 @@ Putting the two together yields the following relationship between the final vel
 	v_{k+1} &= -C_r(v_{k,f}-v_p(t_k+\Delta t_k))+v_p(t_k+\Delta t_k) \nonumber \\
 	&= C_r \sqrt{v_k^2-2g\Delta y_k}+2(C_r+1)\pi f A \sin(2\pi f (t_k+\Delta t_k)+ \phi) \label{impactv}
 \end{align}
-Equation (\ref{impactv}) looks quite complicated as it is for the most general case, but as we shall see in the next section it can be used together with a number of assumptions.
+Equation (\ref{impactv}) looks quite complicated as it is for the most general case, but as we shall see in the next section it can be simplified through a number of assumptions.
 
 \subsection{Period-1 stable orbit}
-If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating it is that $\Delta t_k$ should be constant. By  (\ref{flytime}) this would further imply that the initial velocity $v_k$ is the same for every bounce. For this to be true we must assume the phase at the impact also remain constant e.g. $\Delta y_k=0$. Which leads to the conclusion that the flight time must equal a whole number full period $\Delta t_k = \frac{n}{f}$ with $N\in \mathbb{N}$. Taking advantage of this fact together with (\ref{flytime}) yields the initial velocity for each jump
+If we consider the most simple stable state of our system, it is when the ball is bouncing with identical trajectories. A more formal way of stating this, is that $\Delta t_k$ should be constant. By  (\ref{flytime}) this would further imply that the initial velocity $v_k$ is the same for every bounce. For this to be true we must assume the phase at the impact also remain constant e.g. $\Delta y_k=0$. Which leads to the conclusion that the flight time must equal a whole number full period $\Delta t_k = \frac{n}{f}$ with $n\in \mathbb{N}$. Taking advantage of this fact together with (\ref{flytime}) yields the initial velocity for each jump
 \begin{equation}
 	\Delta t_k = \frac{n}{f} = \frac{2v_k}{g} \Rightarrow v_k = \frac{ng}{2f}
 	\label{1perv}
@@ -235,7 +235,7 @@ Substituting (\ref{1perv}) into the expression and solving for $\theta$ gives
 	\frac{ng}{2f} = C_r\frac{ng}{2f}+2(C_r+1)\pi fA \sin(\theta) \Rightarrow \sin(\theta) = \frac{ng}{4\pi Af^2 }\frac{C_r-1}{C_r+1}
 	\label{1perstable}
 \end{align}
-The first thing to notice about (\ref{1perstable}) is that it does not have a solution for all parameter sets. That is not all settings can sustain a bouncing motion as they do not provide a sufficient amount of energy to balance the loss due to the impact. Since $\sin: \mathbb{R} \rightarrow [-1,1]$ we can determine when \eqref{1perstable} has a solution, the upper bound is ignored since the right hand side is clearly always negative.
+The first thing to notice about (\ref{1perstable}) is that it does not have a solution for all parameter sets. That is not all selections of amplitude and frequency can sustain a bouncing motion, as they do not provide a sufficient amount of energy to balance the loss due to the impact. Since $\sin: \mathbb{R} \rightarrow [-1,1]$, we can determine when \eqref{1perstable} has a solution. The upper bound can be  ignored since the right hand side is clearly always negative, as $C_r<1$.
 \begin{align}
 	-1 \le \frac{ng}{4\pi Af^2 }\frac{C_r-1}{C_r+1} \Rightarrow \sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}} \le f
 \end{align}
@@ -243,7 +243,7 @@ The above result is interesting in the sense that it is the lower frequency limi
 \begin{equation}
 	r_f=\frac{\sqrt{\frac{g}{4\pi^2A}}}{\sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}}} = \sqrt{\frac{1}{n\pi} \frac{1+C_r}{1-C_1}}
 \end{equation}
-We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$, that is the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reached a stable period at that low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. Also this theoretical analysis suggest that a stable 1-period exists for all parameter sets high enough. In practice that is not true since the ball is much more likely to slip into a higher period at higher frequency. 
+We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$. This means that the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reach a stable period at such low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. Also this theoretical analysis suggests that a stable 1-period exists for all parameter sets that satisfy the above equation. In practice this is not true however, since the ball is much more likely to slip into a higher period at higher frequency. 
 
 \section{The experiment}
 \subsection{Schematic of the experimental setup}
