@@ -10,7 +10,7 @@
 \linespread{1.3}       % simulerer Word 1.5 line spacing
 
 % % % % % % % % % % Øvrige vigtige pakker % % % % %
-\usepackage[font={small,it},labelfont=bf]{caption}
+\usepackage[font={small,sl},labelfont={bf, up}]{caption}
 \DeclareCaptionLabelFormat{subfig}{\figurename #1~\arabic{figure}\alph{subfigure}:}
 \captionsetup[subfigure]{labelformat=subfig}
 \usepackage{graphicx}
@@ -193,7 +193,7 @@ time of impact.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.65\textwidth]{Figures/bounceplot.eps}
-	\caption{Plot of two bounces on the vibrating plate}
+	\caption{Plot of two bounces on the vibrating plate, the blue curve is the plate, the yellow and purple is the trajectories.}
 	\label{bounces}
 \end{figure}
 The $k^{\text{th}}$ bounce can be completely described by the time $t_k$ it left the plate and the velocity $v_k$ at that instance. Time and phases $\phi_k$ can be used interchangeably through the relationship $\phi=2\pi f t$.
