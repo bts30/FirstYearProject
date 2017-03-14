@@ -155,7 +155,7 @@ systems for there to be some point or set of points that attracts regions of ini
 
 
 \subsection{Bifurcation Diagrams \& Feigenbaums $\delta$}
-For $\lambda$ slightly greater than 3, $x_n$ is no longer attracted to a single value, but rather starts bouncing between two distinct values as $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 and so on \footnote{cobweb diagrams of this behavior can be found in the appendix}. When the attractor splits like this, we call it a bifurcation, and it happens infinitely many times as we let $\lambda$ increase from 3 to 4. To try to get a better overview of this behavior, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2.75<\lambda<4$ can be seen on figure \ref{bifurcation}.
+For $\lambda$ slightly greater than 3, $x_n$ is no longer attracted to a single value, but rather starts bouncing between two distinct values as $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 and so on \footnote{Cobweb diagrams of this behavior can be found in the appendix}. When the attractor splits like this, we call it a bifurcation, and it happens infinitely many times as we let $\lambda$ increase from 3 to 4. To try to get a better overview of this behavior, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2.75<\lambda<4$ can be seen on figure \ref{bifurcation}.
 
 \begin{figure}
 	\centering
@@ -178,13 +178,14 @@ Feigenbaum proved that this value converges, and that it does so rather quickly,
 \section{Model of the system}
 \label{modelling}
 \subsection{Experimental setup}
-We have placed a small steel ball on a concave glass lens on a vibrating 
-speaker membrane. This set-up traps the ball in an up-and-down motion governed 
-by the parameters of the loudspeaker vibration. Placing the system on a hard 
-stone floor, we try to eliminate any resonance effects between the system and 
-the outside world. By placing 4 layers of clear scotch tape on the lens we 
-reduce to coefficient of restitution. This reduces the chances of the ball 
-jumping out of the lens. 
+We have placed a small steel ball on a concave glass lens on a vibrating speaker membrane as seen on figure \ref{sketch}. This set-up traps the ball in an up-and-down motion governed by the parameters of the loudspeaker vibration. Placing the system on a hard stone floor, we try to eliminate any resonance effects between the system and the outside world. By placing 4 layers of clear scotch tape on the lens we 
+reduce to coefficient of restitution. This reduces the chances of the ball jumping out of the lens. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.55\textwidth]{speaker}
+	\caption{Sketch of the setup with the described loudspeaker and concave lens.}
+	\label{sketch}
+\end{figure}
 \subsection{General model}
 We will model our experiment as a 1-dimensional system, that is we will not 
 account for sideways motion. On figure \ref{bounces} two consecutive bounces 
@@ -217,7 +218,7 @@ Further we can differentiate equation (\ref{ybeq}) finding the velocity of the b
 \begin{equation}
 	v_{b,k}(t) = -g(t-t_k)+v_k \Rightarrow v_{k,f} = v_{b,k}(t_k+\Delta t_K) = -\sqrt{v_k^2-2g\Delta y_k}
 \end{equation}
-To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The velocity of the plate is easily obtain by differentiating (\ref{platey}).
+To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested\cite{muller}. For a plate at rest the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and then transform back. The velocity of the plate is easily obtain by differentiating (\ref{platey}).
 \begin{equation}
 	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
 	\label{platev}
@@ -357,9 +358,9 @@ Using \eqref{Feigenbaumsdelta} we can calculate Feigenbaums constant using the d
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.65\linewidth]{feigplot} 
-\caption{Simulated data: $A=\SI{1}{\mm}$ and $C_r=\si{0.6}$ for 500 consecutive jumps, with the last 150 plotted for each frequency. The blue lines matching bifurcations correspond to the time series $t=\{\SI{18.1028}{\hertz},\SI{19.0153}{\hertz},\SI{19.1952}{\hertz},\SI{19.2337}{\hertz} \}$.}\label{feigsim}
+\caption{Simulated data: $A=\SI{1}{\mm}$ and $C_r=\num{0.6}$ for 500 consecutive jumps, with the last 150 plotted for each frequency. The blue lines matching bifurcations correspond to the time series $t=\{\SI{18.1028}{\hertz},\SI{19.0153}{\hertz},\SI{19.1952}{\hertz},\SI{19.2337}{\hertz} \}$.}\label{feigsim}
 \end{figure}
-The two first values in the series for Feigenbaums delta for our simulation is:
+The two first values in the series for Feigenbaums $\delta$ for our simulation is:
 \begin{align*}
 \delta&=\frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n}\\
 \delta_1&=\frac{\SI{18.1028}{\hertz}-\SI{19.0153}{\hertz}}{\SI{19.0153}{\hertz}-\SI{19.1952}{\hertz}} = 5.0714\\
