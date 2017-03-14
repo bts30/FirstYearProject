@@ -247,7 +247,7 @@ We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$, tha
 
 \section{The experiment}
 \subsection{Schematic of the experimental setup}
-The setup used for the experiment can be seen on figure \ref{setupdia}. In essence the setup allows use to control a function generator through a PC as well as collect data about impacts with the ball. The operation is as follows: We set a desired frequency and amplitude on the PC (6), which communicates this information to the micro controller (5) through USB. The micro controller outputs a digital sine wave from a table to a DAC at constant amplitude. A separate DAC is the used to amplify the signal form the first DAC. This is done to prevent loss of resolution at low amplitudes. The analog signal is then routed on to the amplifier (7), which can output a signal ranging from \SI{+15}{V} to \SI{-15}{V} as provided by the power supply (8). The amplifier is then connected to the actual loudspeaker (2), which then vibrates at the desired parameter set.
+The setup used for the experiment can be seen on figure \ref{setupdia}. In essence the setup allows use to control a function generator through a PC as well as collect data about the impact. The operation is as follows: We set a desired frequency and amplitude on the PC (6), which communicates this information to the micro controller (5) through serial. The micro controller outputs a digital sine wave from a table to a DAC at constant amplitude. A separate DAC is the used to amplify the signal form the first DAC. This is done to prevent loss of resolution low amplitudes. The analog signal is then routed on to the amplifier (7), which can output a signal ranging from \SI{+15}{V} to \SI{-15}{V} as provided by the power supply (8). The amplifier is then connected to the actual loudspeaker (2), which then vibrates at the desire parameter set.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{setup}
@@ -283,7 +283,7 @@ As shown above we can use our model to predict the digital amplitude needed to m
 		\caption{Surface plot of the amplitude model $A(f,A_{d})$ from \eqref{ampl_model}}
 	\end{subfigure}
 \end{figure}
-This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the digital values, especially in the frequency range used for our experiments (Around $\SI{17}{\hertz}$ to $\SI{20}{\hertz}$). The corrected amplitudes closely resemble the uncorrected at the upper tail of the plot, this is caused by the correction giving us digital amplitudes larger than 1, and is thus maxed out. We have also plotted the expected amplitude of $\SI{1.1}{\mm}$, and the spline used for correcting. The large error bars primarily comes from the conversion from acceleration to amplitude.
+This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the apparent values, especially in the frequency range used for our experiments (Around $\SI{17}{\hertz}$ to $\SI{20}{\hertz}$). The corrected amplitudes closely resemble the uncorrected at the upper tail of the plot, this is caused by the correction giving us values larger than 1, and the digital amplitude in turn maxing out. We have also plotted the expected amplitude of $\SI{1.1}{\mm}$, and the spline used for correcting. The large error bars primarily comes from the conversion from acceleration to amplitude.
 
 We also calculated the phase shift between the driven force e.g. the micro controller and the loud speaker, see figure \ref{phaseshift_plot}. The data has the distinct sigmoid shape as a driven damped harmonic oscillator. Fitting the theoretical phase shift for a harmonic oscillator as derived in appendix \ref{driven}, results in the curve on figure \ref{phaseshift_plot}.
  
@@ -303,10 +303,10 @@ We also calculated the phase shift between the driven force e.g. the micro contr
 	\end{subfigure}
 \end{figure}
 
-Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted another experiment, which was a measurement of the acceleration after a sharp collision as seen on figure \ref{ringout}. We then fitted a exponentially deceasing sine function, as that is the acceleration anticipated from a damped oscillator. As it is apparent the impulse response dies out rather slowly. This might have an effect on the actual experiment as the effects of the impulse has not died out before the next impact with the ball.  Also note the frequency $\omega$ found on the plot, which is $\omega = \SI{127.6}{rad/s} = \SI{20.3}{Hz}$ which exactly what we expected. This quite firmly proves that loudspeaker indeed can be model as a damped oscillator.
+Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted another experiments. was measurement of the acceleration after a sharp collision as seen on figure \ref{ringout}. We then fitted a exponentially deceasing sine function, as that is the acceleration anticipated from a damped oscillator. Also note the frequency $\omega$ found on the plot, which is $\omega = \SI{127.6}{rad/s} = \SI{20.3}{Hz}$ which exactly what we expected. This quite firmly proves that loudspeaker indeed can be model as a damped oscillator.
 
 \subsubsection{The coefficient of restitution}
-One very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the duration of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
+On very important parameter in the setup is the coefficient of restitution $C_r$ which has already been described in the above. To measure it we used the fact the duration of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
 \begin{equation}
 	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
 \end{equation}
@@ -326,31 +326,29 @@ As described in section \ref{modelling} it is not possible to solve the the syst
 \begin{equation}
 	A \cos(2\pi f t+ \phi) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
 \end{equation}
-As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. In practice, this is done using the \texttt{fzero} method in \textsc{Matlab}, which is essentially using a bisection method for root finding.
-
+As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. In practice, this is done using the fzero method in Matlab, which is essentially using a bisection method for root finding, with the default tolerance, etc. settings.
 \subsection{Sticky solutions}
-For some parameters the trajectory of the ball will end in it sticking to the plate, not bouncing. In our simulation this will be represented as a series of zeroes, which can be thought of as the ball bouncing infinitely fast. In practice, we have defined a tolerance for our numerical calculations, defined as $\SI{1e-5}{\second}$. We will assign a sticky solution to any parameter set for which the time between two following jumps is less than this tolerance. 
+For some parameters the trajectory of the ball will end in it sticking to the plate, not jumping. In our simulation this will be represented as a series of zeroes, which can be thought of as the ball bouncing infinitely fast. In practice, we have defined a tolerance for our numerical calculations, defined as $\SI{1e-5}{\second}$. We will assign a sticky solution to any parameter set for which the time between two following jumps is less than this tolerance. 
 \subsection{Chaotic behaviour in the theoretical model}
-The idea for the experiment originates from Tufillaro and Albano \cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside ``islands'' of stability in the chaotic region. The logistic map is a convenient model to introducing chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing odd period orbits.
-
-\subsubsection{Dependence on initial conditions}
-We found through numerical simulations and practical experience that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period 3 orbits. This effect was also repeatedly demonstrated in the lab. Through numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period 3 orbits as opposed to $2^n$-period orbits. We have plotted the differences in the time series of the last 50 jumps out of 200 jumps total to allow the system to become stable, for varying values of initial velocity. 
+The idea for the experiment originates from Tufillaro and Albano\cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside 'islands' of stability in the chaotic region. The logistic map is a convenient model to introducing chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing odd period orbits.  
+\subsection{Dependence on initial conditions}
+We found trough numerical simulations that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period-3 motion. This effect was also repeatedly demonstrated in the lab. Trough numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period 3 orbits as opposed to $2^n$-period motion. We have plotted the differences in the time series of the last 50 jumps out of 200 jumps total, so as to allow the system to become stable, for varying values of initial velocity. 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.65\textwidth]{vsweep.eps}
 \caption{Stable solution depends strongly on initial velocity. The system plotted here is simulated with $C_r=0.66$, $f=\SI{16}{Hz}$, $A=\SI{1.1}{mm}$.}
 \end{figure}
-We cannot claim to identify any strong patterns in this, but we have found that if we limit the initial velocity such that the ball does not skip a period, the simulations appear to be more stable. When simulating our experiment we sweep a range of frequencies, and for each frequency value we start the ball at the top of the waveform with some initial velocity given by:
+We cannot claim to identify any strong patterns in this, but we have found, that if we limit the initial velocity so that the ball will not skip a period, the simulations appear to be more stable. When simulating our experiment we sweep a range of frequencies, and for each frequency value we start the ball at the top of the waveform with some initial velocity given by:
 \begin{align*}
-v_0(f) &= \frac{g}{2f} c
+v_0(f) &= \frac{g}{2f} \cdot c
 \end{align*}
-This corresponds to some fraction $c$ of the speed required to jump a whole period of the loudspeaker, which for $0.6<c<0.8$ seems to land the system in the period-doubling domain. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
-\subsection{Measuring Feigenbaums $\delta$}
+This corresponds to some fraction $c$ of the speed required to skip the first period, which for $0.6<c<0.8$ seems to land the system in the period-doubling domain. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
+\subsection{Measuring Feigenbaums-$\delta$}
 Using \eqref{Feigenbaumsdelta} we can calculate Feigenbaums constant using the dynamics of our system. Marking the times of the bifurcations in figure  \ref{feigsim}, we can calculate the $\delta$.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.65\linewidth]{feigplot} 
-\caption{Simulated data: $A=\SI{1}{\mm}$ and $C_r=\num{0.6}$ for 500 consecutive jumps, with the last 150 plotted for each frequency. The blue lines matching bifurcations correspond to the frequencies $f=\{\SI{18.1028}{\hertz},\SI{19.0153}{\hertz},\SI{19.1952}{\hertz},\SI{19.2337}{\hertz} \}$.}\label{feigsim}
+\caption{Simulated data: $A=\SI{1}{\mm}$ and $C_r=\num{0.6}$ for 500 consecutive jumps, with the last 150 plotted for each frequency. The blue lines matching bifurcations correspond to the time series $t=\{\SI{18.1028}{\hertz},\SI{19.0153}{\hertz},\SI{19.1952}{\hertz},\SI{19.2337}{\hertz} \}$.}\label{feigsim}
 \end{figure}
 The two first values in the series for Feigenbaums $\delta$ for our simulation is:
 \begin{align*}
@@ -360,12 +358,9 @@ The two first values in the series for Feigenbaums $\delta$ for our simulation i
 \end{align*}
 The frequency resolution used here is $\SI{0.0064}{\hertz}$.
 \section{Data analysis}
-\subsection{Feigenbaums $\delta$}
-
 \subsection{Comparison to simulated data}
-
+\subsection{Feigenbaums $\delta$}
 \section{Discussion and conclusions}
-
 \newpage
 \bibliographystyle{plain}
 \bibliography{ref}
