@@ -254,6 +254,7 @@ The above result is interesting in the sense that it is the lower frequency limi
 We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$. This means that the ball can get into a stable 1-period before the vibrating plate can start it by itself. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however possible to provide the precise initial conditions to reach a stable period at such low frequencies. This is because of the effect just described where the plate does not oscillate fast enough for the ball to start bouncing. Also this theoretical analysis suggests that a stable 1-period exists for all parameter sets that satisfy the above equation. In practice this is not true however, since the ball is much more likely to slip into a higher period at higher frequency. 
 
 \section{The experiment}
+\label{expsetup}
 \subsection{Schematic of the experimental setup}
 The setup used for the experiment can be seen on figure \ref{setupdia}. In essence the setup allows use to control a function generator through a PC as well as collect data about the impacts with the ball. The operation is as follows: We set a desired frequency and amplitude on the PC (6), which communicates this information to the micro controller (5) through USB. The micro controller outputs a digital sine wave from a table to a DAC at constant amplitude. A separate DAC is the used to amplify the signal form the first DAC. This is done to prevent loss of resolution at low amplitudes. The analog signal is then routed on to the amplifier (7), which can output a signal ranging from \SI{+15}{V} to \SI{-15}{V} as provided by the power supply (8). The amplifier is then connected to the actual loudspeaker (2), which then vibrates at the desired parameter set.
 \begin{figure}[h]
@@ -334,6 +335,7 @@ It is obvious that the collision between the ball and the speaker will affect th
 On figure there is a quite noticeable difference in amplitude between the two waveforms roughly 20\% less. Also note that the shape of the sine wave on figure \ref{wball} is quite off compared to the configuration with no ball. This has a quite significant effect on our model since it both assumes the amplitude with no ball, a ``nice'' wave form and a perfectly compliant loudspeaker. For each impact the acceleration takes a hit, we therefor suggest that the velocity of the speaker will be lower than modeled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity after the collision.
  
 \section{Numerical simulation}
+\label{Numericalsec}
 \subsection{Numerical simulation scheme}
 As described in section \ref{modelling} it is not possible to solve the the systems equations of motion analytically in the general case as it require one to find the intersection between a parabola and a sine wave. In the numerical realm it is however possible to find a such intersection. The actual problem is to find where \eqref{platey} and \eqref{ybeq} are equal that is solving the following
 \begin{equation}
@@ -357,7 +359,7 @@ We cannot claim to identify any strong patterns in this, but we have found that 
 \begin{align*}
 v_0(f) &= \frac{g}{2f} c
 \end{align*}
-This corresponds to some fraction $c$ of the speed required to jump a whole period of the loudspeaker, which for $0.6<c<0.8$ seems to land the system in the period-doubling domain. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
+This corresponds to some fraction $c$ of the speed required to jump a whole period of the loudspeaker, which for $0.7<c<0.9$ seems to land the system in the period-doubling domain. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
 \subsection{Measuring Feigenbaums-$\delta$}
 Using \eqref{Feigenbaumsdelta} we can calculate Feigenbaums constant using the dynamics of our system. Marking the times of the bifurcations in figure  \ref{feigsim}, we can calculate the $\delta$.
 \begin{figure}[h]
@@ -366,16 +368,47 @@ Using \eqref{Feigenbaumsdelta} we can calculate Feigenbaums constant using the d
 \caption{Simulated data: $A=\SI{1}{\mm}$ and $C_r=\num{0.6}$ for 500 consecutive jumps, with the last 150 plotted for each frequency. The blue lines matching bifurcations correspond to the frequencies $f=\{\SI{18.1028}{\hertz},\SI{19.0153}{\hertz},\SI{19.1952}{\hertz},\SI{19.2337}{\hertz} \}$.}\label{feigsim}
 \end{figure}
 The two first values in the series for Feigenbaums $\delta$ for our simulation is:
-\begin{align*}
+\begin{align}
 \delta&=\frac{\lambda_{n-2} - \lambda_{n-1}}{\lambda_{n-1}-\lambda_n}\\
 \delta_1&=\frac{\SI{18.1028}{\hertz}-\SI{19.0153}{\hertz}}{\SI{19.0153}{\hertz}-\SI{19.1952}{\hertz}} = 5.0714\\
 \delta_2&=\frac{\SI{19.0153}{\hertz}-\SI{19.1952}{\hertz}}{\SI{19.1952}{\hertz}-\SI{19.2337}{\hertz}} = 4.6667
-\end{align*}
-The frequency resolution used here is $\SI{0.0064}{\hertz}$.
+\end{align}
+The frequency resolution used here is $\SI{0.0064}{\hertz}$. The uncertainties are calculated with the law of error propagation, where the error is the size of the frequency steps. We can not be sure where the bifurcations are, but using the whole distance, we are sure to cover it.  
 \section{Data analysis}
 \subsection{Comparison to simulated data}
+To see how well our model holds, we can plot the simulated data, and the measured data.
+\begin{figure}
+\centering
+\begin{subfigure}[t]{0.49\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{realvals}
+	\caption{Measured data in blue, and simulated data in red. The simulation is run with the same parameters as we have set-up the experiment with, and with measured $C_r$.}
+	\label{noball}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{fakevals}
+	\caption{Measured data in blue, and simulated data in red. The simulation is run with 83\% of the amplitude, and with the same $C_r$ as measured.}
+	\label{wball}
+\end{subfigure}
+\end{figure}
+Quite obviously the bifurcations are neither wide nor short enough. Further discussion on this effect will be given in the next chapter.
 \subsection{Feigenbaums $\delta$}
+Running the experiment as described in section \ref{expsetup}, we have produced a bifurcation diagram showing three bifurcations. From these, we calculated Feigenbaums $\delta$ using the same methods we used in section \ref{Numericalsec} on the simulated data.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\linewidth]{feigplotexp}
+\label{expfeigplot}
+\end{figure}
+We find Feigenbaums $\delta$ to be:
+\begin{align}
+\delta &= \frac{\SI{18.4980}{Hz}-\SI{18.2475}{Hz}}{\SI{18.2475}{Hz}-\SI{18.5707}{Hz}} = \num{3.4(5)}
+\end{align}
+This number is quite close to Feigenbaums $\delta$, but does not fall inside the uncertainty. Further discussion will be given in the following section.  
 \section{Discussion and conclusions}
+Our simulated data disagrees strongly from our measured data. We have identified some effects which which we have not included in our model. The first is the fact that $C_r$ has some velocity dependence. In Müller et. al. \cite{Muller}, they show this effect to be small (roughly 0.5\% drop in the range $\SI{0.3}{\meter\per\second}$ to $\SI{0.7}{\meter\per\second}$) in the velocity range we are using. Second we assume the speaker is perfectly sinusoidal. This proved to be very wrong in the $\SI{14}{Hz}$ to $\SI{16}{Hz}$ range, but a non-issue in the range used. Our main culprit seems to be the backeffect from the ball hitting the speaker. We have shown the ring-out of the speaker to be slow, and we have seen that for a period 2 orbit, there is a strong disturbance to the waveform when the ball is added. Future work could be to model the speaker and the effect of the collisions more accurately. We saw the if we reduced the amplitude in our simulations by roughly 20\%, as was the reduction in amplitude produced by the steel ball, we match up the first bifurcation. The spread and the length of the bifurcations can not be explained only trough this effect, so this fact seem to be quite incidental.
+
+The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. The error is our ability to resolve frequencies. In the simulated experiment, this is a case of more computing needed, but in the experimental runs we are limited by our set-ups ability frequency resolution. The fact that we only see three bifurcations makes the measurement especially weak, and limits our ability to confirm the universality of Feigenbaums constant.
 \newpage
 \bibliographystyle{plain}
 \bibliography{ref}
