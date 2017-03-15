@@ -10,7 +10,7 @@
 \linespread{1.3}       % simulerer Word 1.5 line spacing
 
 % % % % % % % % % % Øvrige vigtige pakker % % % % %
-\usepackage[font={small,it},labelfont=bf]{caption}
+\usepackage[font={small,sl},labelfont={bf, up}]{caption}
 \DeclareCaptionLabelFormat{subfig}{\figurename #1~\arabic{figure}\alph{subfigure}:}
 \captionsetup[subfigure]{labelformat=subfig}
 \usepackage{graphicx}
@@ -310,13 +310,24 @@ One very important parameter in the setup is the coefficient of restitution $C_r
 As mentioned in section \ref{modelling} the coefficient of restitution is in fact not a constant as we assume but as a function of impact velocity. Our measurement of the $C_r$ was therefore performed in by dropping the ball a few centimetres of the plate, which was at rest. This was done to emulate the conditions of the actual experiment while giving the ball enough energy to jump a few times. On average it bounced three times before coming to a rest. Through this small experiment we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive drops. 
 
 \subsection{Collision between the ball and the plate}
-It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being affected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces. 
+It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being affected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces as seen on figures \ref{noball} and \ref{wball}. 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.65\textwidth]{ballanal.eps}
-\caption{The waveform with and without the bouncing ball.}
+\begin{subfigure}[t]{0.49\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{noball}
+	\caption{Accelerometer data for the loudspeaker without the ball.}
+	\label{noball}
+\end{subfigure}\hfill
+\begin{subfigure}[t]{0.49\textwidth}
+	\centering
+	\includegraphics[width=\textwidth]{wball}
+	\caption{Accelerometer data for the loudspeaker with the ball in a stable 2 period orbit, the red lines are impacts detected by the piezoelectric element.}
+	\label{wball}
+\end{subfigure}
 \end{figure}
-It seems that there is an effect, but that the acceleration of the speaker has returned to a normal sine waveform when the impacts occur. As the acceleration has taken a hit, we suggest that the velocity of the speaker will be lower than modelled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity out of the collision. 
+On figure there is a quite noticeable difference in amplitude between the two waveforms. Also note that the shape of the sine wave on figure \ref{wball} is quite off compared to the configuration with no ball. This has a quite significant effect on our model since it both assumes the amplitude with no ball, a ``nice'' wave form and a perfectly compliant loudspeaker. For each impact the acceleration takes a hit, we therefor suggest that the velocity of the speaker will be lower than modeled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity after the collision.
+
 \section{Numerical simulation}
 \subsection{Numerical simulation scheme}
 As described in section \ref{modelling} it is not possible to solve the the systems equations of motion analytically in the general case as it require one to find the intersection between a parabola and a sine wave. In the numerical realm it is however possible to find a such intersection. The actual problem is to find where \eqref{platey} and \eqref{ybeq} are equal that is solving the following
