@@ -83,8 +83,24 @@
 
 % % % % % % % % % % % % % % % % % % % % % % Abstract  og Indholdsfortegnelse % % % % % % % % % % % % % % % % 
 \newpage
+\selectlanguage{danish}
 \begin{abstract}
-Kort resumé, gerne på både dansk og engelsk.
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.3cm}
+\noindent I denne opgave vil vi undersøge den kaotiske opførsel af et system bestående af en  kugle hoppende på en vibrerende højtaler membran. For at beskrive systemet introducere vi grundlæggende begreber i kaosteori ved at undersøge den logistiske afbildning. Samtidig beskriver vi Feigenbaums $\delta$, som er en vigtig konstant for periode doblende fænomener. For at analysere systemet opstiller vi en teoretisk model for det, som vi løser med numeriske metoder. Simulationen viser sig at opføre sig som forventet og giver et ret præcist estimat af Feigenbaums $\delta$.
+
+Da vi lavede eksperimentet fandt vi dog at vores idealiserede model af højtaleren ikke passede særlig godt med virkeligheden, hvilket resulterede i nogle store forskelle mellem vores teoretiske model og vores eksperimentelle data. Dog kunne vi stadig give et rimeligt bud på Feigenbaums $\delta$ gennem vores data.
+
+
+\end{abstract}
+
+\selectlanguage{english}
+\begin{abstract}
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.3cm}
+\noindent In this report we will investigate the chaotic behaviour of a ball bouncing on a vibrating loudspeaker membrane. In doing this, we describe fundamental principles of chaos theory by examining the simple case of the logistic map. We also introduce the the Feigenbaum $\delta$, which is an universal constant for dynamical systems that exhibit period doubling such as the logistic map and the bouncing ball. To examine the system we created a theoretical model, which we solved using numerical methods. The simulation conformed beautifully to the theory of period doubling phenomena, and gave us a quite accurate estimate of Feigenbaums $\delta$.
+
+However, when we conducted the actual experiment we found that the ideal loudspeaker used in our model represented the one in the experiment quite poorly. The result of this was we could not properly fit our model to our experimental data. Despite this, we were still able to give a quite reasonable estimate of Feigenbaums $\delta$ through our experimental data.
 \end{abstract}
 
 \newpage
@@ -114,7 +130,7 @@ Consider the simple non-linear recurrence relation
 x_{n+1}=\lambda x_n (1-x_n)
 \label{logmap}
 \end{equation}
-This is called the logistic map, and it has some very interesting attributes. However, in this report we will only examine these qualitatively, since the logistic map is only used to get some familiarity with behavior that arises from our experiment. First of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, since outside these restrictions the series quickly diverges to $-\infty$. Within these restrictions, we can graphically iterate \eqref{logmap} by 
+This is called the logistic map, and it has some very interesting attributes. However, in this paper we will only examine these qualitatively, since the logistic map is only used to get some familiarity with behavior that arises from our experiment. First of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, since outside these restrictions the series quickly diverges to $-\infty$. Within these restrictions, we can graphically iterate \eqref{logmap} by 
 plotting the functions $f(x)=\lambda x_n (1-x_n)$ and $g(x)=x$. First, we start 
 off with an $x_0$ and draw a vertical line until we intersect $f(x)$. The 
 coordinates of this point are now $(x_0,x_1)$. To find $x_2$, we need to find
