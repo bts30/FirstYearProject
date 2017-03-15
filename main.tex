@@ -155,7 +155,16 @@ the series converges to is called an attractor, and it is a common behavior in n
 systems for there to be some point or set of points that attracts regions of initial conditions. For this particular system, something remarkable happens to this attractor if we permit $\lambda>3$.
 
 \subsection{Bifurcation Diagrams \& Feigenbaums $\delta$}
-For $\lambda$ slightly greater than 3, $x_n$ is no longer attracted to a single value, but rather starts bouncing between two distinct values as $n \rightarrow \infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 and so on\footnote{cobweb diagrams of this behavior can be found in the appendix}. When the attractor splits like this, we call it a bifurcation, and it happens infinitely many times as we let $\lambda$ increase from 3 to 4. To try to get a better overview of this behavior, we can create what is called a bifurcation diagram. In this diagram, we sweep through different values of $\lambda$ and see where $x_n$ ends up. An example of this with $2.75<\lambda<4$ can be seen on figure \ref{bifurcation}.
+For $\lambda$ slightly greater than 3, $x_n$ is no longer attracted to a single 
+value, but rather starts bouncing between two distinct values as $n \rightarrow 
+\infty$. For $\lambda$ even greater, $x_n$ will bounce between 4 values, then 8 
+and so on\footnote{cobweb diagrams of this behavior can be found in appendix 
+\ref{cobwebapen}}. When the attractor splits like this, we call it a 
+bifurcation, and it happens infinitely many times as we let $\lambda$ increase 
+from 3 to 4. To try to get a better overview of this behavior, we can create 
+what is called a bifurcation diagram. In this diagram, we sweep through 
+different values of $\lambda$ and see where $x_n$ ends up. An example of this 
+with $2.75<\lambda<4$ can be seen on figure \ref{bifurcation}.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.65\linewidth]{Figures/Bifurcation}
@@ -290,7 +299,10 @@ We also calculated the phase shift between the driving force e.g. the micro cont
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{pshiftplot.eps} 
-		\caption{Phase shift between the loudspeaker and the micro controller driving it as a function of frequency. Fit:  $\arctan \left(\frac{2\pi a f}{4\pi^2f^2-b}\right)+2\pi c f$, with $a=-40.6$, $b=1.34 \cdot 10^4$ and $c=1.55 \cdot 10^-2$.}
+		\caption{Phase shift between the loudspeaker and the micro controller 
+		driving it as a function of frequency. Fit:  $\arctan \left(\frac{2\pi 
+		a f}{4\pi^2f^2-b}\right)+2\pi c f$, with $a=40.6$, $b=1.34 \cdot 10^4$ 
+		and $c=1.55 \cdot 10^{-2}$.}
 		\label{phaseshift_plot}
 	\end{subfigure} \hfill 
 	\begin{subfigure}[t]{0.49\textwidth}
@@ -413,6 +425,35 @@ The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. Th
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage
 \appendix
+
+
+\section{Cobweb diagrams}
+\label{cobwebapen}
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{{Figures/cobweb_x1_l32_iter100}}
+		\caption{A stable 2-period}
+	\end{subfigure}\hfill
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=\linewidth]{{Figures/cobweb_x1_l35_iter100}}
+		\caption{A stable 4-period}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.65\linewidth]{Figures/cobweb_x10_l38_iter100}
+	\caption{Cobweb diagram with $\lambda$ corresponding to a 3-period. The 
+	initial condition is chosen to be very close to a value contained in the 
+	attractor, since not doing this will create a lot of noise as $x_n$ finds 
+	the stable 3-period, which makes it hard to distinguish this diagram from 
+	one in the chaotic regime.}
+	\label{fig:cobwebx10l38iter100}
+\end{figure}
+\newpage
 \section{Derivation of the equations of motion for a driven harmonic oscillator}
 \label{driven}
 The equation of motion for a driven simple harmonic oscillator will be of the form:
@@ -473,46 +514,31 @@ The phase shift will then be:
 \frac{B}{A} &= \frac{L\sin(\phi)}{L\cos(\phi)} = \tan(\phi)\\
 \phi &= \arctan\left(\frac{B}{A}\right)\\
 \phi &= \arctan\left( \frac{-bF\omega}{\left(k-m\omega^2\right)^2+b^2\omega^2} \cdot \frac{\left(k-m\omega^2\right)^2+b^2\omega^2}{F\left(k-m\omega^2\right)} \right)\\
-\phi &= \arctan\left( \frac{b\omega}{m\omega^2-k} \right)=\arctan\left(\frac{2\pi b f}{4\pi^2 m f^2-k}\right)
+\phi &= \arctan\left( \frac{b\omega}{m\omega^2-k} 
+\right)=\arctan\left(\frac{2\pi \frac{b}{m} f}{4\pi^2 
+	f^2-\frac{k}{m}}\right)
 \end{align*}
 
 If our system also has a latent phase shift due to some constant delay in time, such as time lost to processing in the microcontrollers or anywhere else before the signal gets to the loudspeaker, we can simply add this phase shift to our expected phase shift of a driven oscillator.
 \begin{equation}
-    \phi = \arctan\left(\frac{2\pi b f}{4\pi^2 m f^2-k}\right)+\phi_{latent} =\arctan\left(\frac{2\pi b f}{4\pi^2 m f^2-k}\right) + 2\pi f t
+    \phi = \arctan\left(\frac{2\pi \frac{b}{m} f}{4\pi^2 
+    f^2-\frac{k}{m}}\right)+\phi_{latent} =\arctan\left(\frac{2\pi \frac{b}{m} 
+    f}{4\pi^2 f^2-\frac{k}{m}}\right) + 2\pi f t
     \label{pshifteq}
 \end{equation}
-We use this equation to model the phaseshift in our loudspeaker, since it seems reasonable to suggest that there will be some delay in the signal on its way to the loudspeaker.
-
-\section{Cobweb diagrams}
-
-\begin{figure}[h]
-	\centering
-	\caption{The attractors dependence on $\lambda$}
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\caption{A stable 2-period}
-		\includegraphics[width=\linewidth]{{Figures/cobweb_x1_l32_iter100}}
-	\end{subfigure}\hfill
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-		\caption{A stable 4-period}
-		\includegraphics[width=\linewidth]{{Figures/cobweb_x1_l35_iter100}}
-	\end{subfigure}
-\end{figure}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{Figures/cobweb_x10_l38_iter100}
-	\caption{Cobweb diagram with $\lambda$ corresponding to a 3-period. The initial condition is chosen to be very close to a value contained in the attractor, since not doing this will create a lot of noise as $x_n$ finds the stable 3-period, which makes it hard to distinguish this diagram from one in the chaotic regime.}
-	\label{fig:cobwebx10l38iter100}
-\end{figure}
+We use this equation to model the phaseshift in our loudspeaker, since it seems 
+reasonable to suggest that there will be some delay in the signal on its way to 
+the loudspeaker.
+\newpage
 \section{Odd-numbered orbits}
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 		\centering
 	    \includegraphics[width=\linewidth]{period3.eps}
-	    \caption{Odd numbered orbits in experimental data.}
+	    \caption{Odd numbered orbits in experimental data. The light blue line 
+	    behind the data is a plot of $1/f$, signifying one period of the 
+	    loudspeaker.}
 	\end{subfigure}\hfill
 	\begin{subfigure}{0.45\textwidth}
 		\centering
