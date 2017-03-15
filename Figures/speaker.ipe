@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20170314143419" modified="D:20170314143419"/>
+<info created="D:20170314143419" modified="D:20170315143459"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -276,8 +276,18 @@ h
 64 704 l
 128 640 l
 </path>
-<path stroke="black">
+<path stroke="black" dash="dashed">
 16 0 0 16 288 688 e
+</path>
+<path matrix="1 0 0 1 -16 0" stroke="black" arrow="normal/normal" rarrow="normal/normal">
+544 672 m
+544 608 l
+</path>
+<text transformations="translations" pos="496 592" stroke="black" type="label" width="72.291" height="11.955" depth="0" valign="baseline" size="LARGE">Vibrations</text>
+<text transformations="translations" pos="464 496" stroke="black" type="label" width="0" height="0" depth="0" valign="baseline"></text>
+<text transformations="translations" pos="464 608" stroke="black" type="label" width="0" height="0" depth="0" valign="baseline"></text>
+<path stroke="black">
+16 0 0 16 288 752 e
 </path>
 </page>
 </ipe>
