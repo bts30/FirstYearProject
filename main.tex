@@ -400,11 +400,21 @@ To see how well our model holds, we can plot the simulated data, and the measure
 Quite obviously the bifurcations are neither wide nor short enough, which we suspect has to do with the ball interacting with the loudspeaker. Because we have measured that the actual amplitude is lower as described in section \ref{ballplate}, we tried with a lower amplitude which resulted in figure \ref{fakedata}. Further discussion on this effect will be given in section \ref{conclusions}.
 
 \subsection{Feigenbaums $\delta$}
-Running the experiment as described in section \ref{expsetup}, we have produced a bifurcation diagram showing three bifurcations. From these, we calculated Feigenbaums $\delta$ using the same methods we used in section \ref{Numericalsec} on the simulated data.
+Running the experiment as described in section \ref{expsetup}, we have produced a bifurcation diagram showing three bifurcations. From these, we calculated Feigenbaums $\delta$ using the same methods we used in section \ref{Numericalsec} on the simulated data shown on figure \ref{expfeigplot}.
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.65\linewidth]{feigplotexp}
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=\textwidth]{feigplotexp}
+\caption{Experimental data in blue, lines in red marking the bifurcations.}
 \label{expfeigplot}
+\end{subfigure} \hfill
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=\textwidth]{long}
+\caption{A run with a smaller and lighter ball. The distance between the first and the second bifurcation is much longer.}
+\label{long}
+\end{subfigure}
 \end{figure}
 We find Feigenbaums $\delta$ to be:
 \begin{align}
@@ -414,8 +424,8 @@ This number is quite close to Feigenbaums $\delta$, but does not fall inside the
 
 \section{Discussion and conclusions}
 \label{conclusions}
-Our simulated data disagrees strongly with our measured data. We have identified some effects which we have not included in our model. The first is the fact that $C_r$ has some velocity dependence. In Müller et. al. \cite{muller}, they show this effect to be small (roughly 0.5\% drop in the range $\SI{0.3}{\meter\per\second}$ to $\SI{0.7}{\meter\per\second}$) in the velocity range we are using. Second we assume the speaker is perfectly sinusoidal. This proved to be incorrect in the $\SI{14}{Hz}$ to $\SI{16}{Hz}$ range, but less of a issue in the range used. Our main culprit seems to be the backeffect from the ball hitting the speaker. We have shown the ring-out of the speaker to be slow, and we have seen that for a period 2 orbit, there is a strong disturbance of the waveform when the ball is bouncing. Future work could be to model the speaker and the effect of the collisions more accurately. We saw the if we reduced the amplitude in our simulations by roughly 20\%, as was the reduction in amplitude produced by the steel ball, we match up the first bifurcation. The spread and the length of the bifurcations, we can however not explain only trough this effect, so this fact seem to be quite incidental. It should be noted that the simulation fits quite well into Feigenbaums theory as it gave a correct $\delta$.
-
+Our simulated data disagrees strongly with our measured data. We have identified some effects which we have not included in our model. The first is the fact that $C_r$ has some velocity dependence. In Müller et. al. \cite{muller}, they show this effect to be small (roughly 0.5\% drop in the range $\SI{0.3}{\meter\per\second}$ to $\SI{0.7}{\meter\per\second}$) in the velocity range we are using. Second we assume the speaker is perfectly sinusoidal. This proved to be incorrect in the $\SI{14}{Hz}$ to $\SI{16}{Hz}$ range, but less of a issue in the range used. Our main culprit seems to be the backeffect from the ball hitting the speaker. Late in the project we tried to repeat the experiment using a lighter ball, figure \ref{long}. We discovered that this seemed to produce results more like our simulations. We have shown the ring-out of the speaker to be slow, and we have seen that for a period 2 orbit, there is a strong disturbance of the waveform when the ball is bouncing. Future work could be to model the speaker and the effect of the collisions more accurately. We saw the if we reduced the amplitude in our simulations by roughly 20\%, as was the reduction in amplitude produced by the steel ball, we match up the first bifurcation. The spread and the length of the bifurcations, we can however not explain only trough this effect, so this fact seem to be quite incidental. It should be noted that the simulation fits quite well into Feigenbaums theory as it gave a correct $\delta$.
+	
 The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. The error is our ability to resolve frequencies. In the simulated experiment, this is a case of more computing needed, but in the experimental runs we are limited by our set-ups ability frequency resolution. The fact that we only see three bifurcations makes the measurement especially weak, and limits our ability to confirm the universality of Feigenbaums constant. Though our experiment suggest a reasonable $\delta$ which is approximately the same as seen in Tufillaro and Albano \cite{tufillaro}.
 \newpage
 \addcontentsline{toc}{section}{References}
