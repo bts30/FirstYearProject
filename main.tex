@@ -92,7 +92,14 @@ hovedtekst og
 \begin{abstract}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.3cm}
-\noindent I denne opgave vil vi undersøge den kaotiske opførsel af et system bestående af en  kugle hoppende på en vibrerende højtaler membran. For at beskrive systemet introducere vi grundlæggende begreber i kaosteori ved at undersøge den logistiske afbildning. Samtidig beskriver vi Feigenbaums $\delta$, som er en vigtig konstant for periode doblende fænomener. For at analysere systemet opstiller vi en teoretisk model, som vi løser med numeriske metoder. Simulationen viser sig at opføre sig som forventet og giver et ret præcist estimat af Feigenbaums $\delta$.
+\noindent I denne opgave vil vi undersøge den kaotiske opførsel af et system 
+bestående af en  kugle hoppende på en vibrerende højtaler membran. For at 
+beskrive systemet introducerer vi grundlæggende begreber i kaosteori ved at 
+undersøge den logistiske afbildning. Samtidig beskriver vi Feigenbaums 
+$\delta$, som er en vigtig konstant for periode doblende fænomener. For at 
+analysere systemet opstiller vi en teoretisk model, som vi løser med numeriske 
+metoder. Simulationen viser sig at opføre sig som forventet og giver et ret 
+præcist estimat af Feigenbaums $\delta$.
 
 Da vi lavede eksperimentet fandt vi dog at vores idealiserede model af højtaleren ikke passede særlig godt med virkeligheden, hvilket resulterede i nogle store forskelle mellem vores teoretiske model og vores eksperimentelle data. Dog kunne vi stadig give et rimeligt bud på Feigenbaums $\delta$ gennem vores data.
 
@@ -103,7 +110,15 @@ Da vi lavede eksperimentet fandt vi dog at vores idealiserede model af højtaler
 \begin{abstract}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.3cm}
-\noindent In this report we will investigate the chaotic behaviour of a ball bouncing on a vibrating loudspeaker membrane. In doing this, we describe fundamental principles of chaos theory by examining the simple case of the logistic map. We also introduce the the Feigenbaum $\delta$, which is an universal constant for dynamical systems that exhibit period doubling such as the logistic map and the bouncing ball. To examine the system we created a theoretical model, which we solved using numerical methods. The simulation conformed beautifully to the theory of period doubling phenomena, and gave us a quite accurate estimate of Feigenbaums $\delta$.
+\noindent In this report we will investigate the chaotic behaviour of a ball 
+bouncing on a vibrating loudspeaker membrane. In doing this, we describe 
+fundamental principles of chaos theory by examining the simple case of the 
+logistic map. We also introduce the Feigenbaum $\delta$, which is an almost 
+universal constant for dynamical systems that exhibit period doubling such as 
+the logistic map and the bouncing ball. To examine the system we created a 
+theoretical model, which we solved using numerical methods. The simulation 
+conformed beautifully to the theory of period doubling phenomena, and gave us a 
+quite accurate estimate of Feigenbaums $\delta$.
 
 However, when we conducted the actual experiment we found that the ideal loudspeaker used in our model represented the one in the experiment quite poorly. The result of this was we could not properly fit our model to our experimental data. Despite this, we were still able to give a quite reasonable estimate of Feigenbaums $\delta$ through our experimental data.
 \end{abstract}
@@ -199,15 +214,18 @@ time of impact.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.65\textwidth]{Figures/bounceplot.eps}
-	\caption{Plot of two bounces on the vibrating plate}
+	\caption{Plot of two bounces on the vibrating membrane}
 	\label{bounces}
 \end{figure}
 The $k^{\text{th}}$ bounce can be completely described by the time $t_k$ it left the membrane and the velocity $v_k$ at that instance. Time and phases $\phi_k$ can be used interchangeably through the relationship $\phi=2\pi f t$.
 
-To describe the system during a specific bounce we denote the distance of the ball above the rest position of the membrane $y_b(t)$. Similarly we define $y_p(t)$ as the displacement from equilibrium. For a given frequency $f$, phase shift $\phi$ and amplitude $A$ the equation of motion for the plate is
+To describe the system during a specific bounce we denote the distance of the 
+ball above the rest position of the membrane $y_b(t)$. Similarly we define 
+$y_p(t)$ as the displacement from equilibrium. For a given frequency $f$, phase 
+shift $\phi$ and amplitude $A$ the equation of motion for the membrane is
 \begin{equation}
 	y_p(t)= A \cos(2\pi f t+ \phi)
-	\label{platey}
+	\label{membraney}
 \end{equation}
 In the air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for the $k^\text{th}$ jump, with the initial conditions $v_k$, $y_p(t_k)$ at time $t_k$, is simply given by
 \begin{equation}
@@ -221,12 +239,20 @@ For each jump we will denote the change of the impact $y$-coordinate\footnote{In
 \end{equation}
 Furthermore we can differentiate equation (\ref{ybeq}) to find the velocity of the ball, thereby finding the final velocity for each jump $v_{k,f}$.
 \begin{equation}
-	v_{b,k}(t) = -g(t-t_k)+v_k \Rightarrow v_{k,f} = v_{b,k}(t_k+\Delta t_K) = -\sqrt{v_k^2-2g\Delta y_k}
+	v_{b,k}(t) = -g(t-t_k)+v_k \Rightarrow v_{k,f} = v_{b,k}(t_k+\Delta t_k) = 
+	-\sqrt{v_k^2-2g\Delta y_k}
 \end{equation}
-To model the impact between the ball and the plate we use a constant coefficient of restitution $C_r$ although more complex models have been suggested\cite{muller}. For a plate at rest, the velocity after the impact is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r v_{down}$. For a moving plate we simplify transform into the coordinate system where the plate is at rest and, calculate the velocity of the ball in this frame, then transform back. The velocity of the plate is easily obtained by differentiating (\ref{platey}).
+To model the impact between the ball and the membrane we use a constant 
+coefficient of restitution $C_r$ although more complex models have been 
+suggested\cite{muller}. For a membrane at rest, the velocity after the impact 
+is proportional to the velocity before by $C_r$ such that $v_{up}=-C_r 
+v_{down}$. For a moving membrane we simply transform into the coordinate system 
+where the membrane is at rest, calculate the velocity of the ball in this frame 
+and then transform back. The velocity of the membrane is easily obtained by 
+differentiating (\ref{membraney}).
 \begin{equation}
 	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
-	\label{platev}
+	\label{membranev}
 \end{equation}
 Putting the two together yields the following relationship between the final velocity of the $k^{th}$ jump $v_{k,f}$ and the initial velocity of the next $v_{k+1}$.
 \begin{align}
@@ -254,29 +280,77 @@ The first thing to notice about (\ref{1perstable}) is that it does not have a so
 \begin{align}
 	-1 \le \frac{ng}{4\pi Af^2 }\frac{C_r-1}{C_r+1} \Rightarrow \sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}} \le f
 \end{align}
-The above result is interesting in the sense that it is the lower frequency limit for a sustained bouncing motion. By differentiating (\ref{platev}) again we can determine the minimum frequency for the ball to experience momentarily weightlessness is $f\ge\sqrt{\frac{g}{4\pi^2A}}$, the ratio between the two is
+The above result is interesting in the sense that it is the lower frequency 
+limit for a sustained bouncing motion. By differentiating (\ref{membranev}) 
+again we can determine the minimum frequency for the ball to experience 
+momentarily weightlessness is $f\ge\sqrt{\frac{g}{4\pi^2A}}$, the ratio between 
+the two is
 \begin{equation}
 	r_f=\frac{\sqrt{\frac{g}{4\pi^2A}}}{\sqrt{\frac{ng}{4\pi A}\frac{1-C_r}{C_r+1}}} = \sqrt{\frac{1}{n\pi} \frac{1+C_r}{1-C_1}}
 \end{equation}
-We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$. This means that the ball can get into a stable 1-period before the vibrating plate can self-start it. It should be noted that the lower bound is greater in practice since the theoretical lower bound indicates when there is exactly enough energy in the system for a stable period. It is not however hard to provide the precise initial conditions to reach a stable period at such low frequencies, as one would have to produce matching phase and velocity conditions. When $r_f$ is below unity, the system will keep restarting the ball without outside interaction, allowing the attractor to take over. Also this theoretical analysis suggests that a stable 1-period exists for all parameter sets that satisfy the above equation. In practice this is not true however, since the ball is much more likely to slip into a higher numbered period at higher frequency. 
+We use a set-up with $C_r\approx 0.7$ and $n=1$ which gives $r_f\approx1.3$. 
+This means that the ball can get into a stable 1-period before the vibrating 
+membrane can self-start it. It should be noted that the lower bound is greater 
+in practice since the theoretical lower bound indicates when there is exactly 
+enough energy in the system for a stable period. It is not however hard to 
+provide the precise initial conditions to reach a stable period at such low 
+frequencies, as one would have to produce matching phase and velocity 
+conditions. When $r_f$ is below unity, the system will keep restarting the ball 
+without outside interaction, allowing the attractor to take over. Also this 
+theoretical analysis suggests that a stable 1-period exists for all parameter 
+sets that satisfy the above equation. In practice this is not true however, 
+since the ball is much more likely to slip into a higher numbered period at 
+higher frequency. 
 \section{The experiment}
 \label{expsetup}
 \subsection{Schematic of the experimental setup}
-The setup used for the experiment can be seen on figure \ref{setupdia}. In essence the setup allows use to control a function generator through a PC as well as collect data about the impacts with the ball. The operation is as follows: We set a desired frequency and amplitude on the PC (6), which communicates this information to the micro controller (5) through USB. The micro controller outputs a digital sine wave from a table to a DAC at constant amplitude. A separate DAC is used to amplify the signal form the first DAC. This is done to prevent loss of resolution at low amplitudes. The analog signal is then routed on to the amplifier (7), which can output a signal ranging from \SI{+15}{V} to \SI{-15}{V} as provided by the power supply (8). The amplifier is then connected to the actual loudspeaker (2), which then vibrates at the desired parameter set.
+The setup used for the experiment can be seen on figure \ref{setupdia}. In 
+essence the setup allows us to control a function generator through a PC as 
+well as collect data about the impacts with the ball. The operation is as 
+follows: We set a desired frequency and amplitude on the PC (6), which 
+communicates this information to the micro controller (5) through USB. The 
+micro controller outputs a digital sine wave from a table to a DAC at constant 
+amplitude. A separate DAC is used to amplify the signal from the first DAC. 
+This is done to prevent loss of resolution at low amplitudes. The analog signal 
+is then routed on to the amplifier (7), which can output a signal ranging from 
+\SI{+15}{V} to \SI{-15}{V} as provided by the power supply (8). The amplifier 
+is connected to the actual loudspeaker (2), which then vibrates at the 
+desired parameter set.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{setup}
 	\caption{Schematic of the setup: (1) Steel ball, (2) loudspeaker with concave lens, (3) Accelerometer attached to the lens, (4) Filter and trigger circuit, (5) Micro controller and DACs, (6) PC, (7) Amplifier, (8) Power supply, (9) Piezoelectric element}
 	\label{setupdia}
 \end{figure}
-As the ball (1) starts to bounce on the concave lens, which was chosen to minimize sideways motion, the piezoelectric element (9) induces a voltage when the ball impacts. The piezoelectric element is connected to a small circuit (4) that partly consists of a low pass filter and partly of a adjustable reference voltage to change the emphasis of the signal. Lastly the filtered signal is passed on to the micro controller which acts as a comparator and thereby determine whether there has been an impact or not. For every impact the micro controller sends back the relevant information about the impact, such as phase, to the PC.
+As the ball (1) starts to bounce on the concave lens, which was chosen to 
+minimize sideways motion, the piezoelectric element (9) induces a voltage when 
+the ball impacts. The piezoelectric element is connected to a small circuit (4) 
+that partly consists of a low pass filter and partly of a adjustable reference 
+voltage to change the emphasis of the signal. Lastly the filtered signal is 
+passed on to the micro controller which acts as a comparator and thereby 
+determine whether there has been an impact or not. For every impact the micro 
+controller sends back relevant information about the impact, such as phase, to 
+the PC.
 
-In the following section \ref{Characterization} we will examine how well the set-up can deliver the desired parameter set. To do this we attached a accelerometer (3) to the loud speaker giving us vital data about the waveform such as frequency, amplitude and phase shift.
+In the following section \ref{Characterization} we will examine how well the 
+set-up can deliver the desired parameter set. To do this we attached an 
+accelerometer (3) to the loud speaker giving us vital data about the waveform 
+such as frequency, amplitude and phase shift.
 \subsection{Characterization of the setup}
 \label{Characterization}
 To perform the experiment we wish the parameters of the speaker membrane to be independent of each other. That is, amplitude should not depend on frequency, the 'sine-lyness' of the produced waveform should not depend on amplitude etc. As it turned out, this was not always the case. As the speaker is essentially a driven damped oscillator we observe resonance behaviour, and our amplitude, in turn, depended on frequency. For our chosen ball, the interesting frequency domain coincided with the natural frequency of the speaker. To mitigate this effect, we measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
 
-Using an accelerometer attached to the side of the vibrating plate, we have measured the real amplitude of the system. To get an estimate of our baseline noise in measurements, we have collected a dataset comprised solely of noise. Taking the standard deviation will give us a measurement of the typical error, which we measured to be $\SI{0.04}{\volt}$. This error will be propagated trough. We normalized the digital amplitude to range from 0 to 1, and measured the actual amplitude in the range \SI{14}{Hz} to \SI{30}{Hz} at digital 0.7. Then, we used a cubic spline to interpolate the full range. Under the assumption that the actual amplitude is proportional to the digital amplitude, we have created the following model of the amplitude as a function of frequency and digital amplitude, where $A_{0.7}(f)$ is the measured amplitudes.
+Using an accelerometer attached to the side of the vibrating lens, we have 
+measured the real amplitude of the system. To get an estimate of our baseline 
+noise in measurements, we have collected a dataset comprised solely of noise. 
+Taking the standard deviation will give us a measurement of the typical error, 
+which we measured to be $\SI{0.04}{\volt}$. This error will be propagated 
+trough. We normalized the digital amplitude to range from 0 to 1, and measured 
+the actual amplitude in the range \SI{14}{Hz} to \SI{30}{Hz} at digital 0.7. 
+Then, we used a cubic spline to interpolate the full range. Under the 
+assumption that the actual amplitude is proportional to the digital amplitude, 
+we have created the following model of the amplitude as a function of frequency 
+and digital amplitude, where $A_{0.7}(f)$ is the measured amplitudes.
 \begin{equation}
 	A(f,A_{d}) = A_{0.7}(f)\frac{A_{d}}{0.7} \Rightarrow A_d(f,A) = 0.7\frac{A}{A_{0.7}(f)}
 	\label{ampl_model}
@@ -319,13 +393,26 @@ We also calculated the phase shift between the driving force e.g. the micro cont
 \end{figure}
 Seeing the plots of frequency vs amplitude, one might suspect the natural frequency of the system to be close to 20 Hz. To confirm this suspicion we have conducted another experiment, which was a measurement of the acceleration after a sharp collision as seen on figure \ref{ringout}. We then fitted a exponentially deceasing sine function, as that is the acceleration anticipated from a damped oscillator. Notice that the impulse response dies out rather slowly. This might have an effect on the actual experiment, as the effects of the impulse has not died out before the next impact with the ball. Also note the frequency $\omega$ found on the plot, which is $\omega = \SI{127.6}{rad/s} = \SI{20.3}{Hz}$ which exactly what we expected. This quite firmly proves that loudspeaker indeed can be modelled as a damped oscillator.
 \subsubsection{The coefficient of restitution}
-One very important parameter in the set-up is the coefficient of restitution $C_r$ which has already been described in the above. To measure this we used the fact that the duration of each jump on a plate at rest is proportional to the initial velocity. Since the jump the will be symmetric the initial and final velocity will be equal but with opposite signs. By equation (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, which is exactly $C_r$.
+One very important parameter in the set-up is the coefficient of restitution 
+$C_r$ which has already been described in the above. To measure this we used 
+the fact that the duration of each jump on a membrane at rest is proportional 
+to the initial velocity. Since the jump the will be symmetric the initial and 
+final velocity will be equal but with opposite signs. By equation 
+(\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, 
+which is exactly $C_r$.
 \begin{equation}
 	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
 \end{equation}
-As mentioned in section \ref{modelling} the coefficient of restitution is not a constant as we assume, but is a function of impact velocity. Our measurement of $C_r$ was performed by dropping the ball a few centimetres off the plate, which was at rest. This was done to emulate the conditions of the actual experiment while giving the ball enough energy to jump a few times. On average it bounced three times before coming to a rest. Through this small experiment, we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive experiments. 
-\subsection{Collision between the ball and the plate}
-\label{ballplate}
+As mentioned in section \ref{modelling} the coefficient of restitution is not a 
+constant as we assume, but is a function of impact velocity. Our measurement of 
+$C_r$ was performed by dropping the ball a few centimetres onto the membrane, 
+which was at rest. This was done to emulate the conditions of the actual 
+experiment while giving the ball enough energy to jump a few times. On average 
+it bounced three times before coming to a rest. Through this small experiment, 
+we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive 
+experiments. 
+\subsection{Collision between the ball and the membrane}
+\label{ballmembrane}
 It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being affected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces as seen on figures \ref{noball} and \ref{wball}. 
 \begin{figure}[h]
 \centering
@@ -342,19 +429,37 @@ It is obvious that the collision between the ball and the speaker will affect th
 	\label{wball}
 \end{subfigure}
 \end{figure}
-On figure there is a quite noticeable difference in amplitude between the two waveforms roughly 20\% less. Also note that the shape of the sine wave on figure \ref{wball} is quite off compared to the configuration with no ball. This has a quite significant effect on our model since it both assumes the amplitude with no ball, a ``nice'' wave form and a perfectly compliant loudspeaker. For each impact the acceleration takes a hit, we therefor suggest that the velocity of the speaker will be lower than modeled. We also suggest that, as the speaker evidently isn't ideal, the speaker will not be able to provide the necessary impulse, and in turn, the ball will not have expected initial velocity after the collision.
+On figure there is a quite noticeable difference in amplitude between the two 
+waveforms roughly 20\% less. Also note that the shape of the sine wave on 
+figure \ref{wball} is quite off compared to the configuration with no ball. 
+This has a quite significant effect on our model since it both assumes the 
+amplitude with no ball, a ``nice'' wave form and a perfectly compliant 
+loudspeaker. For each impact the acceleration takes a hit, we therefore suggest 
+that the velocity of the speaker will be lower than modeled. We also suggest 
+that, as the speaker evidently isn't ideal, the speaker will not be able to 
+provide the necessary impulse, and in turn, the ball will not have expected 
+initial velocity after the collision.
  
 \section{Numerical simulation}
 \label{Numericalsec}
 \subsection{Numerical simulation scheme}
-As described in section \ref{modelling} it is not possible to solve the systems equations of motion analytically in the general case as it require one to find the intersection between a parabola and a sine wave. In the numerical realm it is however possible to find this intersection. The actual problem is to find where \eqref{platey} and \eqref{ybeq} are equal that is solving the following
+As described in section \ref{modelling} it is not possible to solve the systems 
+equations of motion analytically in the general case as it require one to find 
+the intersection between a parabola and a sine wave. In the numerical realm it 
+is however possible to find this intersection. The actual problem is to find 
+where \eqref{membraney} and \eqref{ybeq} are equal that is solving the following
 \begin{equation}
 	A \cos(2\pi f t+ \phi) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
 \end{equation}
 As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. In practice, this is done using the \texttt{fzero} method in \textsc{Matlab}, which is essentially using a bisection method for root finding.
 
 \subsection{Sticky solutions}
-For some parameters the trajectory of the ball will end in it sticking to the plate, not bouncing. In our simulation this will be represented as a series of zeroes, which can be thought of as the ball bouncing infinitely fast. In practice, we have defined a tolerance for our numerical calculations, defined as $\SI{1e-5}{\second}$. We will assign a sticky solution to any parameter set for which the time between two following jumps is less than this tolerance. 
+For some parameters the trajectory of the ball will end in it sticking to the 
+membrane, not bouncing. In our simulation this will be represented as a series 
+of zeroes, which can be thought of as the ball bouncing infinitely fast. In 
+practice, we have defined a tolerance for our numerical calculations, defined 
+as $\SI{1e-5}{\second}$. We will assign a sticky solution to any parameter set 
+for which the time between two following jumps is less than this tolerance. 
 \subsection{Chaotic behaviour in the theoretical model}
 The idea for the experiment originates from Tufillaro and Albano \cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside ``islands'' of stability in the chaotic region. The logistic map is a convenient model to introducing chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing odd period orbits.
 
@@ -402,7 +507,12 @@ To see how well our model holds, we can plot the simulated data, and the measure
 	\label{fakedata}
 \end{subfigure}
 \end{figure}
-Quite obviously the bifurcations are neither wide nor short enough, which we suspect has to do with the ball interacting with the loudspeaker. Because we have measured that the actual amplitude is lower as described in section \ref{ballplate}, we tried with a lower amplitude which resulted in figure \ref{fakedata}. Further discussion on this effect will be given in section \ref{conclusions}.
+Quite obviously the bifurcations are neither wide nor short enough, which we 
+suspect has to do with the ball interacting with the loudspeaker. Because we 
+have measured that the actual amplitude is lower as described in section 
+\ref{ballmembrane}, we tried with a lower amplitude which resulted in figure 
+\ref{fakedata}. Further discussion on this effect will be given in section 
+\ref{conclusions}.
 
 \subsection{Feigenbaums $\delta$}
 Running the experiment as described in section \ref{expsetup}, we have produced a bifurcation diagram showing three bifurcations. From these, we calculated Feigenbaums $\delta$ using the same methods we used in section \ref{Numericalsec} on the simulated data shown on figure \ref{expfeigplot}.
@@ -550,19 +660,37 @@ reasonable to suggest that there will be some delay in the signal on its way to
 the loudspeaker.
 \newpage
 \section{Odd-numbered orbits}
+
+
+
 \begin{figure}[h]
 	\centering
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-	    \includegraphics[width=\linewidth]{period3.eps}
-	    \caption{Odd numbered orbits in experimental data. The light blue line 
-	    behind the data is a plot of $1/f$, signifying one period of the 
-	    loudspeaker.}
-	\end{subfigure}\hfill
-	\begin{subfigure}{0.45\textwidth}
-		\centering
-	    \includegraphics[width=\linewidth]{3psim.eps}
-	    \caption{Odd numbered orbits in simulated data.}
-	\end{subfigure}
+	\includegraphics[width=0.65\linewidth]{period3.eps}
+	\caption{Odd numbered orbits in experimental data. The light blue line 
+		behind the data is a plot of $1/f$, signifying one period of the 
+		loudspeaker.}
 \end{figure}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.65\linewidth]{3psim.eps}
+	\caption{Odd numbered orbits in simulated data.}
+\end{figure}
+
+%\begin{figure}[h]
+%	\centering
+%	\begin{subfigure}[t]{0.45\textwidth}
+%		\centering
+%	    \includegraphics[width=\linewidth]{period3.eps}
+%	    \caption{Odd numbered orbits in experimental data. The light blue line 
+%	    behind the data is a plot of $1/f$, signifying one period of the 
+%	    loudspeaker.}
+%	\end{subfigure}\hfill
+%	\begin{subfigure}[t]{0.45\textwidth}
+%		\centering
+%	    \includegraphics[width=\linewidth]{3psim.eps}
+%	    \caption{Odd numbered orbits in simulated data.}
+%	\end{subfigure}
+%\end{figure}
 \end{document}
