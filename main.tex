@@ -9,6 +9,7 @@
 \usepackage[utf8]{inputenc}
 \linespread{1.3}       % simulerer Word 1.5 line spacing
 
+
 % % % % % % % % % % Øvrige vigtige pakker % % % % %
 \usepackage[font={small,sl},labelfont={bf, up}]{caption}
 \DeclareCaptionLabelFormat{subfig}{\figurename #1~\arabic{figure}\alph{subfigure}:}
@@ -30,6 +31,7 @@
 \usepackage{epstopdf}
 \usepackage[separate-uncertainty = true]{siunitx}
 \usepackage{fancyhdr}
+\usepackage{pageslts}
 %Muliggør 'flere figurer i én' Eksempel på anvendelse (indenfor figure-environment):
 % \subfloat[undercaption 1]{\label{label 1}\includegraphics[bredde 1]{billede 1}}
 % \subfloat[undercaption 2]{\label{label 2}\includegraphics[bredde 2]{billede 2}}
@@ -74,9 +76,12 @@
 
 \vfill
 
-{\large Rapporten omfatter {\bf 1} siders hovedtekst og {\bf 1} siders appendix.}
+{\large Rapporten omfatter {\bf \lastpages{arabic}{1}} siders 
+hovedtekst og 
+{\bf 
+\lastpages{roman}{2}} siders appendix.}
 
-{\large Rapporten er indsendt som en pdf-fil den 17 marts 2017. }
+{\large Rapporten er indsendt som en pdf-fil den 17. marts 2017. }
 
 \normalsize
 
@@ -428,6 +433,8 @@ Our simulated data disagrees strongly with our measured data. We have identified
 	
 The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. The error is our ability to resolve frequencies. In the simulated experiment, this is a case of more computing needed, but in the experimental runs we are limited by our set-ups ability frequency resolution. The fact that we only see three bifurcations makes the measurement especially weak, and limits our ability to confirm the universality of Feigenbaums constant. Though our experiment suggest a reasonable $\delta$ which is approximately the same as seen in Tufillaro and Albano \cite{tufillaro}.
 \newpage
+\pagenumbering{gobble}
+
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{plain}
 \bibliography{ref}
@@ -435,6 +442,9 @@ The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. Th
 % % % % % % % % % % % % % % % % % % % % % % Appendix % % % % % % % % % % % % % % % % % % % % % % % % %
 \newpage
 \appendix
+
+\pagenumbering{roman}
+\setcounter{page}{1}
 
 
 \section{Cobweb diagrams}
@@ -461,7 +471,6 @@ The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. Th
 	attractor, since not doing this will create a lot of noise as $x_n$ finds 
 	the stable 3-period, which makes it hard to distinguish this diagram from 
 	one in the chaotic regime.}
-	\label{fig:cobwebx10l38iter100}
 \end{figure}
 \newpage
 \section{Derivation of the equations of motion for a driven harmonic oscillator}
