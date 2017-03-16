@@ -120,7 +120,7 @@ theoretical model, which we solved using numerical methods. The simulation
 conformed beautifully to the theory of period doubling phenomena, and gave us a 
 quite accurate estimate of Feigenbaums $\delta$.
 
-However, when we conducted the actual experiment we found that the ideal loudspeaker used in our model represented the one in the experiment quite poorly. The result of this was we could not properly fit our model to our experimental data. Despite this, we were still able to give a quite reasonable estimate of Feigenbaums $\delta$ through our experimental data.
+However, when we conducted the actual experiment we found that the ideal loudspeaker used in our model represented the one in the experiment quite poorly. The result of this was that we could not properly fit our model to our experimental data. Despite this, we were still able to give a quite reasonable estimate of Feigenbaums $\delta$ through our experimental data.
 \end{abstract}
 
 \newpage
@@ -140,8 +140,7 @@ certain amount of time, since unmeasurable differences in initial conditions
 lead to drastically different outcomes. In other words, two arbitrarily close 
 initial conditions can make the system evolve into two states arbitrarily far 
 apart. This is of course a rather loose definition, and it can therefore be 
-useful to take a moment to examine a simpler chaotic system which has many of 
-the same qualities our experiment has.
+useful to take a moment to examine a simpler chaotic system in order to better understand what to expect of the chaotic effects that arise in the bouncing ball experiment.
 
 \subsection{The Logistic Map \& Cobweb Diagrams}
 
@@ -150,7 +149,7 @@ Consider the simple non-linear recurrence relation
 x_{n+1}=\lambda x_n (1-x_n)
 \label{logmap}
 \end{equation}
-This is called the logistic map, and it has some very interesting properties. However, in this paper we will only examine these qualitatively, since the logistic map is only presented to get some familiarity with behaviour that arises from our experiment. First of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, since outside this restriction the series quickly diverges to $-\infty$. Within these restrictions, we can graphically iterate \eqref{logmap} by plotting the functions $f(x)=\lambda x_n (1-x_n)$ and $g(x)=x$. First, we start off with an $x_0$ and draw a vertical line until we intersect $f(x)$. The coordinates of this point are now $(x_0,x_1)$. To find $x_2$, we need to find$x_1$ on the $x$-axis, such that we can plug it into $f(x)$ to obtain $x_2$. Therefor, we go horizontally to $g(x)$ to obtain the coordinates $(x_1,x_1)$, and we can now return to $f(x)$ vertically to find $(x_1,x_2)$, and so on. Two examples with different initial conditions ($x_0$) but same $\lambda$ can be seen on figures \ref{cobx1l20} and \ref{cobx8l20}
+This is called the logistic map, and it has some very interesting properties. However, in this paper we will only examine these qualitatively, since the logistic map is only presented to get some familiarity with behaviour that arises from our experiment. First of all, we will want to consider only cases where $0<x_0<1$ and $0<\lambda<4$, since outside this restriction the series quickly diverges to $-\infty$. Within these restrictions, we can graphically iterate \eqref{logmap} by plotting the functions $f(x)=\lambda x_n (1-x_n)$ and $g(x)=x$. First, we start off with an $x_0$ and draw a vertical line until we intersect $f(x)$. The coordinates of this point are now $(x_0,x_1)$. To find $x_2$, we need to find $x_1$ on the $x$-axis, such that we can plug it into $f(x)$ to obtain $x_2$. Therefore, we go horizontally to $g(x)$ to obtain the coordinates $(x_1,x_1)$, and we can now return to $f(x)$ vertically to find $(x_1,x_2)$, and so on. Two examples with different initial conditions ($x_0$) but same $\lambda$ can be seen on figures \ref{cobx1l20} and \ref{cobx8l20}
 
 \begin{figure}
 	\centering
@@ -199,7 +198,7 @@ Feigenbaum proved that this value converges, and that it does so rather quickly,
 \section{Model of the system}
 \label{modelling}
 \subsection{Experimental setup}
-We have placed a small steel ball on top of a concave glass lens on glued to a vibrating speaker membrane, as depicted on figure \ref{sketch}. This set-up traps the ball in an up-and-down motion governed by the parameters of the loudspeaker vibration. Placing the system on a hard stone floor, we try to eliminate any resonance effects between the system and the outside world. By placing 4 layers of translucent scotch tape on the lens we reduce to coefficient of restitution. This reduces the chances of the ball doing any horizontal movement in the pit of the lens, or jumping out of the lens altogether. 
+We have placed a small steel ball on top of a concave glass lens glued to a vibrating speaker membrane, as depicted on figure \ref{sketch}. This set-up traps the ball in an up-and-down motion governed by the parameters of the loudspeaker vibration. Placing the system on a hard stone floor, we try to eliminate any resonance effects between the system and the outside world. By placing 4 layers of translucent scotch tape on the lens we reduce the coefficient of restitution. This reduces the chances of the ball doing any horizontal movement in the pit of the lens, or jumping out of the lens altogether. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.55\textwidth]{speaker2}
@@ -211,7 +210,7 @@ We will model our experiment as a 1-dimensional system, which is to say we will 
 account for sideways motion. On figure \ref{bounces} two consecutive bounces 
 can be seen where the latter is higher due to the speaker membrane moving upwards at the 
 time of impact.
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[width=0.65\textwidth]{Figures/bounceplot.eps}
 	\caption{Plot of two bounces on the vibrating membrane}
@@ -221,20 +220,24 @@ The $k^{\text{th}}$ bounce can be completely described by the time $t_k$ it left
 
 To describe the system during a specific bounce we denote the distance of the 
 ball above the rest position of the membrane $y_b(t)$. Similarly we define 
-$y_p(t)$ as the displacement from equilibrium. For a given frequency $f$, phase 
+$y_m(t)$ as the displacement from equilibrium. For a given frequency $f$, phase 
 shift $\phi$ and amplitude $A$ the equation of motion for the membrane is
 \begin{equation}
-	y_p(t)= A \cos(2\pi f t+ \phi)
+	y_m(t)= A \cos(2\pi f t+ \phi)
 	\label{membraney}
 \end{equation}
-In the air the ball is essentially a body in free fall, and since it is quite small and dense, the air resistance can be ignored. Thus the equation of motion for the ball $y_b(t)$ for the $k^\text{th}$ jump, with the initial conditions $v_k$, $y_p(t_k)$ at time $t_k$, is simply given by
+In the air the ball is essentially a body in free fall, and since it is quite small and dense we choose to ignore air resistance. Thus the equation of motion for the ball's $k^\text{th}$ jump, with initial conditions $v_k$, $y_m(t_k)$ at time $t_k$, is simply given by
 \begin{equation}
-	y_{b,k}(t) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
+	y_{b,k}(t) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_m(t_k)
 	\label{ybeq}
 \end{equation}
-For each jump we will denote the change of the impact $y$-coordinate\footnote{In general it is not possible to find $\Delta y_k$ analytically as it would require one to find the intersection between the graph of a parabola and a sine wave.} as $\Delta y_{k}=y_p(t_{k+1})-y_p(t_{k})$. Plugging that into (\ref{ybeq}) and solving for $t$ determines the flight time of each jump.
+At time $t_{k+1}$, the ball must impact the membrane, and therefore it must hold true that
 \begin{equation}
-	\Delta t_{k} = t_{k+1}-t_{k} = \frac{v_{k}+\sqrt{v_k^2-2g\Delta y_k}}{g}
+	y_{b,k}(t_{k+1})-y_m(t_{k+1})=0
+\end{equation}
+Substituting \eqref{ybeq}, $\Delta t_k=t_{k+1}-t_k$ and $\Delta y_k=y_m(t_{k+1})-y_m(t_k)$ and solving for $\Delta t_k$ yields\footnote{In general it is not possible to find $\Delta y_k$ analytically as it would require one to find the intersection between the graph of a parabola and a sine wave.}
+\begin{equation}
+	\Delta t_{k} = \frac{v_{k}+\sqrt{v_k^2-2g\Delta y_k}}{g}
 	\label{flytime}
 \end{equation}
 Furthermore we can differentiate equation (\ref{ybeq}) to find the velocity of the ball, thereby finding the final velocity for each jump $v_{k,f}$.
@@ -251,12 +254,12 @@ where the membrane is at rest, calculate the velocity of the ball in this frame
 and then transform back. The velocity of the membrane is easily obtained by 
 differentiating (\ref{membraney}).
 \begin{equation}
-	v_p(t) = 2\pi f A \sin(2\pi f t+ \phi)
+	v_m(t) = -2\pi f A \sin(2\pi f t+ \phi)
 	\label{membranev}
 \end{equation}
 Putting the two together yields the following relationship between the final velocity of the $k^{th}$ jump $v_{k,f}$ and the initial velocity of the next $v_{k+1}$.
 \begin{align}
-	v_{k+1} &= -C_r(v_{k,f}-v_p(t_k+\Delta t_k))+v_p(t_k+\Delta t_k) \nonumber \\
+	v_{k+1} &= -C_r(v_{k,f}-v_m(t_k+\Delta t_k))+v_m(t_k+\Delta t_k) \nonumber \\
 	&= C_r \sqrt{v_k^2-2g\Delta y_k}+2(C_r+1)\pi f A \sin(2\pi f (t_k+\Delta t_k)+ \phi) \label{impactv}
 \end{align}
 Equation (\ref{impactv}) looks quite complicated as it is for the most general case, but as we shall see in the next section it can be simplified through a number of assumptions.
@@ -305,11 +308,11 @@ higher frequency.
 \label{expsetup}
 \subsection{Schematic of the experimental setup}
 The setup used for the experiment can be seen on figure \ref{setupdia}. In 
-essence the setup allows us to control a function generator through a PC as 
+essence the set-up allows us to control a function generator through a PC as 
 well as collect data about the impacts with the ball. The operation is as 
 follows: We set a desired frequency and amplitude on the PC (6), which 
-communicates this information to the micro controller (5) through USB. The 
-micro controller outputs a digital sine wave from a table to a DAC at constant 
+communicates this information to the microcontroller (5) through USB. The 
+microcontroller outputs a digital sine wave from a table to a DAC at constant 
 amplitude. A separate DAC is used to amplify the signal from the first DAC. 
 This is done to prevent loss of resolution at low amplitudes. The analog signal 
 is then routed on to the amplifier (7), which can output a signal ranging from 
@@ -319,7 +322,7 @@ desired parameter set.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{setup}
-	\caption{Schematic of the setup: (1) Steel ball, (2) loudspeaker with concave lens, (3) Accelerometer attached to the lens, (4) Filter and trigger circuit, (5) Micro controller and DACs, (6) PC, (7) Amplifier, (8) Power supply, (9) Piezoelectric element}
+	\caption{Schematic of the setup: (1) Steel ball, (2) loudspeaker with concave lens, (3) Accelerometer attached to the lens, (4) Filter and trigger circuit, (5) microcontroller and DACs, (6) PC, (7) Amplifier, (8) Power supply, (9) Piezoelectric element}
 	\label{setupdia}
 \end{figure}
 As the ball (1) starts to bounce on the concave lens, which was chosen to 
@@ -327,8 +330,8 @@ minimize sideways motion, the piezoelectric element (9) induces a voltage when
 the ball impacts. The piezoelectric element is connected to a small circuit (4) 
 that partly consists of a low pass filter and partly of a adjustable reference 
 voltage to change the emphasis of the signal. Lastly the filtered signal is 
-passed on to the micro controller which acts as a comparator and thereby 
-determine whether there has been an impact or not. For every impact the micro 
+passed on to the microcontroller which acts as a comparator and thereby 
+determines whether there has been an impact or not. For every impact the micro 
 controller sends back relevant information about the impact, such as phase, to 
 the PC.
 
@@ -336,7 +339,7 @@ In the following section \ref{Characterization} we will examine how well the
 set-up can deliver the desired parameter set. To do this we attached an 
 accelerometer (3) to the loud speaker giving us vital data about the waveform 
 such as frequency, amplitude and phase shift.
-\subsection{Characterization of the setup}
+\subsection{Characterization of the set-up}
 \label{Characterization}
 To perform the experiment we wish the parameters of the speaker membrane to be independent of each other. That is, amplitude should not depend on frequency, the 'sine-lyness' of the produced waveform should not depend on amplitude etc. As it turned out, this was not always the case. As the speaker is essentially a driven damped oscillator we observe resonance behaviour, and our amplitude, in turn, depended on frequency. For our chosen ball, the interesting frequency domain coincided with the natural frequency of the speaker. To mitigate this effect, we measured characteristics of the speaker system in hopes of controlling \emph{both} apparent amplitude and frequency.  
 
@@ -372,19 +375,19 @@ As shown above we can use our model to predict the digital amplitude needed to m
 \end{figure}
 This model is not perfect, but limitations with our ability to measure one set frequency vs. amplitude for a large number of apparent amplitudes limits us to making assumptions about the system. We see our corrections is a significant improvement to blindly trusting the digital values, especially in the frequency range used for our experiments (Around $\SI{17}{\hertz}$ to $\SI{20}{\hertz}$). The correct amplitudes closely resemble the uncorrected at the upper tail of the plot, this is caused by the correction function giving us digital amplitudes larger than 1, and is thus maxed out. We have also plotted the expected amplitude of $\SI{1.1}{\mm}$, and the spline used for correcting. The large error bars primarily comes from the conversion from acceleration to amplitude.
 
-We also calculated the phase shift between the driving force e.g. the micro controller and the loud speaker, see figure \ref{phaseshift_plot}. The data has the distinct sigmoid shape as we expect from a driven damped harmonic oscillator. Fitting the theoretical phase shift for a harmonic oscillator \ref{pshifteq} as derived in appendix \ref{driven}, results in the curve on figure \ref{phaseshift_plot}.
+We also calculated the phase shift between the driving force e.g. the microcontroller and the loud speaker, see figure \ref{phaseshift_plot}. The data has the distinct sigmoid shape as we expect from a driven damped harmonic oscillator. Fitting the theoretical phase shift for a harmonic oscillator \ref{pshifteq} as derived in appendix \ref{driven}, results in the curve on figure \ref{phaseshift_plot}.
  
 \begin{figure}[h]
 	\centering
 	\begin{subfigure}[t]{0.49\textwidth}
 		\includegraphics[width=\textwidth]{pshiftplot.eps} 
-		\caption{Phase shift between the loudspeaker and the micro controller 
+		\caption{Phase shift between the loudspeaker and the microcontroller 
 		driving it as a function of frequency. Fit:  $\arctan 
-		\left(\frac{\frac{b}{m} 2\pi 
-		f}{4\pi^2f^2-\frac{k}{m}}\right)+2\pi t f$, 
-		with $\frac{b}{m}=\SI{40.6}{\frac{kg}{s}}$, 
-		$\frac{k}{m}=\SI{1.34e4}{\frac{kg}{s^2}}$
-		and $t=\SI{1.55e-2}{s}$.}
+		\left(\frac{a 2\pi 
+		f}{4\pi^2f^2-b}\right)+2\pi c f$, 
+		with $a=\SI{40.6}{\per\second}$, 
+		$b=\SI{1.34e4}{\per\second\squared}$ 
+		and $c=\SI{1.55e-2}{s}$.}
 		\label{phaseshift_plot}
 	\end{subfigure} \hfill 
 	\begin{subfigure}[t]{0.49\textwidth}
@@ -399,7 +402,7 @@ Seeing the plots of frequency vs amplitude, one might suspect the natural freque
 One very important parameter in the set-up is the coefficient of restitution 
 $C_r$ which has already been described in the above. To measure this we used 
 the fact that the duration of each jump on a membrane at rest is proportional 
-to the initial velocity. Since the jump the will be symmetric the initial and 
+to the initial velocity. Since the jump will be symmetric the initial and 
 final velocity will be equal but with opposite signs. By equation 
 (\ref{flytime}) and setting $\Delta y_k=0$ we can obtain the following ratio, 
 which is exactly $C_r$.
@@ -407,7 +410,7 @@ which is exactly $C_r$.
 	\frac{\Delta t_{k+1}}{\Delta t_{k}}= \frac{\frac{2v_{k+1}}{g}}{\frac{2v_{k}}{g}} = \frac{v_{k+1}}{v_k} = \frac{v_{k+1}}{v_{k,f}} = C_r
 \end{equation}
 As mentioned in section \ref{modelling} the coefficient of restitution is not a 
-constant as we assume, but is a function of impact velocity. Our measurement of 
+constant as we assume, but a function of impact velocity. Our measurement of 
 $C_r$ was performed by dropping the ball a few centimetres onto the membrane, 
 which was at rest. This was done to emulate the conditions of the actual 
 experiment while giving the ball enough energy to jump a few times. On average 
@@ -452,7 +455,7 @@ the intersection between a parabola and a sine wave. In the numerical realm it
 is however possible to find this intersection. The actual problem is to find 
 where \eqref{membraney} and \eqref{ybeq} are equal that is solving the following
 \begin{equation}
-	A \cos(2\pi f t+ \phi) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_p(t_k)
+	A \cos(2\pi f t+ \phi) = -\frac{g}{2}(t-t_k)^2+v_k(t-t_k)+y_m(t_k)
 \end{equation}
 As described this can easily be done numerically, and the initial velocity for the next jump follows from the equations derived in section \ref{modelling}. In practice, this is done using the \texttt{fzero} method in \textsc{Matlab}, which is essentially using a bisection method for root finding.
 
@@ -460,11 +463,10 @@ As described this can easily be done numerically, and the initial velocity for t
 For some parameters the trajectory of the ball will end in it sticking to the 
 membrane, not bouncing. In our simulation this will be represented as a series 
 of zeroes, which can be thought of as the ball bouncing infinitely fast. In 
-practice, we have defined a tolerance for our numerical calculations, defined 
-as $\SI{1e-5}{\second}$. We will assign a sticky solution to any parameter set 
-for which the time between two following jumps is less than this tolerance. 
+practice, we have used a tolerance for our numerical calculations equal to $\SI{1e-5}{\second}$. We will assign a sticky solution to any parameter set 
+for which the time between two subsequent jumps is less than this tolerance. 
 \subsection{Chaotic behaviour in the theoretical model}
-The idea for the experiment originates from Tufillaro and Albano \cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside ``islands'' of stability in the chaotic region. The logistic map is a convenient model to introducing chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing odd period orbits.
+The idea for the experiment originates from Tufillaro and Albano \cite{tufillaro}, who suggested that the bouncing ball behaves very much like the quadratic map described in section \ref{chaos}. This observation seems to hold qualitatively, however the link between the suggested quadratic map and the governing equations of the system seems weak. Nonetheless, simulated data shows behaviour very much analogues to the quadratic map. For some initial conditions, we find there exists stable orbits with period 3, 5 and 7 co-existing with the period 1, 2, 4, and-so-on orbits. While these odd numbered orbits also exists in the quadratic map, they only appear momentarily inside regions of stability in the chaotic regime. The logistic map is a convenient model to introduce chaotic systems, but it appears it is not sufficient to explain the dynamics of the ball-speaker system. In the appendix we will provide simulated and experimental data showing these surprisingly stable odd-numbered period orbits.
 
 \subsubsection{Dependence on initial conditions}
 We found through numerical simulations and practical experience that the systems behaviour strongly varies with different initial conditions. Most intriguingly we found that for some initial energies the system will fall into stable period 3 orbits. This effect was also repeatedly demonstrated in the lab. Through numerical simulation we hoped to gain some insight into the connection between the initial velocities and the tendency to drop into period 3 orbits as opposed to $2^n$-period orbits. We have plotted the differences in the time series of the last 50 jumps out of 200 jumps total to allow the system to become stable, for varying values of initial velocity. 
@@ -472,12 +474,13 @@ We found through numerical simulations and practical experience that the systems
 \centering
 \includegraphics[width=0.65\textwidth]{vsweep.eps}
 \caption{Stable solution depends strongly on initial velocity. The system plotted here is simulated with $C_r=0.66$, $f=\SI{16}{Hz}$, $A=\SI{1.1}{mm}$.}
+\label{vsweepsim}
 \end{figure}
 We cannot claim to identify any strong patterns in this, but we have found that if we limit the initial velocity such that the ball does not skip a period, the simulations appear to be more stable. When simulating our experiment we sweep a range of frequencies, and for each value we start the ball at the top of the waveform with some initial velocity given by:
 \begin{align*}
 v_0(f) &= \frac{g}{2f} c
 \end{align*}
-This corresponds to some fraction $c$ of the speed required to jump a whole period of the loudspeaker, which for $0.7<c<0.9$ seems to land the system in the period-doubling, logistic map-esque, attractor. For the simulation plotted, we see there is an island of stable initial velocities in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
+This corresponds to some fraction $c$ of the speed required to jump a whole period of the loudspeaker, which for $0.7<c<0.9$ seems to land the system in the period-doubling, logistic map-esque, attractor. For the simulation in figure \ref{vsweepsim}, we see there is an island of initial velocities leading to a period 1 orbit in the range $\SI{0.1}{\meter\per\second}$ to $\SI{0.3}{\meter\per\second}$.
 \subsection{Measuring Feigenbaums $\delta$}
 Using \eqref{Feigenbaumsdelta} we can calculate Feigenbaums constant using the dynamics of our system. Marking the times of the bifurcations in figure  \ref{feigsim}, we can calculate the $\delta$.
 \begin{figure}[h]
@@ -491,16 +494,16 @@ The two first values in the series for Feigenbaums $\delta$ for our simulation i
 \delta_1&=\frac{\SI{18.1028}{\hertz}-\SI{19.0153}{\hertz}}{\SI{19.0153}{\hertz}-\SI{19.1952}{\hertz}} = \num{5.1(3)}\\
 \delta_2&=\frac{\SI{19.0153}{\hertz}-\SI{19.1952}{\hertz}}{\SI{19.1952}{\hertz}-\SI{19.2337}{\hertz}} = \num{5(1)}
 \end{align}
-The frequency resolution used here is $\SI{0.0064}{\hertz}$. The uncertainties are calculated with the law of error propagation, where the error is the size of the frequency steps. We can not be sure where the bifurcations are, but using the whole distance, we are sure to cover it.  
+The frequency resolution used here is $\SI{0.0064}{\hertz}$. The uncertainties are calculated with the law of error propagation, where the error is the size of the frequency steps. We can not be sure exactly where the bifurcations are, but using the whole distance, we are sure to cover it.  
 \section{Data analysis}
 \subsection{Comparison to simulated data}
-To see how well our model holds, we can plot the simulated data, and the measured data, which can be seen on figures \ref{realdata} and \ref{fakedata}. Figure \ref{realdata} is a plot of the measured data and simulation with the correct amplitude and $C_r$.
+To see how well our model holds, we can plot the simulated data and the measured data, which can be seen on figures \ref{realdata} and \ref{fakedata}. 
 \begin{figure}
 \centering
 \begin{subfigure}[t]{0.49\textwidth}
 	\centering
 	\includegraphics[width=\textwidth]{realvals}
-	\caption{Measured data in blue, and simulated data in red. The simulation is run with the same parameters as we have set-up the experiment with, and with measured $C_r$.}
+	\caption{Measured data in blue, and simulated data in red. The simulation is run with the same amplitude and $C_r$ as used in the experiment.}
 	\label{realdata}
 \end{subfigure}\hfill
 \begin{subfigure}[t]{0.49\textwidth}
@@ -511,12 +514,7 @@ To see how well our model holds, we can plot the simulated data, and the measure
 \end{subfigure}
 \end{figure}
 Quite obviously the bifurcations are neither wide nor short enough, which we 
-suspect has to do with the ball interacting with the loudspeaker. Because we 
-have measured that the actual amplitude is lower as described in section 
-\ref{ballmembrane}, we tried with a lower amplitude which resulted in figure 
-\ref{fakedata}. Further discussion on this effect will be given in section 
-\ref{conclusions}.
-
+suspect has to do with the ball interacting with the loudspeaker. We have shown in section \ref{ballmembrane} the interactions between the speaker and ball will result in an approximately 20\% lower amplitude. Using this naive correction, we are able to line up the first bifurcation, even though the shape is still off. Further discussion on this effect will be given in section \ref{conclusions}.
 \subsection{Feigenbaums $\delta$}
 Running the experiment as described in section \ref{expsetup}, we have produced a bifurcation diagram showing three bifurcations. From these, we calculated Feigenbaums $\delta$ using the same methods we used in section \ref{Numericalsec} on the simulated data shown on figure \ref{expfeigplot}.
 \begin{figure}[h]
@@ -539,14 +537,13 @@ We find Feigenbaums $\delta$ to be:
 \delta &= \frac{\SI{18.4980}{Hz}-\SI{18.2475}{Hz}}{\SI{18.2475}{Hz}-\SI{18.5707}{Hz}} = \num{3.4(5)}
 \end{align}
 This number is quite close to Feigenbaums $\delta$, but does not fall inside the uncertainty. Further discussion will be given in the following section.  
-
 \section{Discussion and conclusions}
 \label{conclusions}
-Our simulated data disagrees strongly with our measured data. We have identified some effects which we have not included in our model. The first is the fact that $C_r$ has some velocity dependence. In Müller et. al. \cite{muller}, they show this effect to be small (roughly 0.5\% drop in the range $\SI{0.3}{\meter\per\second}$ to $\SI{0.7}{\meter\per\second}$) in the velocity range we are using. Second we assume the speaker is perfectly sinusoidal. This proved to be incorrect in the $\SI{14}{Hz}$ to $\SI{16}{Hz}$ range, but less of a issue in the range used. Our main culprit seems to be the backeffect from the ball hitting the speaker. Late in the project we tried to repeat the experiment using a lighter ball, figure \ref{long}. We discovered that this seemed to produce results more like our simulations. We have shown the ring-out of the speaker to be slow, and we have seen that for a period 2 orbit, there is a strong disturbance of the waveform when the ball is bouncing. Future work could be to model the speaker and the effect of the collisions more accurately. We saw the if we reduced the amplitude in our simulations by roughly 20\%, as was the reduction in amplitude produced by the steel ball, we match up the first bifurcation. The spread and the length of the bifurcations, we can however not explain only trough this effect, so this fact seem to be quite incidental. It should be noted that the simulation fits quite well into Feigenbaums theory as it gave a correct $\delta$.
+Our simulated data disagrees strongly with our measured data. We have identified some effects which we have not included in our model. The first is the fact that $C_r$ has some velocity dependence. In Müller et. al. \cite{muller}, they show this effect to be small (roughly 0.5\% drop in the range $\SI{0.3}{\meter\per\second}$ to $\SI{0.7}{\meter\per\second}$) in the velocity range we are using. Secondly we assume the speakers motion to be perfectly sinusoidal. This proved to be a very poor assumption in the $\SI{14}{Hz}$ to $\SI{16}{Hz}$ range, but less of an issue in the range used. The main culprit seems to be the backeffect from the ball hitting the speaker. Late in the project we tried to repeat the experiment using a lighter ball. The resulting bifurcation diagram is shown on figure \ref{long}. We discovered that this seemed to produce results more like our simulations. We have shown the ring-out of the speaker to be slow, and we have seen that for a period-2 orbit, there is a strong disturbance of the waveform when the ball is bouncing. Future work could be to model the speaker and the effect of the collisions more accurately. We saw that if we reduced the amplitude, the first bifurcation seemed to line up. The spread and the length of the bifurcations, we can however not explain only through this effect, so this fact seem to be quite incidental. We propose that there is some non trivial backeffect from the ball's impacts resulting in the shorter and wider patterns in the measured data. 
 	
-The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. The error is our ability to resolve frequencies. In the simulated experiment, this is a case of more computing needed, but in the experimental runs we are limited by our set-ups ability frequency resolution. The fact that we only see three bifurcations makes the measurement especially weak, and limits our ability to confirm the universality of Feigenbaums constant. Though our experiment suggest a reasonable $\delta$ which is approximately the same as seen in Tufillaro and Albano \cite{tufillaro}.
+The uncertainties in the measurement of Feigenbaums $\delta$ are quite large. The error comes from our ability to resolve frequencies. In the simulated experiment, this is a case of more computing needed, but in the experimental runs we are limited by our frequency resolution. The fact that we only see three bifurcations makes our experimental assessment of Feigenbaums $\delta$ weak, and limits our ability to comment on the universality of Feigenbaums constant. However, our experiment suggests a $\delta$ which is approximately the same as obtained by others doing the same experiment, according to Tufillaro and Albano \cite{tufillaro}.
 \newpage
-\pagenumbering{gobble}
+%\pagenumbering{gobble}
 
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{plain}
