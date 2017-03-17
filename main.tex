@@ -3,7 +3,7 @@
 
 
 % % % % % Sprogpakker og Layout % % % % % % % % %
-\usepackage[left=2.5cm,top=1.8cm,bottom=1.8cm, right=2.5cm]{geometry}
+\usepackage[left=2.3cm,top=1.8cm,bottom=1.8cm, right=2.3cm]{geometry}
 %\usepackage{ulem}
 \usepackage[danish,english]{babel}
 \usepackage[utf8]{inputenc}
@@ -32,6 +32,10 @@
 \usepackage[separate-uncertainty = true]{siunitx}
 \usepackage{fancyhdr}
 \usepackage{pageslts}
+%\usepackage[compact]{titlesec}
+%\titlespacing{\section}{0pt}{3ex}{1ex}
+%\titlespacing{\subsection}{0pt}{1.3ex}{0ex}
+%\titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 %Muliggør 'flere figurer i én' Eksempel på anvendelse (indenfor figure-environment):
 % \subfloat[undercaption 1]{\label{label 1}\includegraphics[bredde 1]{billede 1}}
 % \subfloat[undercaption 2]{\label{label 2}\includegraphics[bredde 2]{billede 2}}
@@ -76,7 +80,7 @@
 
 \vfill
 
-{\large Rapporten omfatter {\bf \lastpages{arabic}{1}} siders 
+{\large Rapporten omfatter {\bf 15} siders 
 hovedtekst og 
 {\bf 
 \lastpages{roman}{2}} siders appendix.}
@@ -417,6 +421,7 @@ experiment while giving the ball enough energy to jump a few times. On average
 it bounced three times before coming to a rest. Through this small experiment, 
 we were able to determine $C_r= \num{0.659(5)}$ on the basis of 20 consecutive 
 experiments. 
+
 \subsection{Collision between the ball and the membrane}
 \label{ballmembrane}
 It is obvious that the collision between the ball and the speaker will affect the waveform of the speaker. In the simple model, we assume that the speaker is ideal. That is, it will supply the needed impulse to change the momentum of the ball without being affected. By comparing the acceleration of the speaker with and without the ball, we can show the effect of bounces as seen on figures \ref{noball} and \ref{wball}. 
@@ -514,7 +519,18 @@ To see how well our model holds, we can plot the simulated data and the measured
 \end{subfigure}
 \end{figure}
 Quite obviously the bifurcations are neither wide nor short enough, which we 
-suspect has to do with the ball interacting with the loudspeaker. We have shown in section \ref{ballmembrane} the interactions between the speaker and ball will result in an approximately 20\% lower amplitude. Using this naive correction, we are able to line up the first bifurcation, even though the shape is still off. Further discussion on this effect will be given in section \ref{conclusions}.
+suspect has to do with the ball interacting with the loudspeaker. We have shown 
+in section \ref{ballmembrane} the interactions between the speaker and ball 
+will result in an approximately 20\% lower amplitude. Using this naive 
+correction, we are able to line up the first bifurcation, even though the shape 
+is still off. We suspect that the reason for this, is that the effect of the 
+interaction between the ball and the membrane is twofold; the effect on the 
+ball is somewhat modeled by our measurement of $C_r$, since this measurement 
+was done on the setup. The effect on the membrane seems to be able to be 
+partially modeled by correcting the amplitude to what we observed as the ball 
+was bouncing.
+
+
 \subsection{Feigenbaums $\delta$}
 Running the experiment as described in section \ref{expsetup}, we have produced a bifurcation diagram showing three bifurcations. From these, we calculated Feigenbaums $\delta$ using the same methods we used in section \ref{Numericalsec} on the simulated data shown on figure \ref{expfeigplot}.
 \begin{figure}[h]
